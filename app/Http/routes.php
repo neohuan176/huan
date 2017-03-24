@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -28,4 +29,5 @@ Route::get('/', function () {
 
 Route::group(['middleware' => ['web']], function () {
     //
+    Route::any('/index',['as'=>'web.index','uses'=>'IndexController@index']);
 });
