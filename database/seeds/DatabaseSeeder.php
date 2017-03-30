@@ -11,6 +11,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        //批量执行就在这里添加
         // $this->call(UsersTableSeeder::class);
     }
 }

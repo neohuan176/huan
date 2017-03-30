@@ -31,3 +31,15 @@ Route::group(['middleware' => ['web']], function () {
     //
     Route::any('/index',['as'=>'web.index','uses'=>'IndexController@index']);
 });
+
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+    Route::get('/home', 'HomeController@index');
+
+    Route::get('teacher/login', 'Teacher\AuthController@getLogin');
+    Route::post('teacher/login', 'Teacher\AuthController@postLogin');
+    Route::get('teacher/logout', 'Teacher\AuthController@getLogout');
+    Route::get('teacher/register', 'Teacher\AuthController@getRegister');
+    Route::post('teacher/register', 'Teacher\AuthController@postRegister');
+    Route::get('/teacher', 'TeacherController@index');
+});
