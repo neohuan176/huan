@@ -25,7 +25,6 @@ class AuthController extends Controller
 
     public function __construct()
     {
-//        $this->middleware('guest:teacher', ['except' => 'getLogout']);
         $this->middleware('guest:teacher', ['except' => ['getLogout','logout']]);
     }
 
@@ -46,6 +45,7 @@ class AuthController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+//            'openid' => $_SESSION[''],//获取用户的openid
         ]);
 
     }

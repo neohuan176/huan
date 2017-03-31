@@ -30,9 +30,11 @@ Route::get('/', function () {
 Route::group(['middleware' => ['web']], function () {
     //
     Route::any('/index',['as'=>'web.index','uses'=>'IndexController@index']);
+    Route::any('/createMenu',['as'=>'web.createMenu','uses'=>'IndexController@createMenu']);
+    Route::any('/oauth_callback',['as'=>'web.oauth_callback','uses'=>'IndexController@oauthCallBack']);
 });
 
-Route::group(['middleware' => 'web'], function () {
+Route::group(['middleware' => ['web','wechat']], function () {
     Route::auth();
     Route::get('/home', 'HomeController@index');
 
