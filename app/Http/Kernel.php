@@ -46,9 +46,10 @@ class Kernel extends HttpKernel
     protected $routeMiddleware = [
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,//如果用户已经登录，就跳转到主页
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'teacher' => \App\Http\Middleware\AuthTeacher::class,
+        'student' => \App\Http\Middleware\AuthStudent::class,
         'wechat' => \App\Http\Middleware\Wechat::class,
     ];
 }

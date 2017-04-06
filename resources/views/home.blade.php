@@ -9,7 +9,7 @@
 
                 <div class="panel-body">
                     <pre>
-                     You are logged in!
+                     管理员：{{ Auth::user()->name }}  登录成功!
                      {{--{{Auth::guest()}}--}}
                     </pre>
 

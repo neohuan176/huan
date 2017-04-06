@@ -39,7 +39,7 @@
             </button>
 
             <!-- Branding Image -->
-            <a class="navbar-brand" style="background:#c9302c;color:#fff" href="{{ url('/') }}">
+            <a class="navbar-brand" style="background:#47ebff;color:#fff" href="{{ url('/') }}">
                 Laravel
             </a>
         </div>
@@ -47,24 +47,24 @@
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
-                <li><a href="{{ url('/teacher') }}">教师后台</a></li>
+                <li><a href="{{ url('/student') }}">学生个人中心</a></li>
             </ul>
 
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
                 <!-- Authentication Links -->
                 {{--@if (Auth::guest('teacher'))--}}
-                @if ( !Auth::guard('teacher')->user())
-                    <li><a href="{{ url('teacher/login') }}">登录</a></li>
-                    <li><a href="{{ url('teacher/register') }}">注册</a></li>
+                @if ( !Auth::guard('student')->user())
+                    <li><a href="{{ url('student/login') }}">登录</a></li>
+                    <li><a href="{{ url('student/register') }}">注册</a></li>
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            {{ Auth::guard('teacher')->user()->name }} <span class="caret"></span>
+                            {{ Auth::guard('student')->user()->name }} <span class="caret"></span>
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="{{ url('teacher/logout') }}"><i class="fa fa-btn fa-sign-out"></i>退出登录</a></li>
+                            <li><a href="{{ url('student/logout') }}"><i class="fa fa-btn fa-sign-out"></i>退出登录</a></li>
                         </ul>
                     </li>
                 @endif

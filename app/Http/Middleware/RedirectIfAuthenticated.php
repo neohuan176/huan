@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use Log;
 
 class RedirectIfAuthenticated
 {
@@ -18,6 +19,12 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
+//            Log::info($guard);
+//            switch ($guard){
+//                case 'teacher' : return redirect('/teacher');
+//                case 'student' : return redirect('/student');
+//                default : return redirect('/');
+//            }
             return redirect('/');
         }
 

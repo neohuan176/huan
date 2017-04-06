@@ -1,13 +1,13 @@
-@extends('layouts.teacher')
+@extends('layouts.student')
 
 @section('content')
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">教师登录</div>
+                <div class="panel-heading">学生登录</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/teacher/login') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/student/login') }}">
                         {!! csrf_field() !!}
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">

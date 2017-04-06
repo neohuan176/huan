@@ -34,14 +34,25 @@ Route::group(['middleware' => ['web']], function () {
     Route::any('/oauth_callback',['as'=>'web.oauth_callback','uses'=>'IndexController@oauthCallBack']);
 });
 
-Route::group(['middleware' => ['web','wechat']], function () {
+
+Route::group(['middleware' => ['web']], function () {
     Route::auth();
     Route::get('/home', 'HomeController@index');
 
+//    教师登录注册路由
     Route::get('teacher/login', 'Teacher\AuthController@getLogin');
     Route::post('teacher/login', 'Teacher\AuthController@postLogin');
     Route::get('teacher/logout', 'Teacher\AuthController@getLogout');
     Route::get('teacher/register', 'Teacher\AuthController@getRegister');
     Route::post('teacher/register', 'Teacher\AuthController@postRegister');
+
+    Route::get('student/login', 'Student\AuthController@getLogin');
+    Route::post('student/login', 'Student\AuthController@postLogin');
+    Route::get('student/logout', 'Student\AuthController@getLogout');
+    Route::get('student/register', 'Student\AuthController@getRegister');
+    Route::post('student/register', 'Student\AuthController@postRegister');
+
+
+    Route::get('/student', 'StudentController@index');
     Route::get('/teacher', 'TeacherController@index');
 });

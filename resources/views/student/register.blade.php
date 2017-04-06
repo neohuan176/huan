@@ -1,13 +1,13 @@
-@extends('layouts.teacher')
+@extends('layouts.student')
 
 @section('content')
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">教师注册</div>
+                <div class="panel-heading">学生注册</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/teacher/register') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/student/register') }}">
                         {!! csrf_field() !!}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -37,6 +37,7 @@
                                 @endif
                             </div>
                         </div>
+
                         <div class="form-group{{ $errors->has('school') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">学校名称</label>
 

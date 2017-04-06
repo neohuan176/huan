@@ -73,14 +73,7 @@ class IndexController extends Controller
         ];
         $app = new Application($config);
         $oauth = $app->oauth;
-// 获取 OAuth 授权结果用户信息
         $user = $oauth->user();
-//        if (Session::has("wechat_user")) {
-//            Log::info("session有user");
-//        }
-//        else{
-//            Log::info("session中没有user");
-//        }
         Session::put("wechat_user",$user->toArray());
         $targetUrl = !Session::has("target_url") ? '/' : Session::get("target_url");
         return redirect($targetUrl);
