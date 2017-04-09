@@ -36,6 +36,7 @@ Route::group(['middleware' => ['web']], function () {
 
 
 Route::group(['middleware' => ['web']], function () {
+//管理員登陸注冊路由
     Route::auth();
     Route::get('/home', 'HomeController@index');
 
@@ -46,13 +47,23 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('teacher/register', 'Teacher\AuthController@getRegister');
     Route::post('teacher/register', 'Teacher\AuthController@postRegister');
 
+
+    Route::get('/teacher', 'TeacherController@index');
+    Route::get('teacher/course', function () {
+        return view('teacher.Course');
+    });
+});
+
+Route::group(['middleware' => ['web']], function () {
+//    學生登录注册路由
     Route::get('student/login', 'Student\AuthController@getLogin');
     Route::post('student/login', 'Student\AuthController@postLogin');
     Route::get('student/logout', 'Student\AuthController@getLogout');
     Route::get('student/register', 'Student\AuthController@getRegister');
     Route::post('student/register', 'Student\AuthController@postRegister');
 
-
     Route::get('/student', 'StudentController@index');
-    Route::get('/teacher', 'TeacherController@index');
 });
+
+//api路由
+

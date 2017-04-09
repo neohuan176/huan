@@ -20,10 +20,10 @@ class CreateStudentsTable extends Migration
             $table->string('email')->unique();//邮箱
             $table->string('school');//学校
             $table->string('phone');//电话
-            $table->string('institute');//学院
+            $table->string('institute');//学院·
             $table->string('major');//专业
             $table->string('class');//班级
-            $table->string('stuNo');//学号
+            $table->string('stuNo')->unique();//学号
             $table->rememberToken();//记住密码凭证
             $table->timestamps();//时间戳
         });

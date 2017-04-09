@@ -52,6 +52,77 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">手机号</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="phone" value="{{ old('phone') }}">
+
+                                @if ($errors->has('phone'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('phone') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('institute') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">学院</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="institute" value="{{ old('institute') }}">
+
+                                @if ($errors->has('institute'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('institute') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('major') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">专业</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="major" value="{{ old('major') }}">
+
+                                @if ($errors->has('major'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('major') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('class') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">班级</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="class" value="{{ old('class') }}">
+
+                                @if ($errors->has('class'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('class') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('stuNo') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">学号</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="stuNo" value="{{ old('stuNo') }}">
+
+                                @if ($errors->has('stuNo'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('stuNo') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">密码</label>
 

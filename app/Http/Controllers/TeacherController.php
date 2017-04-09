@@ -21,4 +21,11 @@ class TeacherController extends Controller
 //        $teacher = Auth::guard('teacher')->user();
         return view('teacherHome');
     }
+
+    //添加课程
+    public function addCourse(){
+        //获取传过来的数据
+        //将数据添加到数据库
+        //返回添加信息。
+    }
 }
