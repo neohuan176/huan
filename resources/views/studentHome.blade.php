@@ -8,11 +8,9 @@
                     <div class="panel-heading">学生个人中心</div>
 
                     <div class="panel-body">
-                        <pre>
                         Welcome!
                         已经登录学生个人中心！~
-                        {{ Auth::guard('student')->user()->name }}
-                        </pre>
+                        {{--{{ Auth::guard('student')->user()->name }}--}}
                     </div>
                 </div>
             </div>

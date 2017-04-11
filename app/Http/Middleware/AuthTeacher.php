@@ -18,7 +18,7 @@ class AuthTeacher
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        Log::info(Auth::guard('teacher')->guest());
+//        Log::info(Auth::guard('teacher')->guest());
         //如果未登录就跳转到登录页面
         if (Auth::guard('teacher')->guest()) {
             if ($request->ajax() || $request->wantsJson()) {

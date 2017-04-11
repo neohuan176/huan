@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 use App\Student;
 use Validator;
@@ -42,11 +43,12 @@ class AuthController extends Controller
 
     protected function create(array $data)
     {
+        $openid = Session::get('wechat_user')['id'];
         return Student::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'openid' => time(),//获取用户的openid,先用时间戳代替
+            'openid' => $openid,//获取用户的openid,先用时间戳代替
             'school' => $data['school'],
         ]);
 

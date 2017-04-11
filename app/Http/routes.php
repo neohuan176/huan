@@ -49,12 +49,11 @@ Route::group(['middleware' => ['web']], function () {
 
 
     Route::get('/teacher', 'TeacherController@index');
-    Route::get('teacher/course', function () {
-        return view('teacher.Course');
-    });
+    Route::get('teacher/course', 'TeaCherController@showCourse');
+    Route::get('/teacher/changeCallOverStatus/{courseId}', 'TeaCherController@changeCallOverStatus');
 });
 
-Route::group(['middleware' => ['web']], function () {
+Route::group(['middleware' => ['web','wechat']], function () {
 //    學生登录注册路由
     Route::get('student/login', 'Student\AuthController@getLogin');
     Route::post('student/login', 'Student\AuthController@postLogin');
@@ -66,4 +65,6 @@ Route::group(['middleware' => ['web']], function () {
 });
 
 //api路由
-
+Route::group(['middleware' => ['web']], function () {
+    Route::post('teacher/addCourse','TeacherController@addCourse');
+});

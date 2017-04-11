@@ -51,5 +51,6 @@ class Kernel extends HttpKernel
         'teacher' => \App\Http\Middleware\AuthTeacher::class,
         'student' => \App\Http\Middleware\AuthStudent::class,
         'wechat' => \App\Http\Middleware\Wechat::class,
+        'studentExist' => \App\Http\Middleware\StudentExist::class,
     ];
 }

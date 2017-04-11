@@ -50,8 +50,18 @@ class IndexController extends Controller
                 "sub_button" => [
                     [
                         "type" => "view",
-                        "name" => "注册",
-                        "url"  => "http://16k86z5010.iok.la/huan/public/teacher/register"
+                        "name" => "教师注册",
+                        "url"  => "http://zy595312011.vicp.io/huan/public/teacher/register"
+                    ],
+                ],
+            ],
+            [
+                "name"       => "学生",
+                "sub_button" => [
+                    [
+                        "type" => "view",
+                        "name" => "学生注册",
+                        "url"  => "http://zy595312011.vicp.io/huan/public/student/register"
                     ],
                 ],
             ],
@@ -72,6 +82,7 @@ class IndexController extends Controller
             ],
         ];
         $app = new Application($config);
+        Log::info("进入CallBack");
         $oauth = $app->oauth;
         $user = $oauth->user();
         Session::put("wechat_user",$user->toArray());
