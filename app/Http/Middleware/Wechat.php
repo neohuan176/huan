@@ -44,7 +44,6 @@ class Wechat
                 ->redirect();
             return $response;
         }
-        Log::info("session中存在用户！");
         return $next($request);
     }
 }

@@ -32,6 +32,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::any('/index',['as'=>'web.index','uses'=>'IndexController@index']);
     Route::any('/createMenu',['as'=>'web.createMenu','uses'=>'IndexController@createMenu']);
     Route::any('/oauth_callback',['as'=>'web.oauth_callback','uses'=>'IndexController@oauthCallBack']);
+    Route::any('/updateTable',['as'=>'web.updateTable','uses'=>'IndexController@updateTable']);
 });
 
 

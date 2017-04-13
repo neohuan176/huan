@@ -10,7 +10,7 @@ class StudentController extends Controller
 {
     public function __construct(){
 //        $this->middleware('student');
-        $this->middleware('studentExist');
+        $this->middleware('studentExist');//判断学生是否已经注册
     }
 
     public function index()
