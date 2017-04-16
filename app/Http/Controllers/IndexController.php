@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Session;
 use Log;
-use App\Student\StudentServices;
+use App\Acme\StudentServices;
 
 class IndexController extends Controller
 {
@@ -39,15 +39,29 @@ class IndexController extends Controller
             // $message->MsgType // 消息类型：event, text....
             switch ($message->MsgType) {
                 case 'event':
+                {
+                    //判断event事件的类型
+                    switch ($message->Event){
+
+                        case "LOCATION" ://上报地理位置事件
+                                App::make('StudentServ')->initStudentLocation($message);//重新初始化学生的地理位置信息
+                            break;
+
+                        case "CLICK" ://点击类型
+                        {
+                            switch ($message->EventKey){
+                                case "CallOver" ://考勤签到
+
+                                    break;
+                            }
+                        }
+                            break;
+                        default :break;
+                    }
+                }
+
                     Log::info($message);
-
-                    $test = new StudentServices();
-//                    if($message->Event == "LOCATION"){
-//                        Log::info('============LOCATION');
-//                        App::make('StudentServ')->initStudentLocation($message);
-//                    }
                     //先判断是否含有学生的经纬度，然后将最新的地理位置信息保存到学生的信息中。（先学生未注册判断，）
-
 //                    判断是否获取到了用户的地理位置，保存地理位置信息到学生的信息中，
 //                      怎么判断学生的地理位置信息是最新的（增加一个字段<更新地理位置信息的时间>，
 //                  然后在考勤的时候对比考勤开启的时间和更新地理位置信息的时间是否在一定的时间段内。
@@ -90,7 +104,7 @@ class IndexController extends Controller
             [
                 "type" => "click",
                 "name" => "考勤",
-                "key"  => "V1001_TODAY_MUSIC"
+                "key"  => "CallOver"
             ],
             [
                 "name"       => "教师",
@@ -149,9 +163,8 @@ class IndexController extends Controller
 
     public function updateTable(){
         Schema::table('students',function($table){
-            $table->float('longitude');//经度
-            $table->float('latitude');//纬度
-            $table->date('location_update');//地理位置更新时间
+            $table->datetime('location_update');//地理位置更新时间
+//            $table->dropColumn('test1');
         });
     }
 }

@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\ServiceProvider;
-use App\Student\StudentServices;
+use App\Acme\StudentServices;
 
 class StudentProvider extends ServiceProvider
 {
@@ -27,8 +27,6 @@ class StudentProvider extends ServiceProvider
     {
         $this->app->bind('StudentServ', function()
         {
-            $test = new StudentServices();
-            Log::info("进入register");
             return new StudentServices();
         });
     }
