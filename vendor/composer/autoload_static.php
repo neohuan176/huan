@@ -316,6 +316,7 @@ class ComposerStaticInitf0edef8d82d469d4cfba4316d7feb75f
 
     public static $classMap = array (
         'App\\Acme\\StudentServices' => __DIR__ . '/../..' . '/app/Acme/StudentServices.php',
+        'CreateAttendRecordsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_16_044523_create_attend_records_table.php',
         'CreateCoursesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_09_013912_create_courses_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateSCoursesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_13_064303_create_s_courses_table.php',

@@ -13,10 +13,6 @@ use App\Acme\StudentServices;
 class IndexController extends Controller
 {
     protected $studentServices;
-//    public function __construct(StudentServ $studentServices)
-//    {
-//        $this->studentServices = $studentServices;
-//    }
     //微信sdk基本配置信息
     protected  $options = [
         'debug'     => true,
@@ -45,13 +41,14 @@ class IndexController extends Controller
 
                         case "LOCATION" ://上报地理位置事件
                                 App::make('StudentServ')->initStudentLocation($message);//重新初始化学生的地理位置信息
+                                return "更新地理位置成功";
                             break;
 
                         case "CLICK" ://点击类型
                         {
                             switch ($message->EventKey){
                                 case "CallOver" ://考勤签到
-
+                                    return App::make('StudentServ')->callOver($message->FromUserName);
                                     break;
                             }
                         }
@@ -59,8 +56,6 @@ class IndexController extends Controller
                         default :break;
                     }
                 }
-
-                    Log::info($message);
                     //先判断是否含有学生的经纬度，然后将最新的地理位置信息保存到学生的信息中。（先学生未注册判断，）
 //                    判断是否获取到了用户的地理位置，保存地理位置信息到学生的信息中，
 //                      怎么判断学生的地理位置信息是最新的（增加一个字段<更新地理位置信息的时间>，
@@ -153,7 +148,6 @@ class IndexController extends Controller
             ],
         ];
         $app = new Application($config);
-        Log::info("进入CallBack");
         $oauth = $app->oauth;
         $user = $oauth->user();
         Session::put("wechat_user",$user->toArray());
@@ -162,8 +156,10 @@ class IndexController extends Controller
     }
 
     public function updateTable(){
-        Schema::table('students',function($table){
-            $table->datetime('location_update');//地理位置更新时间
+        Schema::table('courses',function($table){
+//            $table->string('openid');//地理位置更新时间
+
+            $table->dateTime('openCallOverTime');//
 //            $table->dropColumn('test1');
         });
     }

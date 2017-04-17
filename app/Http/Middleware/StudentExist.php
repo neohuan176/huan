@@ -28,7 +28,6 @@ class StudentExist
                 return redirect('student/register');
             }
         }
-        Log::info("学生已经注册！");
         return $next($request);
     }
 }

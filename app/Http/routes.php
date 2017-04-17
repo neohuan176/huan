@@ -51,7 +51,8 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('/teacher', 'TeacherController@index');
     Route::get('teacher/course', 'TeaCherController@showCourse');
-    Route::get('/teacher/changeCallOverStatus/{courseId}', 'TeaCherController@changeCallOverStatus');
+    Route::get('/teacher/changeCallOverStatus/{courseId}/{addNewCallOver}', 'TeaCherController@changeCallOverStatus');
+    Route::get('/teacher/getCourse/{courseId}', 'TeaCherController@getCourse');
 });
 
 Route::group(['middleware' => ['web','wechat']], function () {
@@ -63,6 +64,7 @@ Route::group(['middleware' => ['web','wechat']], function () {
     Route::post('student/register', 'Student\AuthController@postRegister');
 
     Route::get('/student', 'StudentController@index');
+    Route::any('/student/joinCourse/{courseId}', 'StudentController@joinCourse');
 });
 
 //api路由

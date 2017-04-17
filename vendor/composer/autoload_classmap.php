@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'App\\Acme\\StudentServices' => $baseDir . '/app/Acme/StudentServices.php',
+    'CreateAttendRecordsTable' => $baseDir . '/database/migrations/2017_04_16_044523_create_attend_records_table.php',
     'CreateCoursesTable' => $baseDir . '/database/migrations/2017_04_09_013912_create_courses_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreateSCoursesTable' => $baseDir . '/database/migrations/2017_04_13_064303_create_s_courses_table.php',
