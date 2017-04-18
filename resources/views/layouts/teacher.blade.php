@@ -82,9 +82,13 @@
 <!-- JavaScripts -->
 {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>--}}
 
+
+<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=380b21940d6607f172278d1a8977c397"></script>
 <script src="{{asset("js/jquery.min.js")}}"></script>
 <script src="{{asset("js/bootstrap.js")}}"></script>
-{{--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>--}}
+<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=ed1fafa0307bb4991da41f54d8a88b46"></script>
+<script src="{{asset("js/bootstrap.AMapPositionPicker.js")}}"></script>
+
  {{--<script src="{{ elixir('js/app.js') }}"></script> --}}
 @yield("content")
 </body>

@@ -22,7 +22,7 @@ class StudentServices
     /**
      * @param $studentInfo
      * @return boolean
-     * 重新获取学生的地理位置信息
+     * 重新获取学生的地理位置信息，进入微信时使用
      */
     public function initStudentLocation($studentInfo){
         if($this->studentExist($studentInfo->FromUserName)){
@@ -98,7 +98,7 @@ class StudentServices
                 return "请更新你的位置信息。（重新进入公众号）";
             }
             else{
-                if($this->isInRange($student,$course) <= 1000000000){//判断是否在考勤范围内,如果在，就添加考勤记录
+                if($this->isInRange($student,$course) <= 800){//判断是否在考勤范围内,如果在，就添加考勤记录
                     $attend_record = new AttendRecord();
                     $attend_record->status = 1;
                     $attend_record->Sno = $student->stuNo;
@@ -121,6 +121,10 @@ class StudentServices
             }
 
         }
+    }
+
+    public function callOverInPage($openid){
+
     }
 
     /**
@@ -150,10 +154,13 @@ class StudentServices
      * @return $s 两点距离
      */
     public function isInRange($student,$course){
-        $lat1 = $student->longitude;
-        $lng1 = $student->latitude;
-        $lng2 = $student->Longitude;
-        $lat2 = $student->Latitude;
+        $lat1 = $student->latitude;
+        $lng1 = $student->longitude;
+        $lng2 = $course->Longitude;
+        $lat2 = $course->Latitude;
+
+        Log::info($lng1."   ".$lat1);
+        Log::info($lng2."   ".$lat2);
 
         $PI = 3.14159265;
         $EARTH_RADIUS = 6378137;
@@ -166,7 +173,22 @@ class StudentServices
              $s = 2 * asin(sqrt(pow(sin($a / 2), 2) + cos($radLat1) * cos($radLat2) * pow(sin($b / 2), 2)));
             $s = $s * $EARTH_RADIUS;
             $s = round($s * 10000) / 10000;
+            Log::info($s);
             return $s;
     }
 
+
+    public function updateStudentPosition($openid,$longitude,$latitude){
+        $student = Student::where('openid','=',$openid)->firstOrFail();
+        if($student){
+            $student->longitude = $longitude;
+            $student->latitude = $latitude;
+            $student->location_update = date('Y-m-d H:i:s',time()+8*3600);
+            $student->save();
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }

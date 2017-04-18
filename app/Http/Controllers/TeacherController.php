@@ -21,18 +21,29 @@ class TeacherController extends Controller
 //        $this->middleware('auth:teacher');
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     *教师引导页
+     */
     public function index()
     {
         return view('teacherHome');
     }
 
-    //显示教师的课程
+    /**
+     * @return $this
+     * 显示教师的课程
+     */
     public function showCourse(){
         $courses = Course::where('TeacherId' ,'=', Auth::guard('teacher')->user()->id)->get();
         return view('teacher.Course')->with(['courses' => $courses]);
     }
 
-    //添加课程
+    /**
+     * @param Request $request
+     * @return array
+     * 添加课程
+     */
     public function addCourse(Request $request){
         $data = Input::all();
         $course = new Course();
@@ -53,7 +64,11 @@ class TeacherController extends Controller
         }
     }
 
-    #修改开启点名状态
+    /**
+     * @param Request $request
+     * @return array
+     * 开启关闭点名
+     */
     public function changeCallOverStatus(Request $request){
         //开启点名状态，如果同一节课开启了两次点名，判断开启点名的时间是否在这节课的时间内。
         //在前端判断，如果当前开启点名时间(new date)和上一次点名时间($course->openCallOverTime)之差小于课堂时间。就弹出是否开始一次新的点名提示。选择否，就继续上一次点名,点名次数不加1，选择是就，点名次数加1.
@@ -77,8 +92,6 @@ class TeacherController extends Controller
         }
         $course->isOpenCall = $course->isOpenCall==0?1:0;//修改点名状态，0关闭，1开启
 
-
-
         if($addNewCallOver){//是否开始一次新的点名
 //            $course->openCallOverTime = date('Y-m-d H:i:s',time()+8*3600);//设置开启点名的时间
             $course->callOver += 1;
@@ -93,9 +106,32 @@ class TeacherController extends Controller
         }
     }
 
-    #获取单个课程的信息
+    /**
+     * @param Request $request
+     * @return mixed
+     * 获取单个课程信息
+     */
     public function getCourse(Request $request){
         $courseId = $request->route('courseId');
         return Course::find($courseId);
+    }
+
+    /**
+     * @param Request $request
+     * @return string
+     * 更新课程的上课地点
+     */
+    public function updateCoursePosition(Request $request){
+        $courseId = $request->route('courseId');
+        $course = Course::find($courseId);
+        $course->Longitude = $request->get('Longitude');
+        $course->Latitude = $request->get('Latitude');
+        if($course->save()){
+            Log::info($course->Longitude);
+            return "修改成功";
+        }
+        else{
+            return "修改失败";
+        }
     }
 }

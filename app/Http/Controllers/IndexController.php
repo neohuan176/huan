@@ -129,6 +129,11 @@ class IndexController extends Controller
                         "name" => "学生个人中心",
                         "url"  => "http://zy595312011.vicp.io/huan/public/student"
                     ],
+                    [
+                        "type" => "view",
+                        "name" => "学生考勤",
+                        "url"  => "http://zy595312011.vicp.io/huan/public/student/callOverPage"
+                    ],
                 ],
             ],
         ];
@@ -155,12 +160,16 @@ class IndexController extends Controller
         return redirect($targetUrl);
     }
 
+    /**
+     * 用来更新数据表
+     */
     public function updateTable(){
-        Schema::table('courses',function($table){
+        Schema::table('students',function($table){
 //            $table->string('openid');//地理位置更新时间
 
-            $table->dateTime('openCallOverTime');//
-//            $table->dropColumn('test1');
+//            $table->double('longitude');
+//            $table->double('latitude');
+//            $table->dropColumn('longitude','latitude');
         });
     }
 }

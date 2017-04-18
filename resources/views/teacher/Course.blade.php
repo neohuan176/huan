@@ -1,5 +1,6 @@
 @extends('layouts.teacher')
 @section('content')
+
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
@@ -47,7 +48,7 @@
                             @if($course->isOpenCall == 1)关闭點名@else 开启点名 @endif
                         </button>
                         <button type="button" class="btn btn-success">導出課表</button>
-                        <button type="button" class="btn btn-info">重新定位</button>
+                        <button type="button" class="btn btn-info" id="update-position" data-toggle="modal" data-target="#coursePositionPanel" data-whatever="@mdo" data-value="{{$course->id}}" onclick="openPositionPanel(this)">重新定位</button>
                         <button type="button" class="btn btn-danger">删除</button>
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#joinCourse" data-whatever="@mdo" onclick="getJoinCourseUrl({{$course->id}})">扫码组班</button>
                     </td>
@@ -85,28 +86,33 @@
                                     <label for="Address" class="control-label">上课地点</label>
                                     <input class="form-control" id="Address">
                                 </div>
+
                                 <div class="form-group">
-                                    <label for="Address" class="control-label">點擊獲取坐標</label>
-                                    <input type="btn" class="form-control btn btn-success" value="获取坐标" id="Address" onclick="getCoordinate()">
+                                <label for="id_address_input">选择位置</label>
+                                <div class="input-group" id="id_address_input">
+                                    <input type="text" class="form-control">
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-map-marker"></span></span>
                                 </div>
+                                <button id="id_get_data" type="button" class="btn btn-default">确认上课地点</button>
+                                <p id="id_data_display"></p>
+                                </div>
+
                             </form>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                            <button type="button" class="btn btn-primary" onclick="addCourse()">添加</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="addCourse()">添加</button>
                         </div>
                     </div>
                 </div>
             </div>
-
-
 
             <div class="modal fade" id="joinCourse" tabindex="-1" role="dialog" aria-labelledby="joinCourse">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="exampleModalLabel">新建课程</h4>
+                            <h4 class="modal-title" id="exampleModalLabel">扫码组班</h4>
                         </div>
                         <div class="modal-body" style="text-align: center">
                             <div id="code">
@@ -119,12 +125,40 @@
                     </div>
                 </div>
             </div>
+
+            <div class="modal fade" id="coursePositionPanel" tabindex="-1" role="dialog" aria-labelledby="coursePositionPanel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="exampleModalLabel">重新选择上课地点</h4>
+                        </div>
+                        <div class="modal-body" style="text-align: center">
+                            <div class="form-group">
+                                <label for="choosePosition">选择位置</label>
+                                <div class="input-group" id="choosePosition">
+                                    <input type="text" class="form-control">
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-map-marker"></span></span>
+                                </div>
+                                {{--<button id="" type="button" class="btn btn-default" onclick="">确认更新地点</button>--}}
+                                {{--<p id="id_data_display"></p>--}}
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="updatePosition" class="btn btn-primary" data-dismiss="modal">确认更新上课地点</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
     </div>
 
     <script type="text/javascript">
         var Longitude = 0;//经度
         var Latitude  = 0;//纬度
+        var cur_courseId;//当前操作的课程id
 
         //添加课程弹窗
         $('#addCourse').on('show.bs.modal', function (event) {
@@ -148,9 +182,46 @@
             modal.find('.modal-body input').val()
         });
 
+        //重新选择上课地点
+        $('#coursePositionPanel').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var recipient = button.data('whatever') // Extract info from data-* attributes
+            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            var modal = $(this)
+            modal.find('.modal-title').text('重新选择上课地点 ' + recipient)
+            modal.find('.modal-body input').val()
+        });
+
 
 
         $(function(){
+            //添加课程时获取课程坐标；
+            var p = $("#id_address_input").AMapPositionPicker();
+            $("#id_get_data").on('click', function () {
+                var locationInfo =p.AMapPositionPicker('position');
+                console.log(locationInfo);
+                $("#id_data_display").html(JSON.stringify(p.AMapPositionPicker('position')));
+                Longitude = locationInfo.longitude;
+                Latitude = locationInfo.latitude;
+            });
+
+            var position = $("#choosePosition").AMapPositionPicker();
+            $("#updatePosition").on('click', function () {
+                var locationInfo =position.AMapPositionPicker('position');
+                Longitude = locationInfo.longitude;
+                Latitude = locationInfo.latitude;
+                console.log(locationInfo);
+                $.post("updateCoursePosition/"+cur_courseId,
+                    {
+                        Longitude:  Longitude,
+                        Latitude:   Latitude,
+                    },
+                    function(data){
+                        alert(data);
+                    })
+            });
+
 
         });
 
@@ -171,7 +242,7 @@
                 function(data){
                     console.log(data);
                         if(data.status == 200){
-                            console.log("添加课程成功！");
+                            alert("添加课程成功！");
                         }
                         else{
                             console.log(data.errMsg);
@@ -180,13 +251,13 @@
         }
 
         /**
-         * 获取上课地点坐标
-         */
-        function getCoordinate(){
-            //获取课室坐标
-             Longitude = 1.00;
-             Latitude = 2.00
+         * 打开更新上课地点时，获取当前操作课程的id
+         * */
+        function openPositionPanel(t){
+            cur_courseId = $(t).attr('data-value');
+            console.log(cur_courseId);
         }
+
 
         /**
          * 开启点名

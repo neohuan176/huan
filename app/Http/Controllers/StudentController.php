@@ -58,4 +58,38 @@ class StudentController extends Controller
         }
         return "加入成功";
     }
+
+    /**
+     * @param Request $request
+     * @return $this
+     * 打开签到网页
+     */
+    public function callOverPage(Request $request){
+        $app = new Application($this->options);
+        $js = $app->js;
+        return view('student.callOverPage')->with(['js' => $js]);
+    }
+
+    /**
+     * @param Request $request
+     * @return array
+     * 在网页更新地理位置信息
+     */
+    public function updateStudentPosition(Request $request){
+        $longitude = $request->input('Longitude');
+        $latitude = $request->input('Latitude');
+        $openid = Session::get('wechat_user')['id'];
+        $res = $this->studentService->updateStudentPosition($openid,$longitude,$latitude);
+        if($res){
+            return ['status' => '200','value' =>  "更新地理位置信息成功"];
+        }
+        else{
+            return ['errMsg' => '点名状态修改失败！','status' => '110'];
+        }
+    }
+
+    public function callOverInPage(Request $request){
+        $openid = Session::get('wechat_user')['id'];
+        return $this->studentService->callOver($openid);
+    }
 }
