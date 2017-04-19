@@ -1,27 +1,25 @@
 @extends('layouts.teacher')
 @section('content')
 
+
     <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-            <ul class="nav nav-sidebar">
-                <li><a href="{{url('/teacher')}}">教师引导页 <span class="sr-only">(current)</span></a></li>
-                <li class="active"><a href="{{url('teacher/course')}}">課程表</a></li>
-                <li><a href="#">考勤统计</a></li>
-                <li><a href="#"></a></li>
-            </ul>
-            <ul class="nav nav-sidebar">
-                <li><a href="">群发信息</a></li>
-            </ul>
-        </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            {{--<button type="button" class="btn btn-lg btn-danger">添加课程</button>--}}
-
+        {{--<div class="col-sm-3 col-md-2 sidebar">--}}
+            {{--<ul class="nav nav-sidebar">--}}
+                {{--<li><a href="{{url('/teacher')}}">教师引导页 <span class="sr-only">(current)</span></a></li>--}}
+                {{--<li class="active"><a href="{{url('teacher/course')}}">課程表</a></li>--}}
+                {{--<li><a href="#">考勤统计</a></li>--}}
+                {{--<li><a href="#"></a></li>--}}
+            {{--</ul>--}}
+            {{--<ul class="nav nav-sidebar">--}}
+                {{--<li><a href="">群发信息</a></li>--}}
+            {{--</ul>--}}
+        {{--</div>--}}
+        <div class="col-sm-10 col-sm-offset-1  col-md-10 col-md-offset-1 main">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addCourse" data-whatever="@mdo">添加课程</button>
-
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <th>#</th>
+                    <th>#id</th>
                     <th>课程名称</th>
                     <th>课程编号</th>
                     <th>上课地点</th>
@@ -47,9 +45,10 @@
                         <button type="button" class="btn btn-primary" onclick="callOver(this)" id="{{$course->id}}">
                             @if($course->isOpenCall == 1)关闭點名@else 开启点名 @endif
                         </button>
-                        <button type="button" class="btn btn-success">導出課表</button>
+                        <button type="button" class="btn btn-success" onclick="exportCourseExcel(this,'{{$course->id}}')">導出課表</button>
                         <button type="button" class="btn btn-info" id="update-position" data-toggle="modal" data-target="#coursePositionPanel" data-whatever="@mdo" data-value="{{$course->id}}" onclick="openPositionPanel(this)">重新定位</button>
-                        <button type="button" class="btn btn-danger">删除</button>
+                        <button type="button" class="btn btn-danger" onclick="deleteCourse({{$course->id}})">删除</button>
+                        <button type="button" class="btn btn-danger" onclick="courseLocateInWechat({{$course->id}})">微信定位</button>
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#joinCourse" data-whatever="@mdo" onclick="getJoinCourseUrl({{$course->id}})">扫码组班</button>
                     </td>
                 </tr>
@@ -86,6 +85,10 @@
                                     <label for="Address" class="control-label">上课地点</label>
                                     <input class="form-control" id="Address">
                                 </div>
+                                <div class="form-group">
+                                    <label for="Address" class="control-label">星期几(格式:1,3,5)</label>
+                                    <input class="form-control" id="weekday" value="1">
+                                </div>
 
                                 <div class="form-group">
                                 <label for="id_address_input">选择位置</label>
@@ -114,7 +117,7 @@
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                             <h4 class="modal-title" id="exampleModalLabel">扫码组班</h4>
                         </div>
-                        <div class="modal-body" style="text-align: center">
+                        <div class="modal-body">
                             <div id="code">
 
                             </div>
@@ -133,7 +136,7 @@
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                             <h4 class="modal-title" id="exampleModalLabel">重新选择上课地点</h4>
                         </div>
-                        <div class="modal-body" style="text-align: center">
+                        <div class="modal-body">
                             <div class="form-group">
                                 <label for="choosePosition">选择位置</label>
                                 <div class="input-group" id="choosePosition">
@@ -156,6 +159,7 @@
     </div>
 
     <script type="text/javascript">
+        wx.config(<?php echo $js->config(array('getLocation'), false)?>);
         var Longitude = 0;//经度
         var Latitude  = 0;//纬度
         var cur_courseId;//当前操作的课程id
@@ -236,13 +240,14 @@
                     StartTime:  $("#StartTime").val(),
                     EndTime:    $("#EndTime").val(),
                     Address:    $("#Address").val(),
+                    weekday:    $("#weekday").val(),
                     Longitude:  Longitude,
                     Latitude:   Latitude,
                 },
                 function(data){
                     console.log(data);
                         if(data.status == 200){
-                            alert("添加课程成功！");
+                            location.reload();
                         }
                         else{
                             console.log(data.errMsg);
@@ -257,7 +262,6 @@
             cur_courseId = $(t).attr('data-value');
             console.log(cur_courseId);
         }
-
 
         /**
          * 开启点名
@@ -294,7 +298,7 @@
                 });
         }
         /**
-         * 获取加入课程链接（并声称二维码）
+         * 获取加入课程链接（并生成二维码）
          */
         function getJoinCourseUrl(courseId){
             $("#code").html("");
@@ -304,6 +308,56 @@
                 height:400, //高度 
                 text: "http://zy595312011.vicp.io/huan/public/student/joinCourse/"+courseId //任意内容 
             });
+        }
+
+        /**
+         * 导出课程考勤记录
+         * @param t
+         * @param courseId
+         */
+        function exportCourseExcel(t,courseId){
+            window.open("exportCourseExcel/"+courseId);
+        }
+
+
+        /**
+         * 在微信端点名
+         * @param courseId
+         */
+        function courseLocateInWechat(courseId){
+            wx.ready(function() {
+                wx.getLocation({
+                    type: 'wgs84', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
+                    success: function (res) {
+                        var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
+                        var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
+                        var speed = res.speed; // 速度，以米/每秒计
+                        var accuracy = res.accuracy; // 位置精度
+                        $.post("updateCoursePosition/"+courseId,
+                            {
+                                Longitude:  longitude,
+                                Latitude:   latitude,
+                            },
+                            function(data){
+                                alert(data);
+                            })
+                    }
+                })
+            })
+        }
+
+        /**
+         * 删除课程
+         * @param courseId
+         */
+        function deleteCourse(courseId){
+            $.get("deleteCourse/"+courseId,function(data){
+                if(data.status == 200){
+                    location.reload();
+                }else{
+                    alert("删除失败！");
+                }
+            })
         }
     </script>
     <script src="{{asset("js/jquery.qrcode.min.js")}}"></script>

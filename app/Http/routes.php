@@ -54,6 +54,9 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/teacher/changeCallOverStatus/{courseId}/{addNewCallOver}', 'TeaCherController@changeCallOverStatus');
     Route::get('/teacher/getCourse/{courseId}', 'TeaCherController@getCourse');
     Route::post('/teacher/updateCoursePosition/{courseId}', 'TeaCherController@updateCoursePosition');
+    Route::get('/teacher/exportCourseExcel/{courseId}', 'TeaCherController@exportCourseExcel');
+    Route::get('/teacher/showCourseInWechat', 'TeaCherController@showCourseInWechat');
+    Route::get('/teacher/deleteCourse/{courseId}', 'TeaCherController@deleteCourse');
 });
 
 Route::group(['middleware' => ['web','wechat']], function () {

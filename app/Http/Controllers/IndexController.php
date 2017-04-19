@@ -26,7 +26,10 @@ class IndexController extends Controller
         ],
     ];
 
-    //微信服务器验证
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     * 微信服务器回调地址
+     */
     public function index(){
         $app = new Application($this->options);
         $server = $app->server;
@@ -48,7 +51,7 @@ class IndexController extends Controller
                         {
                             switch ($message->EventKey){
                                 case "CallOver" ://考勤签到
-                                    return App::make('StudentServ')->callOver($message->FromUserName);
+                                    return App::make('StudentServ')->callOver($message->FromUserName);//返回学生考勤信息
                                     break;
                             }
                         }
@@ -91,7 +94,10 @@ class IndexController extends Controller
         $response = $server->serve();
         return $response;
     }
-    // 自定义菜单。
+
+    /**
+     * 更新微信自定义菜单
+     */
     public function createMenu(){
         $app = new Application($this->options);
         $menu = $app->menu;
@@ -113,6 +119,11 @@ class IndexController extends Controller
                         "type" => "view",
                         "name" => "教师主页",
                         "url"  => "http://zy595312011.vicp.io/huan/public/teacher"
+                    ],
+                    [
+                        "type" => "view",
+                        "name" => "我的课程",
+                        "url"  => "http://zy595312011.vicp.io/huan/public/teacher/showCourseInWechat"
                     ],
                 ],
             ],
@@ -140,6 +151,10 @@ class IndexController extends Controller
         $menu->add($buttons);
     }
 
+    /**
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * 微信网页授权回调方法
+     */
     public function oauthCallBack(){
         $config = [
             'debug'     => true,
@@ -164,8 +179,9 @@ class IndexController extends Controller
      * 用来更新数据表
      */
     public function updateTable(){
-        Schema::table('students',function($table){
+        Schema::table('courses',function($table){
 //            $table->string('openid');//地理位置更新时间
+//            $table->string('weekday')->default(1);//地理位置更新时间
 
 //            $table->double('longitude');
 //            $table->double('latitude');

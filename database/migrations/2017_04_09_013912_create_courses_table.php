@@ -23,9 +23,10 @@ class CreateCoursesTable extends Migration
             $table->string('TeacherName');//教师名字
             $table->float('Longitude');//经度
             $table->float('Latitude');//纬度
-            $table->integer('callOver')->default(1);//点名次数
+            $table->integer('callOver')->default(0);//点名次数
             $table->boolean('isOpenCall')->default(false);//增加是否开启点名字段
-            $table->dateTime('openCallOverTime')->default(false);//上一次开启点名的时间
+            $table->dateTime('openCallOverTime')->default(0);//上一次开启点名的时间
+            $table->string('weekday')->default(1);//周几上课0-7
             $table->timestamps();//时间戳
         });
     }

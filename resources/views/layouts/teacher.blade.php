@@ -14,8 +14,8 @@
     <!-- Styles -->
     {{--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">--}}
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
-
+    {{--<link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">--}}
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js "></script>
 {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
 <style>
@@ -51,6 +51,7 @@
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
                 <li><a href="{{ url('/teacher') }}">教师后台</a></li>
+                <li class="active"><a href="{{url('teacher/course')}}">課程表</a></li>
             </ul>
 
             <!-- Right Side Of Navbar -->

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Acme\TeacherServices;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -12,11 +13,27 @@ use Illuminate\Support\Facades\Input;
 use Auth;
 use Log;
 use App\Course;
+use EasyWeChat\Foundation\Application;
+
+use Maatwebsite\Excel\Facades\Excel;
 
 class TeacherController extends Controller
 {
-    public function __construct()
+    protected  $options = [
+        'debug'     => true,
+        'app_id'    => 'wx2a8f750c494dee0b',
+        'secret'    => 'f8a372d1d0b791e3260c06c957655ceb',
+        'token'     => 'neo',
+        'aes_key' => 'EajwoAzVnZxYTFUAakjM1aOf4L3VRdaHe86nnLJytEg',
+        'log' => [
+            'level' => 'debug',
+            'file'  => '/ProSoftware/xampp/htdocs/huan/tmp/easywechat.log',
+        ],
+    ];
+    protected $TeacherServ;
+    public function __construct(TeacherServices $teacherServices)
     {
+        $this->TeacherServ = $teacherServices;
         $this->middleware('teacher');
 //        $this->middleware('auth:teacher');
     }
@@ -35,8 +52,10 @@ class TeacherController extends Controller
      * 显示教师的课程
      */
     public function showCourse(){
+        $app = new Application($this->options);
+        $js = $app->js;
         $courses = Course::where('TeacherId' ,'=', Auth::guard('teacher')->user()->id)->get();
-        return view('teacher.Course')->with(['courses' => $courses]);
+        return view('teacher.Course')->with(['courses' => $courses,'js'=>$js]);
     }
 
     /**
@@ -52,6 +71,7 @@ class TeacherController extends Controller
         $course->StartTime = $data['StartTime'];
         $course->EndTime = $data['EndTime'];
         $course->Address = $data['Address'];
+        $course->weekday = $data['weekday'];
         $course->Longitude = $data['Longitude'];
         $course->Latitude = $data['Latitude'];
         $course->TeacherId =  Auth::guard('teacher')->user()->id;
@@ -92,7 +112,9 @@ class TeacherController extends Controller
         }
         $course->isOpenCall = $course->isOpenCall==0?1:0;//修改点名状态，0关闭，1开启
 
-        if($addNewCallOver){//是否开始一次新的点名
+        if($course->callOver ==0 ){//如果是课程第一次开启点名，怎样都加1
+            $course->callOver += 1;
+        }elseif($addNewCallOver){//是否开始一次新的点名
 //            $course->openCallOverTime = date('Y-m-d H:i:s',time()+8*3600);//设置开启点名的时间
             $course->callOver += 1;
             Log::info("开启一次新的点名！".$addNewCallOver);
@@ -128,10 +150,41 @@ class TeacherController extends Controller
         $course->Latitude = $request->get('Latitude');
         if($course->save()){
             Log::info($course->Longitude);
-            return "修改成功";
+            return "课程定位成功";
         }
         else{
             return "修改失败";
         }
+    }
+
+    /**
+     * @param Request $request
+     * 导出课程考勤表
+     */
+    public function exportCourseExcel(Request $request){
+        $courseId = $request->route('courseId');
+        $this->TeacherServ->exportCourseExcel($courseId);
+    }
+
+    /**
+     * @param Request $request
+     * @return $this
+     * 在微信端打开我的课程
+     * 主要是为了课程定位准确
+     */
+    public function showCourseInWechat(Request $request){
+        $app = new Application($this->options);
+        $js = $app->js;
+        $courses = Course::where('TeacherId' ,'=', Auth::guard('teacher')->user()->id)->get();
+        return view('teacher.CourseInWechat')->with(['courses' => $courses,'js'=>$js]);
+    }
+
+    public function deleteCourse(Request $request){
+        $courseId = $request->route('courseId');
+        Log::info($courseId);
+        if(Course::destroy($courseId)){
+            return ['status'=>200];
+        }
+        return ['status'=>110];
     }
 }

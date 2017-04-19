@@ -98,7 +98,7 @@ class StudentServices
                 return "请更新你的位置信息。（重新进入公众号）";
             }
             else{
-                if($this->isInRange($student,$course) <= 800){//判断是否在考勤范围内,如果在，就添加考勤记录
+                if($this->isInRange($student,$course) <= 50){//判断是否在考勤范围内,如果在，就添加考勤记录
                     $attend_record = new AttendRecord();
                     $attend_record->status = 1;
                     $attend_record->Sno = $student->stuNo;

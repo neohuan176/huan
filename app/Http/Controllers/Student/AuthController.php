@@ -50,6 +50,11 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
             'openid' => $openid,//获取用户的openid,先用时间戳代替
             'school' => $data['school'],
+            'phone' => $data['phone'],
+            'institute' => $data['institute'],
+            'major' => $data['major'],
+            'class' => $data['class'],
+            'stuNo' => $data['stuNo'],
         ]);
 
     }
