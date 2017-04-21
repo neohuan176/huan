@@ -33,10 +33,12 @@ class TeacherServices
         //考勤记录处理（单个学生）：新建一个数组，把考勤记录按照考勤顺序排序，遍历考勤记录，for循环遍历课程考勤次。如果没有
         //对应次数的考勤记录，就默认添加该数组项为“旷课2”，否则就添加该数组的考勤状态和加分情况，
         //统计每个学生的应到次数，实到次数，迟到次数，旷课次数，请假次数。->orderBy('stuNo', 'desc')->groupBy('major)
+        //pluck可能有问题。。。。注意
+//        Log::info(SCourse::where('Cid', $courseId)->pluck('Sid'));
         $students = Student::whereIn('id',SCourse::where('Cid', $courseId)->pluck('Sid'))->get();
         $Data = array();
         $course = Course::find($courseId);
-        $callOver = $course->callOver;
+        $callOver = $course->callOver;//该课程的考勤次数
 
         //处理表头
         $Data[0][0] = "专业";
@@ -69,10 +71,10 @@ class TeacherServices
                 $cur_record = null;
                 $status = " ";//考勤状态
                 foreach ($studentRecords as $record){
-                    if($record->callOver = $j){//有对应课程考勤次数（第几次）的记录;
+                    if($record->callOver == $j){//有对应课程考勤次数（第几次）的记录;
                         $cur_record = $record;
                         switch ($cur_record->status){
-                            case 1 : $status = "  "; $attend++ ;break;
+                            case 1 : $status = "#"; $attend++ ;break;
                             case 2 : $status = "旷课";$unCall++ ;break;
                             case 3 : $status = "迟到"; $late++ ;break;
                             case 4 : $status = "请假"; $leave++ ;break;
@@ -101,7 +103,7 @@ class TeacherServices
             $i++;//记录是第几行记录
         }
         Excel::create($course->Cname.'考勤表',function($excel) use ($Data){
-            $excel->sheet('score', function($sheet) use ($Data){
+            $excel->sheet('callOver', function($sheet) use ($Data){
                 $sheet->rows($Data);
             });
         })->export('xls');

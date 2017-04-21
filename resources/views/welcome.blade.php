@@ -8,7 +8,7 @@
                 <div class="panel-heading">欢迎您！</div>
 
                 <div class="panel-body">
-                    Your Application's Landing Page.（引导页)
+                   欢迎使用考勤系统！
                 </div>
             </div>
         </div>

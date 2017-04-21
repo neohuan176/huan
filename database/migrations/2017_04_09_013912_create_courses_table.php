@@ -27,6 +27,7 @@ class CreateCoursesTable extends Migration
             $table->boolean('isOpenCall')->default(false);//增加是否开启点名字段
             $table->dateTime('openCallOverTime')->default(0);//上一次开启点名的时间
             $table->string('weekday')->default(1);//周几上课0-7
+            $table->integer('student_count');//课程总人数
             $table->timestamps();//时间戳
         });
     }

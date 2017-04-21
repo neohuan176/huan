@@ -14,7 +14,7 @@ use Auth;
 use Log;
 use App\Course;
 use EasyWeChat\Foundation\Application;
-
+use App\AttendRecord;
 use Maatwebsite\Excel\Facades\Excel;
 
 class TeacherController extends Controller
@@ -121,7 +121,7 @@ class TeacherController extends Controller
         }
 
         if($course->save()){
-            return ['status' => '200','isOpenCall' =>  $course->isOpenCall];
+            return ['status' => '200','isOpenCall' =>  $course->isOpenCall , 'callOver' => $course->callOver];
         }
         else{
             return ['errMsg' => '点名状态修改失败！','status' => '110'];
@@ -179,12 +179,84 @@ class TeacherController extends Controller
         return view('teacher.CourseInWechat')->with(['courses' => $courses,'js'=>$js]);
     }
 
+    /**
+     * @param Request $request
+     * @return array
+     * 删除课程----------->要增加外键删除
+     */
     public function deleteCourse(Request $request){
         $courseId = $request->route('courseId');
-        Log::info($courseId);
         if(Course::destroy($courseId)){
             return ['status'=>200];
         }
         return ['status'=>110];
+    }
+
+    /**
+     * @param Request $request
+     * @return $this
+     * 显示当节课程的最新一次考勤信息记录，并提供考勤当前考勤记录的基本操作
+     */
+    public function showCurCourse(Request $request){
+        $courseId = $request->route('courseId');
+        //找出该课程的考勤次数
+        $course = Course::find($courseId);
+        $callOver = $course->callOver;
+        $records = AttendRecord::where('Cid',$courseId)->where('callOver',$callOver)->get();//找出最近一次的考勤记录表
+
+        //统计出已到，旷课，迟到，请假
+        $late = 0;//迟到次人数
+        $unCall = 0;//旷课人数
+        $leave = 0;//请假人数
+        $attend = 0;//实到人数
+        $total = $course->student_count;
+            foreach ($records as $record){
+                    switch ($record->status){
+                        case 1 :  $attend++ ;break;
+                        case 2 :  $unCall++ ;break;
+                        case 3 :  $late++ ;break;
+                        case 4 :  $leave++ ;break;
+                    }
+            }
+            Log::info("test");
+        if($total == 0){//不能除0
+            $attend_rate = 0;
+        }else{
+            $attend_rate = $attend/$total;
+        }
+        $info = ['attend'=>$attend,'unCall'=>$unCall,'late'=>$late,'leave'=>$leave,'studentTotal'=>$total,'attend_rate'=>$attend_rate];
+        return view('teacher.courseAttendenceRecord')->with(["records"=>$records,'course'=>$course,'courseInfo'=>$info]);
+    }
+
+    /**
+     * @param Request $request
+     * @return string
+     * 修改学生签到状态
+     */
+    public function changeRecordStatus(Request $request){
+        $recordId = $request->route('recordId');
+        $status = $request->route('status');
+        $record = AttendRecord::find($recordId);
+        $record->status = $status;
+        if($record->save()){
+            return "修改签到状态成功";
+        }else{
+            return "修改失败";
+        }
+    }
+
+    /**
+     * @param Request $request
+     * @return string
+     * 学生加分操作
+     */
+    public function addScore(Request $request){
+        $score = $request->input('score');
+        $recordId = $request->input('recordId');
+        $record =  AttendRecord::find($recordId);
+        $record->score+=$score;
+        $record->save();
+        return ['score'=>$record->score,'msg'=>"加分成功！"];
+
     }
 }

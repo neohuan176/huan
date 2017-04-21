@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>教师后台</title>
 
     <!-- Fonts -->
     {{--<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>--}}
@@ -14,7 +14,7 @@
     <!-- Styles -->
     {{--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">--}}
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
-    {{--<link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">--}}
+    <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
     <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js "></script>
 {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
@@ -43,7 +43,7 @@
 
             <!-- Branding Image -->
             <a class="navbar-brand" style="background:#c9302c;color:#fff" href="{{ url('/') }}">
-                Laravel
+                首页
             </a>
         </div>
 

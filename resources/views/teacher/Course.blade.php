@@ -3,18 +3,19 @@
 
 
     <div class="row">
-        {{--<div class="col-sm-3 col-md-2 sidebar">--}}
-            {{--<ul class="nav nav-sidebar">--}}
-                {{--<li><a href="{{url('/teacher')}}">教师引导页 <span class="sr-only">(current)</span></a></li>--}}
-                {{--<li class="active"><a href="{{url('teacher/course')}}">課程表</a></li>--}}
-                {{--<li><a href="#">考勤统计</a></li>--}}
-                {{--<li><a href="#"></a></li>--}}
-            {{--</ul>--}}
-            {{--<ul class="nav nav-sidebar">--}}
-                {{--<li><a href="">群发信息</a></li>--}}
-            {{--</ul>--}}
-        {{--</div>--}}
-        <div class="col-sm-10 col-sm-offset-1  col-md-10 col-md-offset-1 main">
+        <div class="col-sm-2 col-md-2 sidebar" style="top:130px">
+            <ul class="nav nav-sidebar">
+                <li><a href="{{url('/teacher')}}">教师引导页 <span class="sr-only">(current)</span></a></li>
+                <li class="active"><a href="{{url('teacher/course')}}">課程表</a></li>
+                <li><a href="#">考勤统计</a></li>
+                <li><a href="#"></a></li>
+            </ul>
+            <ul class="nav nav-sidebar">
+                <li><a href="">群发信息</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-10 col-sm-offset-2  col-md-10 col-md-offset-2 main">
+        {{--<div class="col-sm-10 col-sm-offset-1  col-md-10 col-md-offset-1 main">--}}
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addCourse" data-whatever="@mdo">添加课程</button>
             <table class="table table-striped">
                 <thead>
@@ -24,7 +25,7 @@
                     <th>课程编号</th>
                     <th>上课地点</th>
                     <th>上课时间</th>
-                    <th>上课坐标</th>
+                    {{--<th>上课坐标</th>--}}
                     <th>点名次数</th>
                     <th>开启点名</th>
                     <th>操作</th>
@@ -34,21 +35,21 @@
                 @foreach($courses as $course)
                 <tr>
                     <td>{{$course->id}}</td>
-                    <td>{{$course->Cname}}</td>
+                    <td><a href="{{url('/teacher/showCurCourse/'.$course->id)}}">{{$course->Cname}}</a></td>
                     <td>{{$course->Cno}}</td>
                     <td>{{$course->Address}}</td>
                     <td>{{$course->StartTime}} - {{$course->EndTime}}</td>
-                    <td>{{$course->Longitude}},{{$course->Latitude}}</td>
-                    <td>{{$course->callOver}}</td>
+                    {{--<td>{{$course->Longitude}},{{$course->Latitude}}</td>--}}
+                    <td class="callOver">{{$course->callOver}}</td>
                     <td class="isOpenCall">@if($course->isOpenCall == 1)<p style="color:#c9302c;">正在点名中...</p>@else 未开启 @endif</td>
                     <td>
                         <button type="button" class="btn btn-primary" onclick="callOver(this)" id="{{$course->id}}">
                             @if($course->isOpenCall == 1)关闭點名@else 开启点名 @endif
                         </button>
-                        <button type="button" class="btn btn-success" onclick="exportCourseExcel(this,'{{$course->id}}')">導出課表</button>
+                        <button type="button" class="btn btn-success" onclick="exportCourseExcel('{{$course->id}}')">導出課表</button>
                         <button type="button" class="btn btn-info" id="update-position" data-toggle="modal" data-target="#coursePositionPanel" data-whatever="@mdo" data-value="{{$course->id}}" onclick="openPositionPanel(this)">重新定位</button>
                         <button type="button" class="btn btn-danger" onclick="deleteCourse({{$course->id}})">删除</button>
-                        <button type="button" class="btn btn-danger" onclick="courseLocateInWechat({{$course->id}})">微信定位</button>
+                        {{--<button type="button" class="btn btn-danger" onclick="courseLocateInWechat({{$course->id}})">微信定位</button>--}}
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#joinCourse" data-whatever="@mdo" onclick="getJoinCourseUrl({{$course->id}})">扫码组班</button>
                     </td>
                 </tr>
@@ -163,6 +164,7 @@
         var Longitude = 0;//经度
         var Latitude  = 0;//纬度
         var cur_courseId;//当前操作的课程id
+        var addNewCallOver = 0;//是否开启新的一次点名；1:是 0:否
 
         //添加课程弹窗
         $('#addCourse').on('show.bs.modal', function (event) {
@@ -200,6 +202,7 @@
 
 
         $(function(){
+            $('[data-toggle="popover"]').popover()
             //添加课程时获取课程坐标；
             var p = $("#id_address_input").AMapPositionPicker();
             $("#id_get_data").on('click', function () {
@@ -226,6 +229,18 @@
                     })
             });
 
+
+            //注册删除按钮的事件
+            $("#btn_delete").click(function () {
+                //取表格的选中行数据
+//                var arrselections = $("#tb_departments").bootstrapTable('getSelections');
+//                if (arrselections.length <= 0) {
+//                    toastr.warning('请选择有效数据');
+//                    return;
+//                }
+
+
+            });
 
         });
 
@@ -269,34 +284,60 @@
         function callOver(t){
             var courseId = $(t).attr('id');
             var course = null;//课程信息
-            var addNewCallOver = 0;
+             addNewCallOver = 0;
             $.get("getCourse/"+courseId,
                 function(data){
                     course = data;
-
                     var now = Date.parse(new Date());
                     var lastCallOverTime = Date.parse(course.openCallOverTime);
-                    console.log(new Date(),course.openCallOverTime);
-                    if(now - lastCallOverTime > 270000 && !course.isOpenCall){//如果点名时间距离上一次点名时间大于45分钟就开启新的一次点名
-                        //弹出弹框,先不谈，直接是新增一次点名
-                        addNewCallOver = 1;
-                        console.log("开启新的一次点名！");
+                    if(course.isOpenCall == 0){
+                        console.log(now-lastCallOverTime);
                     }
-                    $.get("changeCallOverStatus/"+courseId+"/"+addNewCallOver,
-                        function(data){
-                            if(data.status == 200){
-                                var isOpenCall = data.isOpenCall?'<p style="color:#c9302c">正在点名中...</p>':'未开启';
-                                var changOpenCallBtnText = data.isOpenCall?'关闭点名':'开启点名'
-                                $(t).parent().parent().find('.isOpenCall').html(isOpenCall);
-                                $(t).html(changOpenCallBtnText);
+                    if(now - lastCallOverTime < 300000 && course.isOpenCall == 0){//距离上次点名小于4分钟，就继续上次点名
+                        console.log("距离上次点名小于5分钟，就继续上次点名");
+                        changeCallover(t,courseId,addNewCallOver);
+                    }
+                    else if(now - lastCallOverTime > 600000 && course.isOpenCall == 0){//如果大于90分钟，就直接开始新的一次点名
+                        console.log("如果大于10分钟，就直接开始新的一次点名");
+                        //弹出弹框,先不谈，直接是新增一次点名,  当次点名时间距离上次点名时间大于90分钟直接开启新的一次点名，  如果大于45分钟并且小于90分钟就提醒要不要开启新的一次点名  如果小于45分钟 就继续上一次点名
+                            addNewCallOver = 1;
+                            changeCallover(t,courseId,addNewCallOver)
+                    }
+                    else if( (now - lastCallOverTime) > 300000 && (now - lastCallOverTime) < 600000 && course.isOpenCall == 0){
+                        console.log("是否开启新的一次点名(大于5，小于10分钟)");
+                        Ewin.confirm({ message: "是否开启新的一次点名？" }).on(function (e) {
+                            if (!e) {
+                                return;
                             }
-                            else{
-                                console.log(data.errMsg);
-                            }
-                        })
-
+                            addNewCallOver = 1;
+                            changeCallover(t,courseId,addNewCallOver);
+                        });
+                    }
+                    else if(course.isOpenCall == 1){
+                        console.log("关闭点名");
+                        changeCallover(t,courseId,addNewCallOver);
+                    }
                 });
         }
+
+        function changeCallover(t,courseId,addNewCallOver){
+            $.get("changeCallOverStatus/"+courseId+"/"+addNewCallOver,
+                function(data){
+                    if(data.status == 200){
+                        var isOpenCall = data.isOpenCall?'<p style="color:#c9302c">正在点名中...</p>':'未开启';
+                        var changOpenCallBtnText = data.isOpenCall?'关闭点名':'开启点名'
+                        $(t).parent().parent().find('.isOpenCall').html(isOpenCall);
+                        $(t).html(changOpenCallBtnText);
+                        $(t).parent().parent().find('.callOver').html(data.callOver);
+
+                    }
+                    else{
+                        console.log(data.errMsg);
+                    }
+                })
+        }
+
+
         /**
          * 获取加入课程链接（并生成二维码）
          */
@@ -315,7 +356,7 @@
          * @param t
          * @param courseId
          */
-        function exportCourseExcel(t,courseId){
+        function exportCourseExcel(courseId){
             window.open("exportCourseExcel/"+courseId);
         }
 
@@ -361,4 +402,5 @@
         }
     </script>
     <script src="{{asset("js/jquery.qrcode.min.js")}}"></script>
+    <script src="{{asset("js/dialog.js")}}"></script>
 @endsection

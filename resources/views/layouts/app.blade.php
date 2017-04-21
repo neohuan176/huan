@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>基于地理位置的实时考勤系统</title>
 
     <!-- Fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
@@ -40,7 +40,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Laravel
+                    首页
                 </a>
             </div>
 
@@ -58,7 +58,7 @@
                         <li><a href="{{ url('/login') }}">管理员登录</a></li>
                         <li><a href="{{ url('/register') }}">管理员注册</a></li>
                         <li><a href="{{ url('/teacher') }}">教师后台</a></li>
-                        <li><a href="{{ url('/student') }}">学生个人中心</a></li>
+                        {{--<li><a href="{{ url('/student') }}">学生个人中心</a></li>--}}
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

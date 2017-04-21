@@ -180,7 +180,7 @@ class IndexController extends Controller
      */
     public function updateTable(){
         Schema::table('courses',function($table){
-//            $table->string('openid');//地理位置更新时间
+            $table->integer('student_count');
 //            $table->string('weekday')->default(1);//地理位置更新时间
 
 //            $table->double('longitude');
