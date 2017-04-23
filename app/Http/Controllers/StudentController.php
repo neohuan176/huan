@@ -28,9 +28,11 @@ class StudentController extends Controller
         ],
     ];
     protected $studentService;
+    protected $openid;
     public function __construct(StudentServices $studentService){
 //        $this->middleware('student');
         $this->studentService = $studentService;
+        $this->openid = Session::get('wechat_user')['id'];
         $this->middleware('studentExist');//判断学生是否已经注册
     }
 
@@ -67,7 +69,7 @@ class StudentController extends Controller
     public function callOverPage(Request $request){
         $app = new Application($this->options);
         $js = $app->js;
-        return view('student.callOverPage')->with(['js' => $js]);
+        return view('student.wechat.callOverPage')->with(['js' => $js]);
     }
 
     /**
@@ -88,8 +90,31 @@ class StudentController extends Controller
         }
     }
 
+
+    /**
+     * @param Request $request
+     * @return String
+     * 学生在微信网页考勤，，可不用。
+     */
     public function callOverInPage(Request $request){
         $openid = Session::get('wechat_user')['id'];
         return $this->studentService->callOver($openid);
+    }
+
+    /**
+     * @param Request $request
+     * @return $this
+     * 查看我的课程
+     */
+    public function showStudentCourse(Request $request){
+        $openid = Session::get('wechat_user')['id'];
+        $courses = $this->studentService->getMyCourse($openid);
+        return view('student.wechat.myCourse')->with(['courses'=>$courses]);
+    }
+
+    public function showMyAttendRecord(Request $request){
+        $records = $this->studentService->getMyAttendRecord($this->openid);
+        Log::info($records);
+        return view('student.wechat.myAttendRecord')->with(['records'=>$records]);
     }
 }

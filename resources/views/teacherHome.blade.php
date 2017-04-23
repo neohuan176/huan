@@ -8,7 +8,7 @@
             <ul class="nav nav-sidebar">
                 <li class="active"><a href="{{url('/teacher')}}">教师引导页 <span class="sr-only">(current)</span></a></li>
                 <li ><a href="{{url('teacher/course')}}">課程表</a></li>
-                <li><a href="#">考勤统计</a></li>
+                <li><a href="{{url('/teacher/myCourse')}}">我的课程</a></li>
                 <li><a href="#"></a></li>
             </ul>
             <ul class="nav nav-sidebar">

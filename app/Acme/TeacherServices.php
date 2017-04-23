@@ -76,7 +76,7 @@ class TeacherServices
                         switch ($cur_record->status){
                             case 1 : $status = "#"; $attend++ ;break;
                             case 2 : $status = "旷课";$unCall++ ;break;
-                            case 3 : $status = "迟到"; $late++ ;break;
+                            case 3 : $status = "迟到"; $late++;$attend++ ;break;
                             case 4 : $status = "请假"; $leave++ ;break;
                         }
                         if($cur_record->score != 0){//当次记录有加分

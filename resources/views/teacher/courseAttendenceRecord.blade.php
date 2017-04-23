@@ -3,18 +3,18 @@
 
 
     <div class="row">
-        <div class="col-sm-2 col-md-2 sidebar" style="top:130px">
-            <ul class="nav nav-sidebar">
-                <li><a href="{{url('/teacher')}}">教师引导页 <span class="sr-only">(current)</span></a></li>
-                <li ><a href="{{url('teacher/course')}}">課程表</a></li>
-                <li><a href="#">考勤统计</a></li>
-                <li><a href="#"></a></li>
-            </ul>
-            <ul class="nav nav-sidebar">
-                <li><a href="">群发信息</a></li>
-            </ul>
-        </div>
-        <div class="col-sm-10 col-sm-offset-2  col-md-10 col-md-offset-2 main">
+        {{--<div class="col-sm-2 col-md-2 sidebar" style="top:130px">--}}
+            {{--<ul class="nav nav-sidebar">--}}
+                {{--<li><a href="{{url('/teacher')}}">教师引导页 <span class="sr-only">(current)</span></a></li>--}}
+                {{--<li ><a href="{{url('teacher/course')}}">課程表</a></li>--}}
+                {{--<li ><a href="{{url('/teacher/myCourse')}}">我的课程</a></li>--}}
+                {{--<li><a href="#"></a></li>--}}
+            {{--</ul>--}}
+            {{--<ul class="nav nav-sidebar">--}}
+                {{--<li><a href="">群发信息</a></li>--}}
+            {{--</ul>--}}
+        {{--</div>--}}
+        <div class="col-sm-10 col-sm-offset-1  col-md-10 col-md-offset-1 main">
         {{--<div class="col-sm-10 col-sm-offset-1  col-md-10 col-md-offset-1 main">--}}
             {{--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addCourse" data-whatever="@mdo">添加课程</button>--}}
             <button type="button" class="btn btn-primary" onclick="callOver(this)" id="{{$course->id}}">
@@ -27,7 +27,7 @@
             <div>
                 <h3>基本信息</h3>
                 <div>
-                    <p>{{' 应到:'.$courseInfo['studentTotal'].' 已到:'.$courseInfo['attend'].'   旷课:'.$courseInfo['unCall'].'  迟到:'.$courseInfo['late'].'  请假:'.$courseInfo['leave'].'   出勤率:'.($courseInfo['attend_rate']*100).'%'}}</p>
+                    <p id="attendInfo">{{'应到:'.$courseInfo['studentTotal'].'======已到:'.$courseInfo['attend'].'======旷课:'.$courseInfo['unCall'].'======迟到:'.$courseInfo['late'].'======请假:'.$courseInfo['leave'].'======出勤率:'.($courseInfo['attend_rate']*100).'%'}}</p>
                     <h4>第{{$course->callOver}}次考勤</h4>
                 </div>
             </div>
@@ -48,11 +48,11 @@
                     <td>{{$record->Sname}}</td>
                     <td>{{$record->Sno}}</td>
                     <td>
-                        <select name="status" id="{{$record->id}}" onchange="changeRecordStatus(this,'{{$record->id}}')">
-                            <option value="1" onclick="changeRecordStatus(this,'{{$record->id}}')" @if($record->status==1)selected="selected"@endif>已到</option>
-                            <option value="2" onclick="changeRecordStatus(this,'{{$record->id}}')" @if($record->status==2)selected="selected"@endif>旷课</option>
-                            <option value="3" onclick="changeRecordStatus(this,'{{$record->id}}')" @if($record->status==3)selected="selected"@endif>迟到</option>
-                            <option value="4" onclick="changeRecordStatus(this,'{{$record->id}}')" @if($record->status==4)selected="selected"@endif>请假</option>
+                        <select name="status" id="{{$record->id}}" onchange="changeRecordStatus(this,'{{$record->id}}','{{$record->Cid}}')">
+                            <option value="1"  @if($record->status==1)selected="selected"@endif>已到</option>
+                            <option value="2"  @if($record->status==2)selected="selected"@endif>旷课</option>
+                            <option value="3"  @if($record->status==3)selected="selected"@endif>迟到</option>
+                            <option value="4"  @if($record->status==4)selected="selected"@endif>请假</option>
                         </select>
                         {{--{{$record->status}}--}}
                     </td>
@@ -83,7 +83,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                            <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="comfirmAddScore()">添加</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="comfirmAddScore()">确认</button>
                         </div>
                     </div>
                 </div>
@@ -202,9 +202,14 @@
          * @param t
          * @param recordId
          */
-        function changeRecordStatus(t,recordId) {
+        function changeRecordStatus(t,recordId,courseId) {
             $.get("{{url('')}}/teacher/changeRecordStatus/"+recordId+"/"+$(t).val(),
                 function(data){
+                    $.post("{{url('/teacher/updateAttendInfo')}}",{courseId:courseId},
+                        function (data) {
+                            $("#attendInfo").html('应到:'+data.studentTotal+'======已到:'+data.attend+'======旷课:'+data.unCall+'======迟到:'+data.late+'======请假:'+data.leave+'======出勤率:'+data.attend_rate*100+'%');
+                        }
+                    )
                     console.log(data);
                 }
             )
@@ -220,6 +225,9 @@
             cur_score_el = $(t).parent().find('span')[0].id;
 
         }
+        /**
+         * 确认加分
+         */
         function comfirmAddScore(){
             var score = $("#score").val();
             $.post('{{url('teacher/addScore')}}',

@@ -31,7 +31,7 @@ Route::group(['middleware' => ['web']], function () {
     //
     Route::any('/index',['as'=>'web.index','uses'=>'IndexController@index']);
     Route::any('/createMenu',['as'=>'web.createMenu','uses'=>'IndexController@createMenu']);
-    Route::any('/oauth_callback',['as'=>'web.oauth_callback','uses'=>'IndexController@oauthCallBack']);
+    Route::any('/oauth_callback',['as'=>'web.oauth_callback','uses'=>'IndexController@oauthCallBack']);//微信网页授权回调接口
     Route::any('/updateTable',['as'=>'web.updateTable','uses'=>'IndexController@updateTable']);
 });
 
@@ -60,6 +60,11 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/teacher/showCurCourse/{courseId}', 'TeaCherController@showCurCourse');
     Route::get('/teacher/changeRecordStatus/{recordId}/{status}', 'TeaCherController@changeRecordStatus');
     Route::post('/teacher/addScore', 'TeaCherController@addScore');
+    Route::get('/teacher/myCourse', 'TeaCherController@showMyCourse');
+    Route::get('/teacher/showCourseStudents/{courseId}', 'TeaCherController@showCourseStudents');
+    Route::post('/teacher/updateAttendInfo', 'TeaCherController@updateAttendInfo');
+    Route::get('/teacher/changeEndCourse/{courseId}', 'TeaCherController@changeEndCourse');
+    Route::any('/teacher/toUpdateCourse/{courseId}', 'TeaCherController@toUpdateCourse');
 });
 
 Route::group(['middleware' => ['web','wechat']], function () {
@@ -75,6 +80,8 @@ Route::group(['middleware' => ['web','wechat']], function () {
     Route::get('/student/callOverPage', 'StudentController@callOverPage');
     Route::post('/student/updateStudentPosition', 'StudentController@updateStudentPosition');
     Route::any('/student/callOverInPage', 'StudentController@callOverInPage');
+    Route::get('/student/showStudentCourse', 'StudentController@showStudentCourse');
+    Route::get('/student/myAttendRecord', 'StudentController@showMyAttendRecord');
 });
 
 //api路由

@@ -146,7 +146,7 @@ class StudentServices
         }
         else{
             foreach ($courses as $course){
-                Log::info(strtotime($course->openCallOverTime) - strtotime($student->location_update));
+                Log::info(strtotime($course->openCallOverTime) - strtotime($student->location_update));//打开考勤的时间和学生更新地理位置的时间
                 $attendRecord = AttendRecord::where('Sid','=',$student->id)->where('callOver','=',$course->callOver)->where('Cid','=',$course->id)->first();
                 if($attendRecord && $attendRecord->status==1){//考勤状态为已到，已经存在该学生的考勤记录
                     $res_Str .=  "你已经考勤过了->".$course->Cname."\n";
@@ -234,9 +234,6 @@ class StudentServices
         $lng2 = $course->Longitude;
         $lat2 = $course->Latitude;
 
-//        Log::info($lng1."   ".$lat1);
-//        Log::info($lng2."   ".$lat2);
-
         $PI = 3.14159265;
         $EARTH_RADIUS = 6378137;
         $RAD = pi() / 180.0;
@@ -253,6 +250,13 @@ class StudentServices
     }
 
 
+    /**
+     * @param $openid
+     * @param $longitude
+     * @param $latitude
+     * @return bool
+     * 更新学生的地理位置信息
+     */
     public function updateStudentPosition($openid,$longitude,$latitude){
         $student = Student::where('openid','=',$openid)->firstOrFail();
         if($student){
@@ -266,4 +270,71 @@ class StudentServices
             return false;
         }
     }
+
+
+    /**
+     * @param $openid
+     * @return mixed
+     * 获取我的课程
+     */
+    public function getMyCourse($openid){
+        $courses = Course::whereIn('id',SCourse::where('openid',$openid)->pluck('Cid'))->get();
+        return $courses;
+    }
+
+    /**
+     * @param $openid
+     * @return array
+     * 获取我的课程考勤统计记录
+     */
+    public function getMyAttendRecord($openid){
+        //获取我的全部课程，遍历每一个课程；
+        //找出每个课程的对应自己的考勤记录；
+        //统计出考勤记录；
+        $student = Student::where('openid',$openid)->first();
+        $courses = $this->getMyCourse($openid);
+        $Data = array();//存放显示记录
+        $i=0;
+        foreach($courses as $course){
+            $studentRecords = AttendRecord::where('Cid',$course->id)->where('Sid',$student->id)->orderBy('callOver', 'desc')->get();
+            $score = 0;//加分总分
+            $late = 0;//迟到次数
+            $unCall = 0;//旷课次数
+            $leave = 0;//请假
+            $attend = 0;//实到
+            for($j=1 ; $j <= $course->callOver ;$j++){//遍历该课程的所有考勤
+                $cur_record = null;
+                foreach ($studentRecords as $record){
+                    if($record->callOver == $j){//有对应课程考勤次数（第几次）的记录;
+                        $cur_record = $record;
+                        switch ($cur_record->status){
+                            case 1 : $attend++ ;break;
+                            case 2 : $unCall++ ;break;
+                            case 3 :  $late++;$attend++ ;break;
+                            case 4 : $leave++ ;break;
+                        }
+                        if($cur_record->score != 0){//当次记录有加分
+                            $score+=$cur_record->score;
+                        }
+                    }
+                }
+                if(!$cur_record){//如果没有那次的记录，直接记旷课
+                    $unCall++;
+                }
+            }
+
+            $Data[$i][0] = $course->Cname;//课程
+            $Data[$i][1] = $course->callOver;
+            $Data[$i][2] = $attend;
+            $Data[$i][3] = $late;
+            $Data[$i][4] = $unCall;
+            $Data[$i][5] = $leave;
+            $Data[$i][6] = $score;
+
+            $i++;//记录是第几行记录
+        }
+        return $Data;
+    }
+
+
 }

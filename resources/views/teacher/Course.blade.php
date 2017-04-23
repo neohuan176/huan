@@ -7,7 +7,7 @@
             <ul class="nav nav-sidebar">
                 <li><a href="{{url('/teacher')}}">教师引导页 <span class="sr-only">(current)</span></a></li>
                 <li class="active"><a href="{{url('teacher/course')}}">課程表</a></li>
-                <li><a href="#">考勤统计</a></li>
+                <li ><a href="{{url('/teacher/myCourse')}}">我的课程</a></li>
                 <li><a href="#"></a></li>
             </ul>
             <ul class="nav nav-sidebar">
@@ -46,11 +46,13 @@
                         <button type="button" class="btn btn-primary" onclick="callOver(this)" id="{{$course->id}}">
                             @if($course->isOpenCall == 1)关闭點名@else 开启点名 @endif
                         </button>
-                        <button type="button" class="btn btn-success" onclick="exportCourseExcel('{{$course->id}}')">導出課表</button>
+                        <button type="button" class="btn btn-success" onclick="exportCourseExcel('{{$course->id}}')">导出考勤记录</button>
                         <button type="button" class="btn btn-info" id="update-position" data-toggle="modal" data-target="#coursePositionPanel" data-whatever="@mdo" data-value="{{$course->id}}" onclick="openPositionPanel(this)">重新定位</button>
                         <button type="button" class="btn btn-danger" onclick="deleteCourse({{$course->id}})">删除</button>
                         {{--<button type="button" class="btn btn-danger" onclick="courseLocateInWechat({{$course->id}})">微信定位</button>--}}
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#joinCourse" data-whatever="@mdo" onclick="getJoinCourseUrl({{$course->id}})">扫码组班</button>
+                        <button type="button" class="btn btn-danger" onclick="changeEndCourse({{$course->id}})">结课</button>
+                        <button type="button" class="btn btn-success" onclick="location.href='{{url('/teacher/toUpdateCourse/'.$course->id)}}'">修改</button>
                     </td>
                 </tr>
                     @endforeach
@@ -229,19 +231,6 @@
                     })
             });
 
-
-            //注册删除按钮的事件
-            $("#btn_delete").click(function () {
-                //取表格的选中行数据
-//                var arrselections = $("#tb_departments").bootstrapTable('getSelections');
-//                if (arrselections.length <= 0) {
-//                    toastr.warning('请选择有效数据');
-//                    return;
-//                }
-
-
-            });
-
         });
 
         /**
@@ -305,7 +294,7 @@
                     }
                     else if( (now - lastCallOverTime) > 300000 && (now - lastCallOverTime) < 600000 && course.isOpenCall == 0){
                         console.log("是否开启新的一次点名(大于5，小于10分钟)");
-                        Ewin.confirm({ message: "是否开启新的一次点名？" }).on(function (e) {
+                        Ewin.confirm({ message: "是否开启新的一次点名？" }).on(function (e) {//弹窗确认
                             if (!e) {
                                 return;
                             }
@@ -320,6 +309,9 @@
                 });
         }
 
+        /**
+         * 确认修改课程点名态，
+         */
         function changeCallover(t,courseId,addNewCallOver){
             $.get("changeCallOverStatus/"+courseId+"/"+addNewCallOver,
                 function(data){
@@ -398,6 +390,17 @@
                 }else{
                     alert("删除失败！");
                 }
+            })
+        }
+
+        /**
+         * 修改课程结课状态
+         * @param courseId
+         */
+        function changeEndCourse(courseId){
+            $.get("{{url('')}}"+"/teacher/changeEndCourse/"+courseId,function(data){
+                console.log(data);
+                location.reload();
             })
         }
     </script>

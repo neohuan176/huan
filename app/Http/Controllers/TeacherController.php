@@ -15,6 +15,8 @@ use Log;
 use App\Course;
 use EasyWeChat\Foundation\Application;
 use App\AttendRecord;
+use App\Student;
+use App\SCourse;
 use Maatwebsite\Excel\Facades\Excel;
 
 class TeacherController extends Controller
@@ -54,8 +56,29 @@ class TeacherController extends Controller
     public function showCourse(){
         $app = new Application($this->options);
         $js = $app->js;
-        $courses = Course::where('TeacherId' ,'=', Auth::guard('teacher')->user()->id)->get();
+        $courses = Course::where('TeacherId' ,'=', Auth::guard('teacher')->user()->id)->where('isEnd',false)->get();
         return view('teacher.Course')->with(['courses' => $courses,'js'=>$js]);
+    }
+
+    /**
+     * @param Request $request
+     * @return $this
+     * 显示教师的课程，用于显示所有学生，和给学生发消息。
+     */
+    public function showMyCourse(Request $request){
+        $courses = Course::where('TeacherId' ,'=', Auth::guard('teacher')->user()->id)->get();
+        return view('teacher.myCourse')->with(['courses' => $courses]);
+    }
+
+    /**
+     * @param Request $request
+     * @return $this
+     * 显示本课程的所有学生
+     */
+    public function showCourseStudents(Request $request){
+        $courseId = $request->route('courseId');
+        $students = Student::whereIn('id',SCourse::where('Cid', $courseId)->pluck('Sid'))->get();
+        return view('teacher.courseStudents')->with(['students' => $students]);
     }
 
     /**
@@ -115,7 +138,6 @@ class TeacherController extends Controller
         if($course->callOver ==0 ){//如果是课程第一次开启点名，怎样都加1
             $course->callOver += 1;
         }elseif($addNewCallOver){//是否开始一次新的点名
-//            $course->openCallOverTime = date('Y-m-d H:i:s',time()+8*3600);//设置开启点名的时间
             $course->callOver += 1;
             Log::info("开启一次新的点名！".$addNewCallOver);
         }
@@ -202,8 +224,7 @@ class TeacherController extends Controller
         //找出该课程的考勤次数
         $course = Course::find($courseId);
         $callOver = $course->callOver;
-        $records = AttendRecord::where('Cid',$courseId)->where('callOver',$callOver)->get();//找出最近一次的考勤记录表
-
+        $records = AttendRecord::where('Cid',$courseId)->where('callOver',$callOver)->orderBy('status','desc')->get();//找出最近一次的考勤记录表
         //统计出已到，旷课，迟到，请假
         $late = 0;//迟到次人数
         $unCall = 0;//旷课人数
@@ -214,11 +235,10 @@ class TeacherController extends Controller
                     switch ($record->status){
                         case 1 :  $attend++ ;break;
                         case 2 :  $unCall++ ;break;
-                        case 3 :  $late++ ;break;
+                        case 3 :  $late++;$attend++ ;break;//迟到也是已到
                         case 4 :  $leave++ ;break;
                     }
             }
-            Log::info("test");
         if($total == 0){//不能除0
             $attend_rate = 0;
         }else{
@@ -257,6 +277,82 @@ class TeacherController extends Controller
         $record->score+=$score;
         $record->save();
         return ['score'=>$record->score,'msg'=>"加分成功！"];
+    }
 
+
+    /**
+     * @param Request $request
+     * @return array
+     * 更新教师修改学生考勤状态后的信息
+     */
+    public function updateAttendInfo(Request $request){
+        $courseId = $request->input('courseId');
+        //找出该课程的考勤次数
+        $course = Course::find($courseId);
+        $callOver = $course->callOver;
+        $records = AttendRecord::where('Cid',$courseId)->where('callOver',$callOver)->get();//找出最近一次的考勤记录表
+
+        //统计出已到，旷课，迟到，请假
+        $late = 0;//迟到次人数
+        $unCall = 0;//旷课人数
+        $leave = 0;//请假人数
+        $attend = 0;//实到人数
+        $total = $course->student_count;
+        foreach ($records as $record){
+            switch ($record->status){
+                case 1 :  $attend++ ;break;
+                case 2 :  $unCall++ ;break;
+                case 3 :  $late++;$attend++;break;
+                case 4 :  $leave++ ;break;
+            }
+        }
+        if($total == 0){//不能除0
+            $attend_rate = 0;
+        }else{
+            $attend_rate = $attend/$total;
+        }
+        $info = ['attend'=>$attend,'unCall'=>$unCall,'late'=>$late,'leave'=>$leave,'studentTotal'=>$total,'attend_rate'=>$attend_rate];
+        return $info;
+    }
+
+
+    /**
+     * @param Request $request
+     * @return string
+     * 结课
+     */
+    public function changeEndCourse(Request $request){
+        $courseId = $request->route('courseId');
+        $course = Course::find($courseId);
+        $course->isEnd = $course->isEnd==0?1:0;
+        $course->save();
+        return "修改课程结课状态成功".$course->Cname;
+    }
+
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * 跳转修改课程信息页面
+     */
+    public function toUpdateCourse(Request $request){
+        $courseId = $request->route('courseId');
+        if($request->isMethod('get')){
+            $courseInfo = Course::find($courseId);
+            return view('teacher.updateCourse',['courseInfo'=>$courseInfo]);
+        }else{
+            $this->validate($request, [
+                'StartTime' => 'required|unique|max:255',
+                'EndTime' => 'required',
+                'weekday' => 'required',
+            ]);
+            $course = Course::find($courseId);
+            $course->StartTime = Input::get('StartTime');
+            $course->EndTime = Input::get('EndTime');
+            $course->weekday = Input::get('weekday');
+            $course->Address = Input::get('Address');
+            $course->save();
+            return redirect('/teacher/course');
+        }
     }
 }

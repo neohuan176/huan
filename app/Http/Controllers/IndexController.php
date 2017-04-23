@@ -145,6 +145,11 @@ class IndexController extends Controller
                         "name" => "学生考勤",
                         "url"  => "http://zy595312011.vicp.io/huan/public/student/callOverPage"
                     ],
+                    [
+                        "type" => "view",
+                        "name" => "我的课程",
+                        "url"  => "http://zy595312011.vicp.io/huan/public/student/showStudentCourse"
+                    ],
                 ],
             ],
         ];
@@ -180,7 +185,7 @@ class IndexController extends Controller
      */
     public function updateTable(){
         Schema::table('courses',function($table){
-            $table->integer('student_count');
+//            $table->boolean('isEnd')->default(false);
 //            $table->string('weekday')->default(1);//地理位置更新时间
 
 //            $table->double('longitude');

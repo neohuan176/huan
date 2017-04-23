@@ -55,22 +55,23 @@
 
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
-                <!-- Authentication Links -->
+                <li><a href="{{ url('student/myAttendRecord') }}">考勤记录</a></li>
+                {{--<!-- Authentication Links -->--}}
                 {{--@if (Auth::guest('teacher'))--}}
-                @if ( !Auth::guard('student')->user())
-                    <li><a href="{{ url('student/login') }}">登录</a></li>
-                    <li><a href="{{ url('student/register') }}">注册</a></li>
-                @else
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            {{ Auth::guard('student')->user()->name }} <span class="caret"></span>
-                        </a>
+                {{--@if ( !Auth::guard('student')->user())--}}
+                    {{--<li><a href="{{ url('student/login') }}">登录</a></li>--}}
+                    {{--<li><a href="{{ url('student/register') }}">注册</a></li>--}}
+                {{--@else--}}
+                    {{--<li class="dropdown">--}}
+                        {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">--}}
+                            {{--{{ Auth::guard('student')->user()->name }} <span class="caret"></span>--}}
+                        {{--</a>--}}
 
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="{{ url('student/logout') }}"><i class="fa fa-btn fa-sign-out"></i>退出登录</a></li>
-                        </ul>
-                    </li>
-                @endif
+                        {{--<ul class="dropdown-menu" role="menu">--}}
+                            {{--<li><a href="{{ url('student/logout') }}"><i class="fa fa-btn fa-sign-out"></i>退出登录</a></li>--}}
+                        {{--</ul>--}}
+                    {{--</li>--}}
+                {{--@endif--}}
             </ul>
         </div>
     </div>
