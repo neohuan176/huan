@@ -24,9 +24,9 @@ class CreateStudentsTable extends Migration
             $table->string('major');//专业
             $table->string('class');//班级
             $table->string('stuNo')->unique();//学号
-            $table->float('longitude');//经度
-            $table->float('latitude');//纬度
-            $table->date('location_update');//地理位置更新时间
+            $table->double('longitude');//经度
+            $table->double('latitude');//纬度
+            $table->dateTime('location_update');//地理位置更新时间
             $table->rememberToken();//记住密码凭证
             $table->timestamps();//时间戳
         });

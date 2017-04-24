@@ -36,6 +36,7 @@ class IndexController extends Controller
         $server->setMessageHandler(function ($message) {
             // $message->FromUserName // 用户的 openid
             // $message->MsgType // 消息类型：event, text....
+            Log::info($message);
             switch ($message->MsgType) {
                 case 'event':
                 {
@@ -186,11 +187,14 @@ class IndexController extends Controller
     public function updateTable(){
         Schema::table('courses',function($table){
 //            $table->boolean('isEnd')->default(false);
-//            $table->string('weekday')->default(1);//地理位置更新时间
+//            $table->dropColumn('openCallOverTime');
+//            $table->string('openCallOverTime')->default(date('Y-m-d H:i:s',time()));//地理位置更新时间
+//            $table->foreign('TeacherId')->references('id')->on('teachers');
+//            $table->foreign('TeacherName')->references('name')->on('teachers');
 
 //            $table->double('longitude');
 //            $table->double('latitude');
-//            $table->dropColumn('longitude','latitude');
+
         });
     }
 }

@@ -124,6 +124,7 @@ class AccessToken
             return $token[$this->tokenJsonKey];
         }
 
+        Log::info();
         return $cached;
     }
 

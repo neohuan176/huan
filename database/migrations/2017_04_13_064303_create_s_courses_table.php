@@ -14,11 +14,17 @@ class CreateSCoursesTable extends Migration
     {
         Schema::create('s_courses', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('Cid');//课程id
+            $table->unsignedInteger('Cid');//课程id
             $table->string('Cname');//课程名称
-            $table->integer('Sid');//学生id
+            $table->unsignedInteger('Sid');//学生id
             $table->string('Sname');//学生姓名
+            $table->string('openid');//微信OpenId
             $table->timestamps();
+
+            $table->foreign('Cid')->references('id')->on('courses');
+            $table->foreign('Sid')->references('id')->on('students');
+            $table->foreign('openid')->references('openid')->on('students');
+
         });
     }
 

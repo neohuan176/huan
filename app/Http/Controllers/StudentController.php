@@ -112,9 +112,13 @@ class StudentController extends Controller
         return view('student.wechat.myCourse')->with(['courses'=>$courses]);
     }
 
+    /**
+     * @param Request $request
+     * @return $this
+     * 显示我的课程考勤统计
+     */
     public function showMyAttendRecord(Request $request){
         $records = $this->studentService->getMyAttendRecord($this->openid);
-        Log::info($records);
         return view('student.wechat.myAttendRecord')->with(['records'=>$records]);
     }
 }

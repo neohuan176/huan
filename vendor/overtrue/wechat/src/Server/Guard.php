@@ -147,7 +147,7 @@ class Guard
         ]);
         Log::debug('微信开始接入');
         $this->validate($this->token);
-        Log::debug('服务器验证成功');
+        Log::debug('服务器验证成功'.$this->token);
 
         if ($str = $this->request->get('echostr')) {
             Log::debug("Output 'echostr' is '$str'.");

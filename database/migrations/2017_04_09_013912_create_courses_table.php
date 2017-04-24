@@ -19,16 +19,19 @@ class CreateCoursesTable extends Migration
             $table->time('StartTime');//上课时间
             $table->time('EndTime');//下课时间
             $table->string('Address');//上课地点
-            $table->string('TeacherId');//教师id
+            $table->unsignedInteger('TeacherId');//教师id
             $table->string('TeacherName');//教师名字
-            $table->float('Longitude');//经度
-            $table->float('Latitude');//纬度
+            $table->double('Longitude');//经度
+            $table->double('Latitude');//纬度
             $table->integer('callOver')->default(0);//点名次数
             $table->boolean('isOpenCall')->default(false);//增加是否开启点名字段
-            $table->dateTime('openCallOverTime')->default(0);//上一次开启点名的时间
+            $table->dateTime('openCallOverTime');//上一次开启点名的时间
             $table->string('weekday')->default(1);//周几上课0-7
             $table->integer('student_count');//课程总人数
             $table->boolean('isEnd')->default(false);//是否结束课程
+
+            $table->foreign('TeacherId')->references('id')->on('teachers');
+
             $table->timestamps();//时间戳
         });
     }
