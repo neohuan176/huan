@@ -25,12 +25,12 @@ class CreateCoursesTable extends Migration
             $table->double('Latitude');//纬度
             $table->integer('callOver')->default(0);//点名次数
             $table->boolean('isOpenCall')->default(false);//增加是否开启点名字段
-            $table->dateTime('openCallOverTime');//上一次开启点名的时间
+            $table->dateTime('openCallOverTime')->default(date('Y-m-d H:i:s',time()));//上一次开启点名的时间
             $table->string('weekday')->default(1);//周几上课0-7
             $table->integer('student_count');//课程总人数
             $table->boolean('isEnd')->default(false);//是否结束课程
 
-            $table->foreign('TeacherId')->references('id')->on('teachers');
+            $table->foreign('TeacherId')->references('id')->on('teachers')->onDelete('cascade');
 
             $table->timestamps();//时间戳
         });

@@ -186,9 +186,14 @@ class IndexController extends Controller
      */
     public function updateTable(){
         Schema::table('courses',function($table){
+
+//            $table->foreign('Cid')->references('id')->on('courses')->onDelete('cascade');
+
+//            $table->dropForeign('attend_records_Cid_foreign');
+
 //            $table->boolean('isEnd')->default(false);
 //            $table->dropColumn('openCallOverTime');
-//            $table->string('openCallOverTime')->default(date('Y-m-d H:i:s',time()));//地理位置更新时间
+            $table->string('openCallOverTime')->default(date('Y-m-d H:i:s',time()));//地理位置更新时间
 //            $table->foreign('TeacherId')->references('id')->on('teachers');
 //            $table->foreign('TeacherName')->references('name')->on('teachers');
 

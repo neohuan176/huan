@@ -21,9 +21,9 @@ class CreateSCoursesTable extends Migration
             $table->string('openid');//微信OpenId
             $table->timestamps();
 
-            $table->foreign('Cid')->references('id')->on('courses');
-            $table->foreign('Sid')->references('id')->on('students');
-            $table->foreign('openid')->references('openid')->on('students');
+            $table->foreign('Cid')->references('id')->on('courses')->onDelete('cascade');
+            $table->foreign('Sid')->references('id')->on('students')->onDelete('cascade');
+            $table->foreign('openid')->references('openid')->on('students')->onDelete('cascade');
 
         });
     }

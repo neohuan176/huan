@@ -25,9 +25,9 @@ class CreateAttendRecordsTable extends Migration
             $table->integer('score')->default(0);//提问得分
             $table->timestamps();
 
-            $table->foreign('Sno')->references('stuNo')->on('students');
-            $table->foreign('Cid')->references('id')->on('courses');
-            $table->foreign('Sid')->references('id')->on('students');
+            $table->foreign('Sno')->references('stuNo')->on('students')->onDelete('cascade');
+            $table->foreign('Cid')->references('id')->on('courses')->onDelete('cascade');
+            $table->foreign('Sid')->references('id')->on('students')->onDelete('cascade');
         });
     }
 
