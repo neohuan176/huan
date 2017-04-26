@@ -21,7 +21,8 @@
                     <td>{{$course->Cname}}</td>
                     <td>{{$course->Cno}}</td>
                     <td>{{$course->Address}}</td>
-                    <td>{{$course->StartTime}} - {{$course->EndTime}}</td>
+                    {{--<td>{{$course->StartTime}} - {{$course->EndTime}}</td>--}}
+                    <td>{{$course->weekday}}</td>
                     <td class="isOpenCall">@if($course->isOpenCall == 1)<p style="color:#c9302c;">正在点名中...</p>@else 未开启 @endif</td>
                     <td>
                         <button type="button" class="btn btn-primary" onclick="callOver(this)" id="{{$course->id}}">

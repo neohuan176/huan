@@ -12,7 +12,7 @@
                     <th>地点</th>
                     <th>时间</th>
                     <th>状态</th>
-                    {{--<th>操作</th>--}}
+                    <th>操作</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -21,8 +21,10 @@
                         <td>{{$course->Cname}}</td>
                         <td>{{$course->Cno}}</td>
                         <td>{{$course->Address}}</td>
-                        <td>(周{{$course->weekday}}) {{$course->StartTime}} - {{$course->EndTime}}</td>
+                        <td>(周{{$course->weekday}})</td>
+                        {{--<td>(周{{$course->weekday}}) {{$course->StartTime}} - {{$course->EndTime}}</td>--}}
                         <td class="isOpenCall">@if($course->isOpenCall == 1)<p style="color:#c9302c;">正在点名中...</p>@else 未开启点名 @endif</td>
+                        <td><a href="{{url('student/showCourseTeachFile/'.$course->id)}}" class="btn btn-danger">课件</a></td>
                     </tr>
                 @endforeach
                 </tbody>

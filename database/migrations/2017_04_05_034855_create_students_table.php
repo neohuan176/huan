@@ -27,6 +27,7 @@ class CreateStudentsTable extends Migration
             $table->double('longitude');//经度
             $table->double('latitude');//纬度
             $table->dateTime('location_update');//地理位置更新时间
+            $table->string('avatarUrl');//头像url
             $table->rememberToken();//记住密码凭证
             $table->timestamps();//时间戳
         });

@@ -12,6 +12,7 @@ use App\Student;
 use Validator;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Support\Facades\Log;
 
 class AuthController extends Controller
 {
@@ -44,17 +45,20 @@ class AuthController extends Controller
     protected function create(array $data)
     {
         $openid = Session::get('wechat_user')['id'];
+        $avatarUrl = Session::get('wechat_user')['avatar'];
+        Log::info('头像'.$avatarUrl);
         return Student::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'openid' => $openid,//获取用户的openid,先用时间戳代替
+            'openid' => $openid,
             'school' => $data['school'],
             'phone' => $data['phone'],
             'institute' => $data['institute'],
             'major' => $data['major'],
             'class' => $data['class'],
             'stuNo' => $data['stuNo'],
+            'avatarUrl' => $avatarUrl
         ]);
 
     }

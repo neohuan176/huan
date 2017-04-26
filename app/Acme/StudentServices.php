@@ -336,5 +336,13 @@ class StudentServices
         return $Data;
     }
 
+    /**
+     * @param $openid
+     * @return mixed
+     * 获取学生个人信息
+     */
+    public function getMyInfo($openid){
+        return Student::where('openid',$openid)->first();
+    }
 
 }

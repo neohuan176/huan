@@ -48,11 +48,11 @@ class TeacherServices
         for($k=3 ; $k<=$callOver+2;$k++,$callOverIndex++){
             $Data[0][$k] = '考勤'.$callOverIndex;
         }
-        $Data[0][$callOver+2+1] = "实到";
+        $Data[0][$callOver+2+1] = "请假";
         $Data[0][$callOver+2+2] = "迟到";
         $Data[0][$callOver+2+3] = "旷课";
-        $Data[0][$callOver+2+4] = "请假";
-        $Data[0][$callOver+2+5] = "应到";
+        $Data[0][$callOver+2+4] = "应到";
+        $Data[0][$callOver+2+5] = "实到";
         $Data[0][$callOver+2+6] = "总加分";
 
         $i = 1;
@@ -93,11 +93,11 @@ class TeacherServices
             }
 
             //处理尾部
-            $Data[$i][$callOver + 2 +1] = $attend;
+            $Data[$i][$callOver + 2 +1] = $leave;
             $Data[$i][$callOver + 2 +2] = $late;
             $Data[$i][$callOver + 2 +3] = $unCall;
-            $Data[$i][$callOver + 2 +4] = $leave;
-            $Data[$i][$callOver + 2 +5] = $callOver;
+            $Data[$i][$callOver + 2 +4] = $callOver;
+            $Data[$i][$callOver + 2 +5] = $attend;
             $Data[$i][$callOver + 2 +6] = $score;
 
             $i++;//记录是第几行记录

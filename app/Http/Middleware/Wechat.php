@@ -44,6 +44,13 @@ class Wechat
                 ->redirect();
             return $response;
         }
+        if(Session::get("wechat_user")['id'] == null){//存在微信用户信息，但是openid为空 ，不知道为什么是空，偶尔测试到
+            Session::put("target_url",$request->url());
+            $response = $oauth->scopes(['snsapi_userinfo'])
+                ->setRequest($request)
+                ->redirect();
+            return $response;
+        }
         return $next($request);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Acme\TeacherServices;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -18,6 +19,7 @@ use App\AttendRecord;
 use App\Student;
 use App\SCourse;
 use Maatwebsite\Excel\Facades\Excel;
+use App\TeachFile;
 
 class TeacherController extends Controller
 {
@@ -91,8 +93,8 @@ class TeacherController extends Controller
         $course = new Course();
         $course->Cno = $data['Cno'];
         $course->Cname = $data['Cname'];
-        $course->StartTime = $data['StartTime'];
-        $course->EndTime = $data['EndTime'];
+//        $course->StartTime = $data['StartTime'];
+//        $course->EndTime = $data['EndTime'];
         $course->Address = $data['Address'];
         $course->weekday = $data['weekday'];
         $course->Longitude = $data['Longitude'];
@@ -354,5 +356,53 @@ class TeacherController extends Controller
             $course->save();
             return redirect('/teacher/course');
         }
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * 上传课件
+     */
+    public function uploadTeachFile(Request $request){
+        $courseId = $request->get('courseId');
+        $file = $request->file('myFile');//获取上传文件
+        $clientName = $file -> getClientOriginalName();//文件原名
+        $extension = $file -> getClientOriginalExtension(); //上传文件的后缀.
+        $realPath = $file->getRealPath();//临时文件的绝对路径
+        $size = $file->getSize();
+        $newName = md5(date('ymdhis').$clientName).".".$extension;//生成新的文件名
+        $teach_file = new TeachFile();
+        $teach_file->fileName = $clientName;
+        $teach_file->filePath = $newName;
+        $teach_file->size = $size;
+        $teach_file->Cid = $courseId;
+//        Log::info(base_path());
+//        $file->move(base_path().,$newName);
+        if(Storage::disk('teacherUpload')->put($newName,file_get_contents($realPath)) && $teach_file->save()){//保存到storage
+                return redirect('teacher/course');
+        }else{
+            exit('上传失败！');
+        }
+    }
+
+    /**
+     * @param Request $request
+     * @return mixed
+     * 显示课程课件
+     */
+    public function showCourseTeachFile(Request $request){
+        $courseId = $request->route('courseId');
+        $files = TeachFile::where('Cid','=',$courseId)->get();
+        Log::info($courseId);
+        return view('teacher.courseTeachFile')->with(['files'=>$files]);
+    }
+
+    public function downloadTeachFile(Request $request){
+        $fileId = $request->route('fileId');
+        $fileInfo = TeachFile::find($fileId);
+        $fileRealPath = $fileInfo->filePath;//文件保存的真实文件名 ，fileName是原始文件名
+        $fileInfo->downloadTimes+=1;//下载次数+1
+        $fileInfo->save();
+        return response()->download(base_path().'/storage/app/teacherUpload/'.$fileRealPath,$fileInfo->fileName);
     }
 }

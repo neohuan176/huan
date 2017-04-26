@@ -65,8 +65,13 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/teacher/updateAttendInfo', 'TeaCherController@updateAttendInfo');
     Route::get('/teacher/changeEndCourse/{courseId}', 'TeaCherController@changeEndCourse');
     Route::any('/teacher/toUpdateCourse/{courseId}', 'TeaCherController@toUpdateCourse');
+    Route::post('/teacher/uploadTeachFile', 'TeaCherController@uploadTeachFile');
+    Route::get('/teacher/showCourseTeachFile/{courseId}', 'TeaCherController@showCourseTeachFile');
+    Route::get('/teacher/downloadTeachFile/{fileId}', 'TeaCherController@downloadTeachFile');
+
 });
 
+//学生微信端路由
 Route::group(['middleware' => ['web','wechat']], function () {
 //    學生登录注册路由
     Route::get('student/login', 'Student\AuthController@getLogin');
@@ -82,7 +87,15 @@ Route::group(['middleware' => ['web','wechat']], function () {
     Route::any('/student/callOverInPage', 'StudentController@callOverInPage');
     Route::get('/student/showStudentCourse', 'StudentController@showStudentCourse');
     Route::get('/student/myAttendRecord', 'StudentController@showMyAttendRecord');
+    Route::any('/student/showMyInfo', 'StudentController@showMyInfo');
 });
+
+//学生非微信路由
+Route::group(['middleware' => ['web']], function () {
+    Route::get('/student/showCourseTeachFile/{courseId}', 'StudentController@showCourseTeachFile');
+    Route::get('/student/downloadTeachFile/{fileId}', 'StudentController@downloadTeachFile');
+});
+
 
 //api路由
 Route::group(['middleware' => ['web']], function () {

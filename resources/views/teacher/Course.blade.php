@@ -38,7 +38,8 @@
                     <td><a href="{{url('/teacher/showCurCourse/'.$course->id)}}">{{$course->Cname}}</a></td>
                     <td>{{$course->Cno}}</td>
                     <td>{{$course->Address}}</td>
-                    <td>{{$course->StartTime}} - {{$course->EndTime}}</td>
+                    <td>{{$course->weekday}}</td>
+                    {{--<td>{{$course->StartTime}} - {{$course->EndTime}}</td>--}}
                     {{--<td>{{$course->Longitude}},{{$course->Latitude}}</td>--}}
                     <td class="callOver">{{$course->callOver}}</td>
                     <td class="isOpenCall">@if($course->isOpenCall == 1)<p style="color:#c9302c;">正在点名中...</p>@else 未开启 @endif</td>
@@ -53,6 +54,8 @@
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#joinCourse" data-whatever="@mdo" onclick="getJoinCourseUrl({{$course->id}})">扫码组班</button>
                         <button type="button" class="btn btn-danger" onclick="changeEndCourse({{$course->id}})">结课</button>
                         <button type="button" class="btn btn-success" onclick="location.href='{{url('/teacher/toUpdateCourse/'.$course->id)}}'">修改</button>
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#uploadTeachFile" data-whatever="@mdo"  onclick="$('#course-id').val({{$course->id}});">上传课件</button>
+                        <a href="{{url('/teacher/showCourseTeachFile/'.$course->id)}}" class="btn btn-success">查看课件</a>
                     </td>
                 </tr>
                     @endforeach
@@ -76,21 +79,21 @@
                                     <label for="Cname" class="control-label">课程名称</label>
                                     <input class="form-control" id="Cname">
                                 </div>
-                                <div class="form-group">
-                                    <label for="StartTime" class="control-label">上课时间</label>
-                                    <input class="form-control" id="StartTime">
-                                </div>
-                                <div class="form-group">
-                                    <label for="EndTime" class="control-label">下课时间</label>
-                                    <input class="form-control" id="EndTime">
-                                </div>
+                                {{--<div class="form-group">--}}
+                                    {{--<label for="StartTime" class="control-label">上课时间</label>--}}
+                                    {{--<input class="form-control" id="StartTime">--}}
+                                {{--</div>--}}
+                                {{--<div class="form-group">--}}
+                                    {{--<label for="EndTime" class="control-label">下课时间</label>--}}
+                                    {{--<input class="form-control" id="EndTime">--}}
+                                {{--</div>--}}
                                 <div class="form-group">
                                     <label for="Address" class="control-label">上课地点</label>
                                     <input class="form-control" id="Address">
                                 </div>
                                 <div class="form-group">
-                                    <label for="Address" class="control-label">星期几(格式:1,3,5)</label>
-                                    <input class="form-control" id="weekday" value="1">
+                                    <label for="Address" class="control-label">上课时间(推荐格式：周三 1-2节，周五 8-9节)</label>
+                                    <input class="form-control" id="weekday" value="周三 1-2节，周五 8-9节">
                                 </div>
 
                                 <div class="form-group">
@@ -157,6 +160,27 @@
                 </div>
             </div>
 
+            <div class="modal fade" id="uploadTeachFile" tabindex="-1" role="dialog" aria-labelledby="uploadTeachFile">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="exampleModalLabel">上传课件</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form action="{{url('')}}/teacher/uploadTeachFile" method="post" enctype="multipart/form-data">
+                                请选择您要上传的课件：
+                                <input type="file" name="myFile"/><br/>
+                                <input type="hidden" id="course-id" name="courseId" /><br/>
+                                <input type="submit" class="btn btn-default"/>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
     </div>
@@ -202,9 +226,21 @@
         });
 
 
+        //上传课件弹窗
+        $('#uploadTeachFile').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var recipient = button.data('whatever') // Extract info from data-* attributes
+            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            var modal = $(this)
+            modal.find('.modal-title').text('上传课件 ' + recipient)
+            modal.find('.modal-body input').val()
+        });
+
 
         $(function(){
-            $('[data-toggle="popover"]').popover()
+            $('[data-toggle="popover"]').popover();//确认弹窗
+
             //添加课程时获取课程坐标；
             var p = $("#id_address_input").AMapPositionPicker();
             $("#id_get_data").on('click', function () {
@@ -215,6 +251,7 @@
                 Latitude = locationInfo.latitude;
             });
 
+//            修改课程时的位置选择
             var position = $("#choosePosition").AMapPositionPicker();
             $("#updatePosition").on('click', function () {
                 var locationInfo =position.AMapPositionPicker('position');
@@ -241,8 +278,8 @@
                 {
                     Cno:        $("#Cno").val(),
                     Cname:      $("#Cname").val(),
-                    StartTime:  $("#StartTime").val(),
-                    EndTime:    $("#EndTime").val(),
+//                    StartTime:  $("#StartTime").val(),
+//                    EndTime:    $("#EndTime").val(),
                     Address:    $("#Address").val(),
                     weekday:    $("#weekday").val(),
                     Longitude:  Longitude,
@@ -402,6 +439,14 @@
                 console.log(data);
                 location.reload();
             })
+        }
+
+        function comfirmUpload(){
+            $.post('{{url("")}}'+'/teacher/uploadTeachFile/'+cur_courseId,{'myFile':$("#myFile").val()},
+                function (data) {
+                    console.log(data);
+                }
+            )
         }
     </script>
     <script src="{{asset("js/jquery.qrcode.min.js")}}"></script>

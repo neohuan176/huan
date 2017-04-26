@@ -18,7 +18,7 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <th>#id</th>
+                    <th>头像</th>
                     <th>姓名</th>
                     <th>学号</th>
                     <th>专业</th>
@@ -27,12 +27,12 @@
                 <tbody>
                 @foreach($students as $student)
                 <tr>
-                    <td>{{$student->id}}</td>
+                    <td><img src="{{$student->avatarUrl}}" style="width:30px;height: 30px"  alt=""></td>
                     <td>{{$student->name}}</td>
                     <td>{{$student->stuNo}}</td>
                     <td>{{$student->major}}</td>
                     <td>
-                        <button type="button" class="btn btn-danger">发消息</button>
+                        {{--<button type="button" class="btn btn-danger">发消息</button>--}}
                     </td>
                 </tr>
                     @endforeach

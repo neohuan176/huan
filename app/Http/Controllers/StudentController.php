@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Acme\StudentServices;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\Log;
@@ -12,6 +13,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 use App\Course;
 use App\Student;
+use App\TeachFile;
 
 class StudentController extends Controller
 {
@@ -33,7 +35,7 @@ class StudentController extends Controller
 //        $this->middleware('student');
         $this->studentService = $studentService;
         $this->openid = Session::get('wechat_user')['id'];
-        $this->middleware('studentExist');//判断学生是否已经注册
+        $this->middleware('studentExist')->except(['showCourseTeachFile','downloadTeachFile']);//判断学生是否已经注册
     }
 
     /**
@@ -107,8 +109,8 @@ class StudentController extends Controller
      * 查看我的课程
      */
     public function showStudentCourse(Request $request){
-        $openid = Session::get('wechat_user')['id'];
-        $courses = $this->studentService->getMyCourse($openid);
+//        $openid = Session::get('wechat_user')['id'];
+        $courses = $this->studentService->getMyCourse($this->openid);
         return view('student.wechat.myCourse')->with(['courses'=>$courses]);
     }
 
@@ -120,5 +122,60 @@ class StudentController extends Controller
     public function showMyAttendRecord(Request $request){
         $records = $this->studentService->getMyAttendRecord($this->openid);
         return view('student.wechat.myAttendRecord')->with(['records'=>$records]);
+    }
+
+    /**
+     * @param Request $request
+     * @return $this
+     * 显示课件
+     */
+    public function showCourseTeachFile(Request $request){
+        $courseId = $request->route('courseId');
+        $files = TeachFile::where('Cid','=',$courseId)->get();
+        Log::info($courseId);
+        return view('student.wechat.courseTeachFile')->with(['files'=>$files]);
+    }
+
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
+     * 下载课件
+     */
+    public function downloadTeachFile(Request $request){
+        $fileId = $request->route('fileId');
+        $fileInfo = TeachFile::find($fileId);
+        $fileRealPath = $fileInfo->filePath;//文件保存的真实文件名 ，fileName是原始文件名
+        $fileInfo->downloadTimes+=1;//下载次数+1
+        $fileInfo->save();
+        return response()->download(base_path().'/storage/app/teacherUpload/'.$fileRealPath,$fileInfo->fileName);
+    }
+
+
+    /**
+     * @param Request $request
+     * @return $this
+     * 显示学生个人资料，并提供修改
+     */
+    public function showMyInfo(Request $request){
+        if($request->isMethod('get')){//显示
+            $studentInfo = $this->studentService->getMyInfo($this->openid);
+            return view('student.wechat.showMyInfo')->with(['student'=>$studentInfo]);
+        }else{
+            $this->validate($request, [
+                'email' => 'email',
+                'major' => 'required',
+                'phone' => 'required|digits:11',
+            ]);
+            $data = Input::all();
+            $student = Student::where('openid',$this->openid)->first();
+            $student->email = $data['email'];
+            $student->school = $data['school'];
+            $student->institute = $data['institute'];
+            $student->major = $data['major'];
+            $student->class = $data['class'];
+            $student->phone = $data['phone'];
+            $student->save();
+            return redirect()->back();
+        }
     }
 }

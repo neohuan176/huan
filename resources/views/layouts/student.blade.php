@@ -42,8 +42,8 @@
             </button>
 
             <!-- Branding Image -->
-            <a class="navbar-brand" style="background:#47ebff;color:#fff" href="{{ url('/') }}">
-                Laravel
+            <a class="navbar-brand" style="background:#47ebff;color:#fff" href="{{ url('/student') }}">
+                学生首页
             </a>
         </div>
 
@@ -56,6 +56,7 @@
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="{{ url('student/myAttendRecord') }}">考勤记录</a></li>
+                <li><a href="{{ url('student/showMyInfo') }}">个人信息</a></li>
                 {{--<!-- Authentication Links -->--}}
                 {{--@if (Auth::guest('teacher'))--}}
                 {{--@if ( !Auth::guard('student')->user())--}}

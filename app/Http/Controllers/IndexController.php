@@ -36,7 +36,6 @@ class IndexController extends Controller
         $server->setMessageHandler(function ($message) {
             // $message->FromUserName // 用户的 openid
             // $message->MsgType // 消息类型：event, text....
-            Log::info($message);
             switch ($message->MsgType) {
                 case 'event':
                 {
@@ -45,7 +44,7 @@ class IndexController extends Controller
 
                         case "LOCATION" ://上报地理位置事件
                                 App::make('StudentServ')->initStudentLocation($message);//重新初始化学生的地理位置信息
-                                return "更新地理位置成功";
+                                return "success";
                             break;
 
                         case "CLICK" ://点击类型
@@ -55,8 +54,8 @@ class IndexController extends Controller
                                     return App::make('StudentServ')->callOver($message->FromUserName);//返回学生考勤信息
                                     break;
                             }
-                        }
                             break;
+                        }
                         default :break;
                     }
                 }
@@ -138,19 +137,32 @@ class IndexController extends Controller
                     ],
                     [
                         "type" => "view",
-                        "name" => "学生个人中心",
-                        "url"  => "http://zy595312011.vicp.io/huan/public/student"
+                        "name" => "个人信息",
+                        "url"  => "http://zy595312011.vicp.io/huan/public/student/showMyInfo"
                     ],
+//                    [
+//                        "type" => "view",
+//                        "name" => "学生考勤",
+//                        "url"  => "http://zy595312011.vicp.io/huan/public/student/callOverPage"
+//                    ],
                     [
                         "type" => "view",
-                        "name" => "学生考勤",
-                        "url"  => "http://zy595312011.vicp.io/huan/public/student/callOverPage"
+                        "name" => "考勤记录",
+                        "url"  => "http://zy595312011.vicp.io/huan/public/student/myAttendRecord"
                     ],
+
                     [
                         "type" => "view",
                         "name" => "我的课程",
                         "url"  => "http://zy595312011.vicp.io/huan/public/student/showStudentCourse"
                     ],
+
+                    [
+                        "type" => "scancode_push",
+                        "name" => "扫一扫",
+                        "key" =>"rselfmenu",
+                    ],
+
                 ],
             ],
         ];
@@ -176,7 +188,7 @@ class IndexController extends Controller
         $app = new Application($config);
         $oauth = $app->oauth;
         $user = $oauth->user();
-        Session::put("wechat_user",$user->toArray());
+        Session::put("wechat_user",$user->toArray());//往Session中加入用户的微信基本信息
         $targetUrl = !Session::has("target_url") ? '/' : Session::get("target_url");
         return redirect($targetUrl);
     }
@@ -185,21 +197,21 @@ class IndexController extends Controller
      * 用来更新数据表
      */
     public function updateTable(){
-        Schema::table('courses',function($table){
+        Schema::table('students',function($table){
 
 //            $table->foreign('Cid')->references('id')->on('courses')->onDelete('cascade');
 
 //            $table->dropForeign('attend_records_Cid_foreign');
 
-//            $table->boolean('isEnd')->default(false);
+            $table->string('avatarUrl');
 //            $table->dropColumn('openCallOverTime');
-            $table->string('openCallOverTime')->default(date('Y-m-d H:i:s',time()));//地理位置更新时间
+//            $table->string('openCallOverTime')->default(date('Y-m-d H:i:s',time()));//地理位置更新时间
 //            $table->foreign('TeacherId')->references('id')->on('teachers');
 //            $table->foreign('TeacherName')->references('name')->on('teachers');
 
 //            $table->double('longitude');
 //            $table->double('latitude');
-
+//        return '更新表成功！';
         });
     }
 }
