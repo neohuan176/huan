@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1，user-scalable=no">
 
     <title>Laravel</title>
 
@@ -17,6 +17,10 @@
     <script src="{{asset("js/jquery.min.js")}}"></script>
     <script src="{{asset("js/bootstrap.js")}}"></script>
     <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js "></script>
+    {{--高德地图插件--}}
+    <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=ed1fafa0307bb4991da41f54d8a88b46"></script>
+    {{--浏览器定位--}}
+    <script type="text/javascript" src="http://cache.amap.com/lbs/static/addToolbar.js"></script>
 
 <style>
     body {
@@ -84,6 +88,9 @@
 {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>--}}
 {{--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>--}}
 {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+
+
+
 
 
 </body>

@@ -13,6 +13,8 @@ use App\Student;
 use App\Course;
 use App\SCourse;
 
+use App\Acme\GPS;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 class StudentServices
@@ -37,6 +39,28 @@ class StudentServices
         }
         return false;
     }
+
+    /**
+     * @param $studentInfo
+     * @return boolean
+     * 重新获取学生的地理位置信息，进入微信时使用，，，并将经纬度wgs84,转为gcj02
+     */
+    public function initStudentLocationWgToGc($studentInfo){
+        $gpsServices = new GPS();
+        $gcjLocation = $gpsServices->gcj_encrypt($studentInfo->Latitude,$studentInfo->Longitude);//wgs84转gcj02坐标
+        if($this->studentExist($studentInfo->FromUserName)){
+            $student = Student::where('openid','=',$studentInfo->FromUserName)->firstOrFail();
+            if($student){
+                $student->longitude = $gcjLocation['lon'];
+                $student->latitude = $gcjLocation['lat'];
+                $student->location_update = date('Y-m-d H:i:s',time()+8*3600);
+                $student->save();
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     /**
      * @param $courseId
@@ -146,8 +170,8 @@ class StudentServices
         }
         else{
             foreach ($courses as $course){
-                Log::info(strtotime($course->openCallOverTime) - strtotime($student->location_update));//打开考勤的时间和学生更新地理位置的时间
-                $attendRecord = AttendRecord::where('Sid','=',$student->id)->where('callOver','=',$course->callOver)->where('Cid','=',$course->id)->first();
+//                Log::info(strtotime($course->openCallOverTime) - strtotime($student->location_update));//打开考勤的时间和学生更新地理位置的时间
+                $attendRecord = AttendRecord::where('Sid','=',$student->id)->where('callOver','=',$course->callOver)->where('Cid','=',$course->id)->first();//获取判断是否有该次考勤记录
                 if($attendRecord && $attendRecord->status==1){//考勤状态为已到，已经存在该学生的考勤记录
                     $res_Str .=  "你已经考勤过了->".$course->Cname."\n";
                 }
@@ -156,12 +180,12 @@ class StudentServices
                         $res_Str .=  "请更新你的位置信息。（重新进入公众号）->".$course->Cname."\n";
                     }
                     else{
-                        if($this->isInRange($student,$course) <= 50){//判断是否在考勤范围内,如果在，就添加考勤记录
+                        if($this->isInRange($student,$course) <= 100){//判断是否在考勤范围内（80米范围内有效）,如果在，就添加考勤记录
                             $attendRecord->status = 1;
                             $attendRecord->save();
                             $res_Str .=  "更新考勤状态成功->".$course->Cname."\n";
                         }else{
-                            $res_Str .=  "你不在考勤范围内，请确认允许公众号获取地理位置,或者重新进入公众号获取地理位置！->".$course->Cname."\n";
+                            $res_Str .=  "你不在考勤范围内，请确认允许公众号获取地理位置！->".$course->Cname."\n"."相差".$this->isInRange($student,$course)."米";
                         }
                     }
                 }
@@ -170,7 +194,7 @@ class StudentServices
                         $res_Str .=  "请更新你的位置信息。（重新进入公众号）->".$course->Cname."\n";
                     }
                     else{
-                        if($this->isInRange($student,$course) <= 50){//判断是否在考勤范围内,如果在，就添加考勤记录
+                        if($this->isInRange($student,$course) <= 100){//判断是否在考勤范围内（80米范围内有效）,如果在，就添加考勤记录
                             $attend_record = new AttendRecord();
                             $attend_record->status = 1;
                             $attend_record->Sno = $student->stuNo;
@@ -187,7 +211,7 @@ class StudentServices
                                 $res_Str .= "考勤失败！".$course->Cname."\n";
                             }
                         }else{
-                            $res_Str .=  "你不在考勤范围内，请确认允许公众号获取地理位置,或者重新进入公众号获取地理位置！->".$course->Cname."\n";
+                            $res_Str .=  "你不在考勤范围内，请确认允许公众号获取地理位置!->".$course->Cname."\n"."相差".$this->isInRange($student,$course)."米";
                         }
                     }
 
@@ -344,5 +368,15 @@ class StudentServices
     public function getMyInfo($openid){
         return Student::where('openid',$openid)->first();
     }
+
+
+
+
+
+
+//    ---------------------------------------Tools-------------------------------------
+
+
+
 
 }

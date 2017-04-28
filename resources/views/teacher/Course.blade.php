@@ -1,66 +1,88 @@
 @extends('layouts.teacher')
+@section('title')课程管理@endsection
 @section('content')
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addCourse" data-whatever="@mdo">添加课程</button>
+<div class="clear"></div>
+<div class="course">
+    @foreach($courses as $course)
+    <div class="course-list-item">
+        <div class="left">
 
+            <h2 class="course-title"><a href="{{url('/teacher/showCurCourse/'.$course->id)}}">{{$course->Cname}}</a>
+                <span class="btn-sm btn-success" style="cursor:pointer;"  onclick="location.href='{{url('/teacher/toUpdateCourse/'.$course->id)}}'">修改</span>
+                <button type="button" class="btn btn-danger" onclick="callOver(this)" id="{{$course->id}}">
+                    @if($course->isOpenCall == 1)关闭點名@else 开启点名 @endif
+                </button>
+            </h2>
 
-    <div class="row">
-        <div class="col-sm-2 col-md-2 sidebar" style="top:130px">
-            <ul class="nav nav-sidebar">
-                <li><a href="{{url('/teacher')}}">教师引导页 <span class="sr-only">(current)</span></a></li>
-                <li class="active"><a href="{{url('teacher/course')}}">課程表</a></li>
-                <li ><a href="{{url('/teacher/myCourse')}}">我的课程</a></li>
-                <li><a href="#"></a></li>
-            </ul>
-            <ul class="nav nav-sidebar">
-                <li><a href="">群发信息</a></li>
-            </ul>
+            <p style="font-size: 20px;color:#666">{{$course->weekday}}<span class="float-right">{{$course->Address}}</span></p>
+
+            <p style="color:#999">
+                <span class="isOpenCall @if($course->isOpenCall == 1) red @endif"> @if($course->isOpenCall == 1)正在点名中...@else未开启点名@endif</span>
+                <span class="float-right callOver">第{{$course->callOver}}次点名</span>
+            </p>
+
         </div>
-        <div class="col-sm-10 col-sm-offset-2  col-md-10 col-md-offset-2 main">
-        {{--<div class="col-sm-10 col-sm-offset-1  col-md-10 col-md-offset-1 main">--}}
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addCourse" data-whatever="@mdo">添加课程</button>
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>#id</th>
-                    <th>课程名称</th>
-                    <th>课程编号</th>
-                    <th>上课地点</th>
-                    <th>上课时间</th>
-                    {{--<th>上课坐标</th>--}}
-                    <th>点名次数</th>
-                    <th>开启点名</th>
-                    <th>操作</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($courses as $course)
-                <tr>
-                    <td>{{$course->id}}</td>
-                    <td><a href="{{url('/teacher/showCurCourse/'.$course->id)}}">{{$course->Cname}}</a></td>
-                    <td>{{$course->Cno}}</td>
-                    <td>{{$course->Address}}</td>
-                    <td>{{$course->weekday}}</td>
-                    {{--<td>{{$course->StartTime}} - {{$course->EndTime}}</td>--}}
-                    {{--<td>{{$course->Longitude}},{{$course->Latitude}}</td>--}}
-                    <td class="callOver">{{$course->callOver}}</td>
-                    <td class="isOpenCall">@if($course->isOpenCall == 1)<p style="color:#c9302c;">正在点名中...</p>@else 未开启 @endif</td>
-                    <td>
-                        <button type="button" class="btn btn-primary" onclick="callOver(this)" id="{{$course->id}}">
-                            @if($course->isOpenCall == 1)关闭點名@else 开启点名 @endif
-                        </button>
-                        <button type="button" class="btn btn-success" onclick="exportCourseExcel('{{$course->id}}')">导出考勤记录</button>
-                        <button type="button" class="btn btn-info" id="update-position" data-toggle="modal" data-target="#coursePositionPanel" data-whatever="@mdo" data-value="{{$course->id}}" onclick="openPositionPanel(this)">重新定位</button>
-                        <button type="button" class="btn btn-danger" onclick="deleteCourse({{$course->id}})">删除</button>
-                        {{--<button type="button" class="btn btn-danger" onclick="courseLocateInWechat({{$course->id}})">微信定位</button>--}}
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#joinCourse" data-whatever="@mdo" onclick="getJoinCourseUrl({{$course->id}})">扫码组班</button>
-                        <button type="button" class="btn btn-danger" onclick="changeEndCourse({{$course->id}})">结课</button>
-                        <button type="button" class="btn btn-success" onclick="location.href='{{url('/teacher/toUpdateCourse/'.$course->id)}}'">修改</button>
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#uploadTeachFile" data-whatever="@mdo"  onclick="$('#course-id').val({{$course->id}});">上传课件</button>
-                        <a href="{{url('/teacher/showCourseTeachFile/'.$course->id)}}" class="btn btn-success">查看课件</a>
-                    </td>
-                </tr>
-                    @endforeach
-                </tbody>
-            </table>
+        <div class="right">
+            <button type="button" class="btn-sm btn-primary" id="update-position" data-toggle="modal" data-target="#coursePositionPanel" data-whatever="@mdo" data-value="{{$course->id}}" onclick="openPositionPanel(this)">重新定位</button>
+            <button class="btn-sm btn-primary margin-btn" onclick="exportCourseExcel('{{$course->id}}')">导出考勤</button>
+            <button class="btn-sm btn-primary margin-btn" data-toggle="modal" data-target="#joinCourse" data-whatever="@mdo" onclick="getJoinCourseUrl({{$course->id}})">扫码组班</button>
+            <button class="btn-sm btn-primary margin-btn" data-toggle="modal" data-target="#uploadTeachFile" data-whatever="@mdo"  onclick="$('#course-id').val({{$course->id}});">上传课件</button>
+            <a class="btn-sm btn-primary margin-btn" href="{{url('/teacher/showCourseTeachFile/'.$course->id)}}" target="_blank">查看课件</a>
+            <button class="btn-sm btn-primary margin-btn" onclick="changeEndCourse({{$course->id}})">结束课程</button>
+        </div>
+    </div>
+    @endforeach
+</div>
+<div class="clear"></div>
+
+
+
+            {{--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addCourse" data-whatever="@mdo">添加课程</button>--}}
+            {{--<table class="table table-striped">--}}
+                {{--<thead>--}}
+                {{--<tr>--}}
+                    {{--<th>#id</th>--}}
+                    {{--<th>课程名称</th>--}}
+                    {{--<th>上课地点</th>--}}
+                    {{--<th>上课时间</th>--}}
+                    {{--<th>点名次数</th>--}}
+                    {{--<th>点名状态</th>--}}
+                    {{--<th>操作</th>--}}
+                {{--</tr>--}}
+                {{--</thead>--}}
+                {{--<tbody>--}}
+                {{--@foreach($courses as $course)--}}
+                {{--<tr>--}}
+                    {{--<td>{{$course->id}}</td>--}}
+                    {{--<td><a href="{{url('/teacher/showCurCourse/'.$course->id)}}">{{$course->Cname}}</a></td>--}}
+                    {{--<td>{{$course->Address}}</td>--}}
+                    {{--<td>{{$course->weekday}}</td>--}}
+                    {{--<td class="callOver">{{$course->callOver}}</td>--}}
+                    {{--<td class="isOpenCall">@if($course->isOpenCall == 1)<p style="color:#c9302c;">正在点名中...</p>@else 未开启 @endif</td>--}}
+                    {{--<td class="dropdown">--}}
+                        {{--<button class="dropdown btn btn-primary">--}}
+                        {{--<button type="button" class="btn btn-primary" onclick="callOver(this)" id="{{$course->id}}">--}}
+                            {{--@if($course->isOpenCall == 1)关闭點名@else 开启点名 @endif--}}
+                        {{--</button>--}}
+                            {{--<button class="btn btn-danger" data-toggle="dropdown"  aria-expanded="false">--}}
+                                {{--操作--}}
+                            {{--</button>--}}
+                            {{--<ul class="dropdown-menu" role="menu">--}}
+                                {{--<li><button type="button" class="btn btn-success" onclick="exportCourseExcel('{{$course->id}}')">导出考勤记录</button></li>--}}
+                                {{--<li><button type="button" class="btn btn-info" id="update-position" data-toggle="modal" data-target="#coursePositionPanel" data-whatever="@mdo" data-value="{{$course->id}}" onclick="openPositionPanel(this)">重新定位</button></li>--}}
+                                {{--<li><button type="button" class="btn btn-danger" onclick="deleteCourse({{$course->id}})">删除</button></li>--}}
+                                {{--<li><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#joinCourse" data-whatever="@mdo" onclick="getJoinCourseUrl({{$course->id}})">扫码组班</button></li>--}}
+                                {{--<li><button type="button" class="btn btn-danger" onclick="changeEndCourse({{$course->id}})">结课</button></li>--}}
+                                {{--<li><button type="button" class="btn btn-success" onclick="location.href='{{url('/teacher/toUpdateCourse/'.$course->id)}}'">修改</button></li>--}}
+                                {{--<li><button type="button" class="btn btn-success" data-toggle="modal" data-target="#uploadTeachFile" data-whatever="@mdo"  onclick="$('#course-id').val({{$course->id}});">上传课件</button></li>--}}
+                                {{--<li><a href="{{url('/teacher/showCourseTeachFile/'.$course->id)}}" target="_blank" class="btn btn-success">查看课件</a></li>--}}
+                            {{--</ul>--}}
+                    {{--</td>--}}
+                {{--</tr>--}}
+                    {{--@endforeach--}}
+                {{--</tbody>--}}
+            {{--</table>--}}
 
             <div class="modal fade" id="addCourse" tabindex="-1" role="dialog" aria-labelledby="addCourse">
                 <div class="modal-dialog" role="document">
@@ -79,14 +101,6 @@
                                     <label for="Cname" class="control-label">课程名称</label>
                                     <input class="form-control" id="Cname">
                                 </div>
-                                {{--<div class="form-group">--}}
-                                    {{--<label for="StartTime" class="control-label">上课时间</label>--}}
-                                    {{--<input class="form-control" id="StartTime">--}}
-                                {{--</div>--}}
-                                {{--<div class="form-group">--}}
-                                    {{--<label for="EndTime" class="control-label">下课时间</label>--}}
-                                    {{--<input class="form-control" id="EndTime">--}}
-                                {{--</div>--}}
                                 <div class="form-group">
                                     <label for="Address" class="control-label">上课地点</label>
                                     <input class="form-control" id="Address">
@@ -182,8 +196,6 @@
                 </div>
             </div>
 
-        </div>
-    </div>
 
     <script type="text/javascript">
         wx.config(<?php echo $js->config(array('getLocation'), false)?>);
@@ -319,20 +331,22 @@
                     if(course.isOpenCall == 0){
                         console.log(now-lastCallOverTime);
                     }
-                    if(now - lastCallOverTime < 300000 && course.isOpenCall == 0){//距离上次点名小于4分钟，就继续上次点名
+                    if(now - lastCallOverTime < 30000 && course.isOpenCall == 0){//距离上次点名小于4分钟，就继续上次点名
                         console.log("距离上次点名小于5分钟，就继续上次点名");
                         changeCallover(t,courseId,addNewCallOver);
                     }
-                    else if(now - lastCallOverTime > 600000 && course.isOpenCall == 0){//如果大于90分钟，就直接开始新的一次点名
+                    else if(now - lastCallOverTime > 60000 && course.isOpenCall == 0){//如果大于90分钟，就直接开始新的一次点名
                         console.log("如果大于10分钟，就直接开始新的一次点名");
                         //弹出弹框,先不谈，直接是新增一次点名,  当次点名时间距离上次点名时间大于90分钟直接开启新的一次点名，  如果大于45分钟并且小于90分钟就提醒要不要开启新的一次点名  如果小于45分钟 就继续上一次点名
                             addNewCallOver = 1;
                             changeCallover(t,courseId,addNewCallOver)
                     }
-                    else if( (now - lastCallOverTime) > 300000 && (now - lastCallOverTime) < 600000 && course.isOpenCall == 0){
+                    else if( (now - lastCallOverTime) > 30000 && (now - lastCallOverTime) < 60000 && course.isOpenCall == 0){
                         console.log("是否开启新的一次点名(大于5，小于10分钟)");
                         Ewin.confirm({ message: "是否开启新的一次点名？" }).on(function (e) {//弹窗确认
                             if (!e) {
+                                addNewCallOver = 0;
+                                changeCallover(t,courseId,addNewCallOver);//取消就是继续上一次点名
                                 return;
                             }
                             addNewCallOver = 1;
@@ -353,11 +367,17 @@
             $.get("changeCallOverStatus/"+courseId+"/"+addNewCallOver,
                 function(data){
                     if(data.status == 200){
-                        var isOpenCall = data.isOpenCall?'<p style="color:#c9302c">正在点名中...</p>':'未开启';
-                        var changOpenCallBtnText = data.isOpenCall?'关闭点名':'开启点名'
+                        var isOpenCall = data.isOpenCall?'正在点名中...':'未开启点名';
+                        var changOpenCallBtnText = data.isOpenCall?'关闭点名':'开启点名';
+                        if(data.isOpenCall){
+                            $(t).parent().parent().find('.isOpenCall').addClass('red');
+                        }else{
+                            $(t).parent().parent().find('.isOpenCall').removeClass('red');
+                        }
                         $(t).parent().parent().find('.isOpenCall').html(isOpenCall);
                         $(t).html(changOpenCallBtnText);
-                        $(t).parent().parent().find('.callOver').html(data.callOver);
+                        console.log( $(t).parent().parent().find('.callOver').html());
+                        $(t).parent().parent().find('.callOver').html("第"+data.callOver+"次点名");
 
                     }
                     else{
@@ -421,13 +441,19 @@
          * @param courseId
          */
         function deleteCourse(courseId){
-            $.get("deleteCourse/"+courseId,function(data){
-                if(data.status == 200){
-                    location.reload();
-                }else{
-                    alert("删除失败！");
+            Ewin.confirm({ message: "是否删除课程？" ,btnok:"确认",btncl:"取消"}).on(function (e) {//弹窗确认
+                if (!e) {
+                    return;
                 }
-            })
+                addNewCallOver = 1;
+                $.get("deleteCourse/"+courseId,function(data){
+                    if(data.status == 200){
+                        location.reload();
+                    }else{
+                        alert("删除失败！");
+                    }
+                })
+            });
         }
 
         /**

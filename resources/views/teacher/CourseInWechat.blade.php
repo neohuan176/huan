@@ -39,9 +39,9 @@
 
     <script type="text/javascript">
         wx.config(<?php echo $js->config(array('getLocation'), false)?>);
-        var Longitude = 0;//经度
-        var Latitude  = 0;//纬度
-        var cur_courseId;//当前操作的课程id
+//        var Longitude = 0;//经度
+//        var Latitude  = 0;//纬度
+//        var cur_courseId;//当前操作的课程id
 
 
         /**
@@ -82,7 +82,7 @@
         function courseLocateInWechat(courseId){
             wx.ready(function() {
                 wx.getLocation({
-                    type: 'wgs84', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
+                    type: 'gcj02', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
                     success: function (res) {
                         var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
                         var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。

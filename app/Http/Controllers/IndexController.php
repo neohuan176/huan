@@ -34,6 +34,7 @@ class IndexController extends Controller
         $app = new Application($this->options);
         $server = $app->server;
         $server->setMessageHandler(function ($message) {
+            Log::info("test");
             // $message->FromUserName // 用户的 openid
             // $message->MsgType // 消息类型：event, text....
             switch ($message->MsgType) {
@@ -43,8 +44,8 @@ class IndexController extends Controller
                     switch ($message->Event){
 
                         case "LOCATION" ://上报地理位置事件
-                                App::make('StudentServ')->initStudentLocation($message);//重新初始化学生的地理位置信息
-                                return "success";
+                                App::make('StudentServ')->initStudentLocationWgToGc($message);//重新初始化学生的地理位置信息，并将经纬度wgs84,转为gcj02
+                                return "更新地理位置成功";
                             break;
 
                         case "CLICK" ://点击类型
@@ -102,9 +103,10 @@ class IndexController extends Controller
         $app = new Application($this->options);
         $menu = $app->menu;
         $buttons = [
+            //旧的签到（通过微信定位的地理位置信心签到，发现偏差很大，最后发现原因是，微信自动上报的地理坐标是wgs84，而课室选择地图的是gcj02坐标的。所以偏差大）
             [
                 "type" => "click",
-                "name" => "考勤",
+                "name" => "签到",
                 "key"  => "CallOver"
             ],
             [
@@ -125,6 +127,11 @@ class IndexController extends Controller
                         "name" => "我的课程",
                         "url"  => "http://zy595312011.vicp.io/huan/public/teacher/showCourseInWechat"
                     ],
+                    [
+                        "type" => "view",
+                        "name" => "学生网页签到",
+                        "url" => "http://zy595312011.vicp.io/huan/public/student/callOverPage"
+                    ],
                 ],
             ],
             [
@@ -142,7 +149,7 @@ class IndexController extends Controller
                     ],
 //                    [
 //                        "type" => "view",
-//                        "name" => "学生考勤",
+//                        "name" => "签到",
 //                        "url"  => "http://zy595312011.vicp.io/huan/public/student/callOverPage"
 //                    ],
                     [

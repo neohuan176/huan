@@ -76,6 +76,16 @@ class StudentController extends Controller
 
     /**
      * @param Request $request
+     * @return String
+     * 学生在微信网页考勤。
+     */
+    public function callOverInPage(Request $request){
+        $openid = Session::get('wechat_user')['id'];
+        return $this->studentService->callOver($openid);
+    }
+
+    /**
+     * @param Request $request
      * @return array
      * 在网页更新地理位置信息
      */
@@ -92,16 +102,6 @@ class StudentController extends Controller
         }
     }
 
-
-    /**
-     * @param Request $request
-     * @return String
-     * 学生在微信网页考勤，，可不用。
-     */
-    public function callOverInPage(Request $request){
-        $openid = Session::get('wechat_user')['id'];
-        return $this->studentService->callOver($openid);
-    }
 
     /**
      * @param Request $request

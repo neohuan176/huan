@@ -3,25 +3,12 @@
 
 
     <div class="row">
-        {{--<div class="col-sm-2 col-md-2 sidebar" style="top:130px">--}}
-            {{--<ul class="nav nav-sidebar">--}}
-                {{--<li><a href="{{url('/teacher')}}">教师引导页 <span class="sr-only">(current)</span></a></li>--}}
-                {{--<li ><a href="{{url('teacher/course')}}">課程表</a></li>--}}
-                {{--<li ><a href="{{url('/teacher/myCourse')}}">我的课程</a></li>--}}
-                {{--<li><a href="#"></a></li>--}}
-            {{--</ul>--}}
-            {{--<ul class="nav nav-sidebar">--}}
-                {{--<li><a href="">群发信息</a></li>--}}
-            {{--</ul>--}}
-        {{--</div>--}}
+
         <div class="col-sm-10 col-sm-offset-1  col-md-10 col-md-offset-1 main">
-        {{--<div class="col-sm-10 col-sm-offset-1  col-md-10 col-md-offset-1 main">--}}
-            {{--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addCourse" data-whatever="@mdo">添加课程</button>--}}
             <button type="button" class="btn btn-primary" onclick="callOver(this)" id="{{$course->id}}">
                 @if($course->isOpenCall == 1)关闭點名@else 开启点名 @endif
             </button>
             <button type="button" class="btn btn-success" onclick="exportCourseExcel('{{$course->id}}')">导出所有考勤记录</button>
-            <button type="button" class="btn btn-primary">随机点名</button>
             <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#joinCourse" data-whatever="" onclick="getJoinCourseUrl({{$course->id}})">组班</button>
 
             <div>
@@ -39,7 +26,6 @@
                     <th>学号</th>
                     <th>考勤状态</th>
                     <th>加分</th>
-                    <th>操作</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -60,7 +46,6 @@
                         <span id="score-{{$record->id}}">{{$record->score}}</span>
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addScore" onclick="addScore(this,{{$record}})">加分</button>
                     </td>
-                    <td><button type="button" class="btn btn-primary">待定</button></td>
                 </tr>
                     @endforeach
                 </tbody>
@@ -114,7 +99,6 @@
 
         var cur_record = null;//当前操作的record
         var cur_score_el = null;//当前操作的加分分数的元素；
-
         //添加课程弹窗
         $('#addScore').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget) // Button that triggered the modal
@@ -138,7 +122,6 @@
         });
 
         $(function(){
-
         });
 
         /**
@@ -147,34 +130,26 @@
         function callOver(t){
             var courseId = $(t).attr('id');
             var course = null;//课程信息
-            var addNewCallOver = 0;
-            $.get("{{url('teacher/getCourse')}}"+"/"+courseId,
-                function(data){
-                    course = data;
-                    var now = Date.parse(new Date());
-                    var lastCallOverTime = Date.parse(course.openCallOverTime);
-                    console.log(new Date(),course.openCallOverTime);
-                    if(now - lastCallOverTime > 2700000 && !course.isOpenCall){//如果点名时间距离上一次点名时间大于45分钟就开启新的一次点名
-                        //弹出弹框,先不谈，直接是新增一次点名
-                        addNewCallOver = 1;
-                        console.log("开启新的一次点名！");
-                    }
-                    $.get("{{url('')}}/teacher/changeCallOverStatus/"+courseId+"/"+addNewCallOver,
-                        function(data){
-                            if(data.status == 200){
-//                                var isOpenCall = data.isOpenCall?'<p style="color:#c9302c">正在点名中...</p>':'未开启';
-                                var changOpenCallBtnText = data.isOpenCall?'关闭点名':'开启点名'
-//                                $(t).parent().parent().find('.isOpenCall').html(isOpenCall);
-                                location.reload();//为了方便刷新点名次数，直接刷新
-                                $(t).html(changOpenCallBtnText);
-                            }
-                            else{
-                                console.log(data.errMsg);
-                            }
-                        })
-
-                });
+            changeCallover(t,courseId);
         }
+
+        /**
+         * 确认修改课程点名态，
+         */
+        function changeCallover(t,courseId){
+            $.get("{{url('')}}"+"/teacher/changeCallOverStatus/"+courseId+"/0",
+                function(data){
+                    if(data.status == 200){
+                        location.reload();//为了方便刷新点名次数，直接刷新
+                    }
+                    else{
+                        alert(data.errMsg);
+                    }
+                })
+        }
+
+
+
         /**
          * 获取加入课程链接（并生成二维码）
          */

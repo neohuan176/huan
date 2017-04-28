@@ -4,57 +4,55 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
 
-    <title>教师后台</title>
+    <title>@yield('title')</title>
 
-    <!-- Fonts -->
-    {{--<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>--}}
-    {{--<link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>--}}
+{{--<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>--}}
+{{--<link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>--}}
 
-    <!-- Styles -->
+    @yield('css')
+<!-- Styles -->
     {{--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">--}}
+    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/teacher.css') }}" rel="stylesheet">
     <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js "></script>
-{{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
-<style>
-    body {
-        font-family: 'Lato';
-    }
-
-    .fa-btn {
-        margin-right: 6px;
-    }
-</style>
+    <!-- JavaScripts -->
+    <script src="{{asset("js/jquery.min.js")}}"></script>
+    <script src="{{asset("js/bootstrap.js")}}"></script>
+    {{--高德地图--}}
+    <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=ed1fafa0307bb4991da41f54d8a88b46"></script>
+    {{--浏览器定位--}}
+    <script type="text/javascript" src="http://cache.amap.com/lbs/static/addToolbar.js"></script>
+    {{--高德地图选择插件--}}
+    <script src="{{asset("js/bootstrap.AMapPositionPicker.js")}}"></script>
 </head>
-<body id="app-layout">
-<nav class="navbar navbar-default">
-    <div class="container">
-        <div class="navbar-header">
 
-            <!-- Collapsed Hamburger -->
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                <span class="sr-only">Toggle Navigation</span>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-
-            <!-- Branding Image -->
-            <a class="navbar-brand" style="background:#c9302c;color:#fff" href="{{ url('/') }}">
-                首页
-            </a>
+            <a class="navbar-brand" href="{{ url('/teacher') }}">教师后台</a>
         </div>
-
-        <div class="collapse navbar-collapse" id="app-navbar-collapse">
-            <!-- Left Side Of Navbar -->
+        <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="{{ url('/teacher') }}">教师后台</a></li>
-                <li class="active"><a href="{{url('teacher/course')}}">課程表</a></li>
+            {{--<li><a href="{{ url('/teacher') }}">教师后台</a></li>--}}
+            <li><a href="{{url('teacher/course')}}">課程表</a></li>
             </ul>
 
-            <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
                 <!-- Authentication Links -->
                 {{--@if (Auth::guest('teacher'))--}}
@@ -78,19 +76,21 @@
 </nav>
 
 
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li class="{{request()->getPathInfo() == '/teacher/course'?'active':''}}"><a href="{{url('teacher/course')}}">课程表 <span class="sr-only">(current)</span></a></li>
+                <li class="{{request()->getPathInfo() == '/teacher/myCourse'?'active':''}}"><a href="{{url('/teacher/myCourse')}}">我的课程 <span class="sr-only">(current)</span></a></li>
+            </ul>
+        </div>
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            @yield("content")
+        </div>
+    </div>
+</div>
 
 
-<!-- JavaScripts -->
-{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>--}}
-
-
-<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=380b21940d6607f172278d1a8977c397"></script>
-<script src="{{asset("js/jquery.min.js")}}"></script>
-<script src="{{asset("js/bootstrap.js")}}"></script>
-<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=ed1fafa0307bb4991da41f54d8a88b46"></script>
-<script src="{{asset("js/bootstrap.AMapPositionPicker.js")}}"></script>
-
- {{--<script src="{{ elixir('js/app.js') }}"></script> --}}
-@yield("content")
 </body>
 </html>

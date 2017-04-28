@@ -82,9 +82,9 @@ Route::group(['middleware' => ['web','wechat']], function () {
 
     Route::get('/student', 'StudentController@index');
     Route::any('/student/joinCourse/{courseId}', 'StudentController@joinCourse');
-    Route::get('/student/callOverPage', 'StudentController@callOverPage');
+    Route::get('/student/callOverPage', 'StudentController@callOverPage');//跳转微信网页签到页面
     Route::post('/student/updateStudentPosition', 'StudentController@updateStudentPosition');
-    Route::any('/student/callOverInPage', 'StudentController@callOverInPage');
+    Route::any('/student/callOverInPage', 'StudentController@callOverInPage');//在微信网页签到
     Route::get('/student/showStudentCourse', 'StudentController@showStudentCourse');
     Route::get('/student/myAttendRecord', 'StudentController@showMyAttendRecord');
     Route::any('/student/showMyInfo', 'StudentController@showMyInfo');

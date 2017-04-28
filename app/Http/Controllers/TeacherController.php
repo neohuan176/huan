@@ -79,7 +79,7 @@ class TeacherController extends Controller
      */
     public function showCourseStudents(Request $request){
         $courseId = $request->route('courseId');
-        $students = Student::whereIn('id',SCourse::where('Cid', $courseId)->pluck('Sid'))->get();
+        $students = Student::whereIn('id',SCourse::where('Cid', $courseId)->pluck('Sid'))->orderBy('stuNo','asc')->get();
         return view('teacher.courseStudents')->with(['students' => $students]);
     }
 
@@ -244,7 +244,7 @@ class TeacherController extends Controller
         if($total == 0){//不能除0
             $attend_rate = 0;
         }else{
-            $attend_rate = $attend/$total;
+            $attend_rate = round($attend/$total,4);
         }
         $info = ['attend'=>$attend,'unCall'=>$unCall,'late'=>$late,'leave'=>$leave,'studentTotal'=>$total,'attend_rate'=>$attend_rate];
         return view('teacher.courseAttendenceRecord')->with(["records"=>$records,'course'=>$course,'courseInfo'=>$info]);
@@ -311,7 +311,7 @@ class TeacherController extends Controller
         if($total == 0){//不能除0
             $attend_rate = 0;
         }else{
-            $attend_rate = $attend/$total;
+            $attend_rate = round($attend/$total,4);
         }
         $info = ['attend'=>$attend,'unCall'=>$unCall,'late'=>$late,'leave'=>$leave,'studentTotal'=>$total,'attend_rate'=>$attend_rate];
         return $info;
@@ -344,13 +344,9 @@ class TeacherController extends Controller
             return view('teacher.updateCourse',['courseInfo'=>$courseInfo]);
         }else{
             $this->validate($request, [
-                'StartTime' => 'required|unique|max:255',
-                'EndTime' => 'required',
                 'weekday' => 'required',
             ]);
             $course = Course::find($courseId);
-            $course->StartTime = Input::get('StartTime');
-            $course->EndTime = Input::get('EndTime');
             $course->weekday = Input::get('weekday');
             $course->Address = Input::get('Address');
             $course->save();
@@ -376,8 +372,6 @@ class TeacherController extends Controller
         $teach_file->filePath = $newName;
         $teach_file->size = $size;
         $teach_file->Cid = $courseId;
-//        Log::info(base_path());
-//        $file->move(base_path().,$newName);
         if(Storage::disk('teacherUpload')->put($newName,file_get_contents($realPath)) && $teach_file->save()){//保存到storage
                 return redirect('teacher/course');
         }else{
