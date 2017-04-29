@@ -204,13 +204,13 @@ class IndexController extends Controller
      * 用来更新数据表
      */
     public function updateTable(){
-        Schema::table('students',function($table){
+        Schema::table('teachers',function($table){
 
 //            $table->foreign('Cid')->references('id')->on('courses')->onDelete('cascade');
 
 //            $table->dropForeign('attend_records_Cid_foreign');
 
-            $table->string('avatarUrl');
+            $table->string('phone');
 //            $table->dropColumn('openCallOverTime');
 //            $table->string('openCallOverTime')->default(date('Y-m-d H:i:s',time()));//地理位置更新时间
 //            $table->foreign('TeacherId')->references('id')->on('teachers');

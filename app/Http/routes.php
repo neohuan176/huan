@@ -101,3 +101,12 @@ Route::group(['middleware' => ['web']], function () {
 Route::group(['middleware' => ['web']], function () {
     Route::post('teacher/addCourse','TeacherController@addCourse');
 });
+
+
+//管理员路由
+Route::group(['middleware' => ['web']], function () {
+    Route::post('/admin/teacher/alterTeacher/{teacherId}', 'HomeController@alterTeacherById');
+    Route::get('/admin/teacher/showTeacherByType', 'HomeController@showTeacherByType');
+    Route::get('/admin/teacher/delTeacherById/{teacherId}', 'HomeController@delTeacherById');
+
+});

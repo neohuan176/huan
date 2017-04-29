@@ -157,6 +157,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\StudentProvider::class,
         App\Providers\TeacherProvider::class,
+        App\Providers\CommonProvider::class,
 
     ],
 

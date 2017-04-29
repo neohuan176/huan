@@ -34,55 +34,8 @@
     </div>
     @endforeach
 </div>
+
 <div class="clear"></div>
-
-
-
-            {{--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addCourse" data-whatever="@mdo">添加课程</button>--}}
-            {{--<table class="table table-striped">--}}
-                {{--<thead>--}}
-                {{--<tr>--}}
-                    {{--<th>#id</th>--}}
-                    {{--<th>课程名称</th>--}}
-                    {{--<th>上课地点</th>--}}
-                    {{--<th>上课时间</th>--}}
-                    {{--<th>点名次数</th>--}}
-                    {{--<th>点名状态</th>--}}
-                    {{--<th>操作</th>--}}
-                {{--</tr>--}}
-                {{--</thead>--}}
-                {{--<tbody>--}}
-                {{--@foreach($courses as $course)--}}
-                {{--<tr>--}}
-                    {{--<td>{{$course->id}}</td>--}}
-                    {{--<td><a href="{{url('/teacher/showCurCourse/'.$course->id)}}">{{$course->Cname}}</a></td>--}}
-                    {{--<td>{{$course->Address}}</td>--}}
-                    {{--<td>{{$course->weekday}}</td>--}}
-                    {{--<td class="callOver">{{$course->callOver}}</td>--}}
-                    {{--<td class="isOpenCall">@if($course->isOpenCall == 1)<p style="color:#c9302c;">正在点名中...</p>@else 未开启 @endif</td>--}}
-                    {{--<td class="dropdown">--}}
-                        {{--<button class="dropdown btn btn-primary">--}}
-                        {{--<button type="button" class="btn btn-primary" onclick="callOver(this)" id="{{$course->id}}">--}}
-                            {{--@if($course->isOpenCall == 1)关闭點名@else 开启点名 @endif--}}
-                        {{--</button>--}}
-                            {{--<button class="btn btn-danger" data-toggle="dropdown"  aria-expanded="false">--}}
-                                {{--操作--}}
-                            {{--</button>--}}
-                            {{--<ul class="dropdown-menu" role="menu">--}}
-                                {{--<li><button type="button" class="btn btn-success" onclick="exportCourseExcel('{{$course->id}}')">导出考勤记录</button></li>--}}
-                                {{--<li><button type="button" class="btn btn-info" id="update-position" data-toggle="modal" data-target="#coursePositionPanel" data-whatever="@mdo" data-value="{{$course->id}}" onclick="openPositionPanel(this)">重新定位</button></li>--}}
-                                {{--<li><button type="button" class="btn btn-danger" onclick="deleteCourse({{$course->id}})">删除</button></li>--}}
-                                {{--<li><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#joinCourse" data-whatever="@mdo" onclick="getJoinCourseUrl({{$course->id}})">扫码组班</button></li>--}}
-                                {{--<li><button type="button" class="btn btn-danger" onclick="changeEndCourse({{$course->id}})">结课</button></li>--}}
-                                {{--<li><button type="button" class="btn btn-success" onclick="location.href='{{url('/teacher/toUpdateCourse/'.$course->id)}}'">修改</button></li>--}}
-                                {{--<li><button type="button" class="btn btn-success" data-toggle="modal" data-target="#uploadTeachFile" data-whatever="@mdo"  onclick="$('#course-id').val({{$course->id}});">上传课件</button></li>--}}
-                                {{--<li><a href="{{url('/teacher/showCourseTeachFile/'.$course->id)}}" target="_blank" class="btn btn-success">查看课件</a></li>--}}
-                            {{--</ul>--}}
-                    {{--</td>--}}
-                {{--</tr>--}}
-                    {{--@endforeach--}}
-                {{--</tbody>--}}
-            {{--</table>--}}
 
             <div class="modal fade" id="addCourse" tabindex="-1" role="dialog" aria-labelledby="addCourse">
                 <div class="modal-dialog" role="document">
