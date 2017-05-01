@@ -55,7 +55,8 @@
                 function(data){
                     course = data;
                     var now = Date.parse(new Date());
-                    var lastCallOverTime = Date.parse(course.openCallOverTime);
+                    var lastCallOverTimeChange = course.openCallOverTime.replace("-", "/").replace("-", "/");
+                    var lastCallOverTime = Date.parse(lastCallOverTimeChange);
                     if(course.isOpenCall == 0){
                         console.log(now-lastCallOverTime);
                     }
@@ -98,12 +99,12 @@
                     if(data.status == 200){
                         var isOpenCall = data.isOpenCall?'正在点名中...':'未开启点名';
                         var changOpenCallBtnText = data.isOpenCall?'关闭点名':'开启点名';
-                        if(data.isOpenCall){
-                            $(t).parent().parent().find('.isOpenCall').addClass('red');
-                        }else{
-                            $(t).parent().parent().find('.isOpenCall').removeClass('red');
-                        }
-//                        $(t).parent().parent().find('.isOpenCall').toggleClass('red');
+//                        if(data.isOpenCall){
+//                            $(t).parent().parent().find('.isOpenCall').addClass('red');
+//                        }else{
+//                            $(t).parent().parent().find('.isOpenCall').removeClass('red');
+//                        }
+                        $(t).parent().parent().find('.isOpenCall').toggleClass('red');
                         $(t).parent().parent().find('.isOpenCall').html(isOpenCall);
                         $(t).html(changOpenCallBtnText);
 //                        $(t).parent().parent().find('.callOver').html("第"+data.callOver+"次点名");
