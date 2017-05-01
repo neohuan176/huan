@@ -280,7 +280,8 @@
                 function(data){
                     course = data;
                     var now = Date.parse(new Date());
-                    var lastCallOverTime = Date.parse(course.openCallOverTime);
+                    var lastCallOverTimeChange = course.openCallOverTime.replace("-", "/").replace("-", "/");
+                    var lastCallOverTime = Date.parse(lastCallOverTimeChange);
                     if(course.isOpenCall == 0){
                         console.log(now-lastCallOverTime);
                     }
