@@ -173,25 +173,25 @@ class StudentServices
 //                Log::info(strtotime($course->openCallOverTime) - strtotime($student->location_update));//打开考勤的时间和学生更新地理位置的时间
                 $attendRecord = AttendRecord::where('Sid','=',$student->id)->where('callOver','=',$course->callOver)->where('Cid','=',$course->id)->first();//获取判断是否有该次考勤记录
                 if($attendRecord && $attendRecord->status==1){//考勤状态为已到，已经存在该学生的考勤记录
-                    $res_Str .=  "你已经考勤过了->".$course->Cname."\n";
+                    $res_Str .=  $course->Cname."\n你已经考勤过了"."\n\n\n";
                 }
                 elseif($attendRecord && $attendRecord->status!=1){//考勤状态为其他,就更新考勤状态为已到；已经存在该学生的考勤记录
-                    if( strtotime($course->openCallOverTime) - strtotime($student->location_update) >= 300 ){//判断是否在考勤时间内,学生先更新地理位置信息  然后教师开启点名  教师>学生 并且比学生大5分钟才提示更新地理位置信息
-                        $res_Str .=  "请更新你的位置信息。（重新进入公众号）->".$course->Cname."\n";
+                    if( strtotime($course->openCallOverTime) - strtotime($student->location_update) >= 300 ){//判断是否在考勤时间内,学生先更新地理位置信息  然后教师开启点名  教师开启考勤时间>学生更新地理位置时间 并且比学生大5分钟（php时间戳用秒做单位，js用毫秒）才提示更新地理位置信息
+                        $res_Str .=  $course->Cname."\n请更新你的位置信息。（重新进入公众号）"."\n\n\n";
                     }
                     else{
                         if($this->isInRange($student,$course) <= 100){//判断是否在考勤范围内（80米范围内有效）,如果在，就添加考勤记录
                             $attendRecord->status = 1;
                             $attendRecord->save();
-                            $res_Str .=  "更新考勤状态成功->".$course->Cname."\n";
+                            $res_Str .=  $course->Cname."\n更新考勤状态成功"."\n\n\n";
                         }else{
-                            $res_Str .=  "你不在考勤范围内，请确认允许公众号获取地理位置！->".$course->Cname."\n"."相差".$this->isInRange($student,$course)."米";
+                            $res_Str .=  $course->Cname."\n你不在考勤范围内，请尽快赶到课室！（其他情况请问老师）"."\n"."相差".$this->isInRange($student,$course)."米\n\n\n";
                         }
                     }
                 }
                 else{//否则还没考勤过的就添加考勤记录
                     if( strtotime($course->openCallOverTime) - strtotime($student->location_update) >= 300 ){//判断是否在考勤时间内,学生先更新地理位置信息  然后教师开启点名  教师>学生 并且比学生大5分钟才提示更新地理位置信息
-                        $res_Str .=  "请更新你的位置信息。（重新进入公众号）->".$course->Cname."\n";
+                        $res_Str .=  $course->Cname."\n请更新你的位置信息。（重新进入公众号,并等待五秒。或者直接进入网页考勤）"."\n\n\n";
                     }
                     else{
                         if($this->isInRange($student,$course) <= 100){//判断是否在考勤范围内（80米范围内有效）,如果在，就添加考勤记录
@@ -205,13 +205,13 @@ class StudentServices
                             $attend_record->Sid = $student->id;
                             $attend_record->Sname = $student->name;
                             if($attend_record->save()){
-                                $res_Str .= "课程名称：".$attend_record->Cname."\n第".$attend_record->callOver."次考勤"."\n";
+                                $res_Str .= "课程名称：".$attend_record->Cname."\n第".$attend_record->callOver."次考勤"."\n\n\n";
                             }
                             else{
-                                $res_Str .= "考勤失败！".$course->Cname."\n";
+                                $res_Str .= $course->Cname."\n考勤失败(请咨询老师)！"."\n\n\n";
                             }
                         }else{
-                            $res_Str .=  "你不在考勤范围内，请确认允许公众号获取地理位置!->".$course->Cname."\n"."相差".$this->isInRange($student,$course)."米";
+                            $res_Str .=  $course->Cname."\n你不在考勤范围内，请确认允许公众号获取地理位置!->"."\n"."相差".$this->isInRange($student,$course)."米\n\n\n";
                         }
                     }
 
