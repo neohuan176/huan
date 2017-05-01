@@ -23,7 +23,7 @@
                     <td>{{$course->Address}}</td>
                     {{--<td>{{$course->StartTime}} - {{$course->EndTime}}</td>--}}
                     <td>{{$course->weekday}}</td>
-                    <td class="isOpenCall">@if($course->isOpenCall == 1)<p style="color:#c9302c;">正在点名中...</p>@else 未开启 @endif</td>
+                    <td class="isOpenCall @if($course->isOpenCall == 1) red @endif">@if($course->isOpenCall == 1)正在点名中...@else 未开启点名 @endif</td>
                     <td>
                         <button type="button" class="btn btn-primary" onclick="callOver(this)" id="{{$course->id}}">
                             @if($course->isOpenCall == 1)关闭點名@else 开启点名 @endif

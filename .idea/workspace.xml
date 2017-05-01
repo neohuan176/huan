@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d5d40ba4-5332-467e-81a9-5a6d34e6ff4d" name="Default" comment="">
+    <list default="true" id="d5d40ba4-5332-467e-81a9-5a6d34e6ff4d" name="Default" comment="微信开启点名修改。网页开启点名修改url。">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/teacher/Course.blade.php" afterPath="$PROJECT_DIR$/resources/views/teacher/Course.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/teacher/CourseInWechat.blade.php" afterPath="$PROJECT_DIR$/resources/views/teacher/CourseInWechat.blade.php" />
     </list>
     <ignored path="laravel.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -48,23 +48,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CourseInWechat.blade.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CourseInWechat.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/teacher/CourseInWechat.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="58" selection-end-column="78" />
+            <state relative-caret-position="810">
+              <caret line="21" column="45" lean-forward="true" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
               <folding>
-                <marker date="1493642982779" expanded="true" signature="6335:6348" ph="..." />
+                <marker date="1493643394939" expanded="true" signature="6348:6361" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Course.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Course.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/teacher/Course.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="688">
-              <caret line="283" column="78" lean-forward="true" selection-start-line="283" selection-start-column="78" selection-end-line="283" selection-end-column="78" />
+            <state relative-caret-position="733">
+              <caret line="20" column="80" lean-forward="false" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="80" />
               <folding />
             </state>
           </provider>
@@ -183,8 +183,8 @@
         <option value="$PROJECT_DIR$/storage/logs/laravel.log" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/TeacherController.php" />
-        <option value="$PROJECT_DIR$/resources/views/teacher/CourseInWechat.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/teacher/Course.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/teacher/CourseInWechat.blade.php" />
       </list>
     </option>
   </component>
@@ -590,7 +590,7 @@
       <workItem from="1493600311865" duration="5607000" />
       <workItem from="1493625888354" duration="73000" />
       <workItem from="1493632483476" duration="1637000" />
-      <workItem from="1493635346765" duration="4038000" />
+      <workItem from="1493635346765" duration="4372000" />
     </task>
     <task id="LOCAL-00001" summary="改变为非调试模式">
       <created>1490325911677</created>
@@ -781,11 +781,18 @@
       <option name="project" value="LOCAL" />
       <updated>1493642997628</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="微信开启点名修改。网页开启点名修改url。">
+      <created>1493643073119</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1493643073119</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="468366000" />
+    <option name="totallyTimeSpent" value="468700000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="92" y="-11" width="2655" height="1846" extended-state="6" />
@@ -1222,6 +1229,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="410">
+          <caret line="57" column="43" lean-forward="false" selection-start-line="57" selection-start-column="25" selection-end-line="57" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TeacherController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="524">
@@ -1234,29 +1249,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/teacher/Course.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="57" column="43" lean-forward="false" selection-start-line="57" selection-start-column="25" selection-end-line="57" selection-end-column="43" />
+        <state relative-caret-position="733">
+          <caret line="20" column="80" lean-forward="false" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="80" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/teacher/CourseInWechat.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="58" selection-end-column="78" />
+        <state relative-caret-position="810">
+          <caret line="21" column="45" lean-forward="true" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
           <folding>
-            <marker date="1493642982779" expanded="true" signature="6335:6348" ph="..." />
+            <marker date="1493643394939" expanded="true" signature="6348:6361" ph="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/teacher/Course.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="688">
-          <caret line="283" column="78" lean-forward="true" selection-start-line="283" selection-start-column="78" selection-end-line="283" selection-end-column="78" />
-          <folding />
         </state>
       </provider>
     </entry>
