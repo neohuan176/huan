@@ -226,7 +226,7 @@ class TeacherController extends Controller
         //找出该课程的考勤次数
         $course = Course::find($courseId);
         $callOver = $course->callOver;
-        $records = AttendRecord::where('Cid',$courseId)->where('callOver',$callOver)->orderBy('status','desc')->get();//找出最近一次的考勤记录表
+        $records = AttendRecord::where('Cid',$courseId)->where('callOver',$callOver)->orderBy('status','asc')->get();//找出最近一次的考勤记录表
         //统计出已到，旷课，迟到，请假
         $late = 0;//迟到次人数
         $unCall = 0;//旷课人数
@@ -391,6 +391,11 @@ class TeacherController extends Controller
         return view('teacher.courseTeachFile')->with(['files'=>$files]);
     }
 
+    /**
+     * @param Request $request
+     * @return mixed
+     * 下载课件
+     */
     public function downloadTeachFile(Request $request){
         $fileId = $request->route('fileId');
         $fileInfo = TeachFile::find($fileId);
@@ -398,5 +403,27 @@ class TeacherController extends Controller
         $fileInfo->downloadTimes+=1;//下载次数+1
         $fileInfo->save();
         return response()->download(base_path().'/storage/app/teacherUpload/'.$fileRealPath,$fileInfo->fileName);
+    }
+
+    /**
+     * @param Request $request
+     * @return mixed
+     * 提问
+     */
+    public function ask(Request $request){
+        if($request->isMethod("get")){
+            $courseId = $request->get('courseId');
+            $course = Course::find($courseId);
+            $attendRecords = AttendRecord::where('Cid',$courseId)->where('callOver',$course->callOver)->whereIn('status',array(1,3))->get();
+            $cur_ask_record = $attendRecords[array_rand($attendRecords->toArray(),1)];
+            Log::info("提问".$cur_ask_record->Sname);
+            return $cur_ask_record;
+        }else{
+            $cur_ask_record = AttendRecord::find($request->get('recordId'));
+            $cur_ask_record->score+=$request->get('score');
+            $cur_ask_record->status=$request->get('status');
+            $cur_ask_record->save();
+            return "提问成功！";
+        }
     }
 }

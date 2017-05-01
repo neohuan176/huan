@@ -5,7 +5,7 @@
 <div class="clear"></div>
 <div class="course">
     @foreach($courses as $course)
-    <div class="course-list-item">
+    <div class="course-list-item animated flipInX">
         <div class="left">
 
             <h2 class="course-title"><a href="{{url('/teacher/showCurCourse/'.$course->id)}}">{{$course->Cname}}</a>

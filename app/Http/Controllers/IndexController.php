@@ -45,7 +45,7 @@ class IndexController extends Controller
 
                         case "LOCATION" ://上报地理位置事件
                                 App::make('StudentServ')->initStudentLocationWgToGc($message);//重新初始化学生的地理位置信息，并将经纬度wgs84,转为gcj02
-                                return "更新地理位置成功";
+                                return "success";
                             break;
 
                         case "CLICK" ://点击类型

@@ -62,7 +62,7 @@
                     {{--@if (Auth::guest())--}}
                     @if ( !Auth::user())
                         <li><a href="{{ url('/login') }}">管理员登录</a></li>
-                        <li><a href="{{ url('/register') }}">管理员注册</a></li>
+                        {{--<li><a href="{{ url('/register') }}">管理员注册</a></li>--}}
                         <li><a href="{{ url('/teacher') }}">教师后台</a></li>
                         {{--<li><a href="{{ url('/student') }}">学生个人中心</a></li>--}}
                     @else

@@ -10,6 +10,7 @@
             </button>
             <button type="button" class="btn btn-success" onclick="exportCourseExcel('{{$course->id}}')">导出所有考勤记录</button>
             <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#joinCourse" data-whatever="" onclick="getJoinCourseUrl({{$course->id}})">组班</button>
+            <button type="button" class="btn btn-danger"  data-toggle="modal" data-target="#ask" data-whatever="" onclick="ask('{{$course->id}}')">随机提问</button>
 
             <div>
                 <h3>基本信息</h3>
@@ -74,6 +75,7 @@
                 </div>
             </div>
 
+
             <div class="modal fade" id="joinCourse" tabindex="-1" role="dialog" aria-labelledby="joinCourse">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -95,10 +97,42 @@
         </div>
     </div>
 
+    <div class="modal fade" id="ask" tabindex="-1" role="dialog" aria-labelledby="addScore">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">加分</h4>
+                </div>
+                <div class="modal-body">
+                    <h3 id="askName"></h3>
+                        <div class="form-group">
+                            <label for="Cno" class="control-label" >加分</label>
+                            <input type="text" class="form-control" id="scoreForAsk"  onkeyup="this.value=this.value.replace(/[^0-9.-]/g,'')" onafterpaste="this.value=this.value.replace(/[^0-9]/g,'')" >
+                        </div>
+                        <div class="form-group">
+                            <label for="Cno" class="control-label" >状态</label>
+                            <select name="statusForAsk" id="statusForAsk">
+                                <option value="1"  >已到</option>
+                                <option value="2"  >旷课</option>
+                                <option value="3"  >迟到</option>
+                                <option value="4"  >请假</option>
+                            </select>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="comfirmAsk()">确认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script type="text/javascript">
 
         var cur_record = null;//当前操作的record
         var cur_score_el = null;//当前操作的加分分数的元素；
+        var cur_ask_record = null;//当前提问的学生
         //添加课程弹窗
         $('#addScore').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget) // Button that triggered the modal
@@ -119,6 +153,19 @@
             var modal = $(this)
             modal.find('.modal-title').text('扫码加入课程 ' + recipient)
             modal.find('.modal-body input').val()
+        });
+
+        //随机提问
+        //扫码组班二维码弹窗
+        $('#ask').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var recipient = button.data('whatever') // Extract info from data-* attributes
+            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            var modal = $(this)
+            modal.find('.modal-title').text('提问 ' + recipient)
+            modal.find('.modal-body input').val()
+//            console.log(modal);
         });
 
         $(function(){
@@ -216,6 +263,42 @@
                     console.log(data);
                 }
             )
+        }
+
+        /**
+         *初始化提问学生的信息
+         */
+        function ask(courseId) {
+            $.get('{{url("teacher/ask")}}?courseId='+courseId,
+            function (value) {
+                if(value){
+                    cur_ask_record = value;
+                    $("#askName").html(cur_ask_record.Sname);
+                    $("#statusForAsk").val(cur_ask_record.status);
+                }else{
+                    console.log("当节课没有已经签到的学生！");
+                }
+            }
+            )
+        }
+
+        /**
+         * 提问完成
+         */
+        function comfirmAsk() {
+            console.log($("#statusForAsk").val());
+            if(cur_ask_record){
+                $.post('{{url("teacher/ask")}}',
+                    {
+                        score:$("#scoreForAsk").val(),
+                        status:$("#statusForAsk").val(),
+                        recordId:cur_ask_record.id
+                    },
+                    function (data) {
+                        console.log(data);
+                    }
+                )
+            }
         }
     </script>
     <script src="{{asset("js/jquery.qrcode.min.js")}}"></script>

@@ -68,6 +68,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/teacher/uploadTeachFile', 'TeaCherController@uploadTeachFile');
     Route::get('/teacher/showCourseTeachFile/{courseId}', 'TeaCherController@showCourseTeachFile');
     Route::get('/teacher/downloadTeachFile/{fileId}', 'TeaCherController@downloadTeachFile');
+    Route::any('/teacher/ask', 'TeaCherController@ask');
 
 });
 
