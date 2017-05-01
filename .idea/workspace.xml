@@ -1,8 +1,155 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d5d40ba4-5332-467e-81a9-5a6d34e6ff4d" name="Default" comment="添加管理员功能-&gt;教师的增删改查1">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+    <list default="true" id="d5d40ba4-5332-467e-81a9-5a6d34e6ff4d" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/.gitkeep" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Filters/files/multi.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Filters/files/sample.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Filters/files/sample.xlsx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Readers/files/chinese.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Readers/files/multiple.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Readers/files/test.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Readers/files/test.xlsx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Readers/files/zeros.xls" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/auth/emails/password.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tmp/easywechat.log" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/.travis.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/composer.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/blade.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/blade/load-view.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/blade/styling.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/blade/vars.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/borders.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/changelog.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/changelog/version-1.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/changelog/version-2.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/export.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/export/array.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/export/autofilter.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/export/autosize.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/export/call.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/export/cells.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/export/export.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/export/format.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/export/freeze.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/export/injection.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/export/merge.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/export/rows.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/export/sheet-styling.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/export/sheets.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/export/simple.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/export/sizing.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/export/store.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/formats.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/getting-started.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/getting-started/config.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/getting-started/contributing.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/getting-started/installation.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/getting-started/license.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/getting-started/requirements.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/import.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/import/basics.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/import/batch.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/import/cache.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/import/calculation.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/import/chunk.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/import/config.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/import/convert.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/import/dates.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/import/edit.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/import/extra.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/import/formatting.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/import/injection.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/import/results.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/import/select.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/merge.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/reference-guide.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/reference-guide/borders.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/reference-guide/closures.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/reference-guide/css-styles.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/reference-guide/file-properties.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/reference-guide/formatting.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/reference-guide/sheet-properties.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/phpunit.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/provides.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Classes/Cache.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Classes/FormatIdentifier.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Classes/LaravelExcelWorksheet.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Classes/PHPExcel.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Collections/CellCollection.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Collections/ExcelCollection.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Collections/RowCollection.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Collections/SheetCollection.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Excel.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/ExcelServiceProvider.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Exceptions/LaravelExcelException.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Facades/Excel.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Files/ExcelFile.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Files/ExportHandler.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Files/File.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Files/ImportHandler.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Files/NewExcelFile.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Filters/ChunkReadFilter.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Parsers/CssParser.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Parsers/ExcelParser.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Parsers/ViewParser.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Readers/Batch.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Readers/ConfigReader.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Readers/HtmlReader.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Readers/LaravelExcelReader.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Writers/CellWriter.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Writers/LaravelExcelWriter.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/config/excel.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Collections/CellCollectionTest.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Excel/ExcelTestCase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Excel/ExcelTester.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Files/CsvExcelFileTest.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Files/ExcelFileTest.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Files/NewExcelFileTest.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Files/classes/CsvTestImport.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Files/classes/TestExport.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Files/classes/TestExportHandler.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Files/classes/TestFile.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Files/classes/TestFileHandler.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Files/classes/TestImport.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Files/classes/TestImportHandler.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Files/classes/TestNewFile.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Files/classes/TestNewFileHandler.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Files/files/test-custom.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Files/files/test.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Filters/ChunkReadFilterTest.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Filters/RegisterFilterTestCase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Filters/files/sample.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Readers/ChineseXlsReaderTest.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Readers/CsvReaderTest.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Readers/CustomValueBinderTest.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Readers/MultipleSheetsXlsReaderTest.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Readers/ReaderTest.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Readers/XlsReaderTest.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Readers/XlsxReaderTest.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Readers/ZerosHandlingReaderTest.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Readers/files/customBinder.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Readers/files/test.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Readers/traits/ImportTrait.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Readers/traits/SingleImportTestingTrait.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/TestCase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/TestConfig.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/TestServiceProvider.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Writers/ExcelWriterTest.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Writers/exports/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/tijsverkoyen/css-to-inline-styles/LICENSE.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/tijsverkoyen/css-to-inline-styles/composer.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/tijsverkoyen/css-to-inline-styles/src/CssToInlineStyles.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/tijsverkoyen/css-to-inline-styles/src/Exception.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/tijsverkoyen/css-to-inline-styles/src/Selector.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/tijsverkoyen/css-to-inline-styles/src/Specificity.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="laravel.iws" />
@@ -255,6 +402,54 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="phpdocumentor" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="laravel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="huan" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="maatwebsite" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="excel" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="laravel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="huan" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="maatwebsite" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="excel" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tests" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -657,7 +852,7 @@
       <workItem from="1493385583208" duration="6753000" />
       <workItem from="1493424980691" duration="8352000" />
       <workItem from="1493515859781" duration="7371000" />
-      <workItem from="1493600311865" duration="3939000" />
+      <workItem from="1493600311865" duration="4011000" />
     </task>
     <task id="LOCAL-00001" summary="改变为非调试模式">
       <created>1490325911677</created>
@@ -806,18 +1001,25 @@
       <option name="project" value="LOCAL" />
       <updated>1493614060472</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="添加管理员功能-&gt;教师的增删改查1">
+      <created>1493614664971</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1493614664971</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="460950000" />
+    <option name="totallyTimeSpent" value="461022000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="92" y="-11" width="2655" height="1846" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24458793" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24458793" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296636" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
