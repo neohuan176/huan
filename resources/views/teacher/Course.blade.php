@@ -276,7 +276,7 @@
             var courseId = $(t).attr('id');
             var course = null;//课程信息
              addNewCallOver = 0;
-            $.get("getCourse/"+courseId,
+            $.get("{{url('teacher')}}/getCourse/"+courseId,
                 function(data){
                     course = data;
                     var now = Date.parse(new Date());
@@ -317,7 +317,7 @@
          * 确认修改课程点名态，
          */
         function changeCallover(t,courseId,addNewCallOver){
-            $.get("changeCallOverStatus/"+courseId+"/"+addNewCallOver,
+            $.get("{{url('teacher')}}/changeCallOverStatus/"+courseId+"/"+addNewCallOver,
                 function(data){
                     if(data.status == 200){
                         var isOpenCall = data.isOpenCall?'正在点名中...':'未开启点名';
@@ -329,7 +329,6 @@
                         }
                         $(t).parent().parent().find('.isOpenCall').html(isOpenCall);
                         $(t).html(changOpenCallBtnText);
-                        console.log( $(t).parent().parent().find('.callOver').html());
                         $(t).parent().parent().find('.callOver').html("第"+data.callOver+"次点名");
 
                     }

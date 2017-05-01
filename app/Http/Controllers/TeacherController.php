@@ -415,7 +415,7 @@ class TeacherController extends Controller
             $courseId = $request->get('courseId');
             $course = Course::find($courseId);
             $attendRecords = AttendRecord::where('Cid',$courseId)->where('callOver',$course->callOver)->whereIn('status',array(1,3))->get();
-            if($attendRecords){
+            if(count($attendRecords)!=0){
                 $cur_ask_record = $attendRecords[array_rand($attendRecords->toArray(),1)];
                 Log::info("提问".$cur_ask_record->Sname);
                 return $cur_ask_record;

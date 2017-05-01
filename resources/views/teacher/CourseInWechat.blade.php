@@ -39,10 +39,10 @@
 
     <script type="text/javascript">
         wx.config(<?php echo $js->config(array('getLocation'), false)?>);
+        var addNewCallOver = 0;//是否开启新的一次点名；1:是 0:否
 //        var Longitude = 0;//经度
 //        var Latitude  = 0;//纬度
 //        var cur_courseId;//当前操作的课程id
-
 
         /**
          * 开启点名
@@ -50,34 +50,106 @@
         function callOver(t){
             var courseId = $(t).attr('id');
             var course = null;//课程信息
-            var addNewCallOver = 0;
-            $.get("getCourse/"+courseId,
+            addNewCallOver = 0;
+            $.get("{{url('teacher')}}/getCourse/"+courseId,
                 function(data){
                     course = data;
-
                     var now = Date.parse(new Date());
                     var lastCallOverTime = Date.parse(course.openCallOverTime);
-                    console.log(new Date(),course.openCallOverTime);
-                    if(now - lastCallOverTime > 270000 && !course.isOpenCall){//如果点名时间距离上一次点名时间大于45分钟就开启新的一次点名
-                        //弹出弹框,先不谈，直接是新增一次点名
-                        addNewCallOver = 1;
-                        console.log("开启新的一次点名！");
+                    if(course.isOpenCall == 0){
+                        console.log(now-lastCallOverTime);
                     }
-                    $.get("changeCallOverStatus/"+courseId+"/"+addNewCallOver,
-                        function(data){
-                            if(data.status == 200){
-                                var isOpenCall = data.isOpenCall?'<p style="color:#c9302c">正在点名中...</p>':'未开启';
-                                var changOpenCallBtnText = data.isOpenCall?'关闭点名':'开启点名'
-                                $(t).parent().parent().find('.isOpenCall').html(isOpenCall);
-                                $(t).html(changOpenCallBtnText);
+                    if(now - lastCallOverTime < 30000 && course.isOpenCall == 0){//距离上次点名小于4分钟，就继续上次点名
+                        console.log("距离上次点名小于5分钟，就继续上次点名");
+                        changeCallover(t,courseId,addNewCallOver);
+                    }
+                    else if(now - lastCallOverTime > 60000 && course.isOpenCall == 0){//如果大于90分钟，就直接开始新的一次点名
+                        console.log("如果大于10分钟，就直接开始新的一次点名");
+                        //弹出弹框,先不谈，直接是新增一次点名,  当次点名时间距离上次点名时间大于90分钟直接开启新的一次点名，  如果大于45分钟并且小于90分钟就提醒要不要开启新的一次点名  如果小于45分钟 就继续上一次点名
+                        addNewCallOver = 1;
+                        changeCallover(t,courseId,addNewCallOver)
+                    }
+                    else if( (now - lastCallOverTime) > 30000 && (now - lastCallOverTime) < 60000 && course.isOpenCall == 0){
+                        console.log("是否开启新的一次点名(大于5，小于10分钟)");
+                        Ewin.confirm({ message: "是否开启新的一次点名？" }).on(function (e) {//弹窗确认
+                            if (!e) {
+                                addNewCallOver = 0;
+                                changeCallover(t,courseId,addNewCallOver);//取消就是继续上一次点名
+                                return;
                             }
-                            else{
-                                console.log(data.errMsg);
-                            }
-                        })
-
+                            addNewCallOver = 1;
+                            changeCallover(t,courseId,addNewCallOver);
+                        });
+                    }
+                    else if(course.isOpenCall == 1){
+                        console.log("关闭点名");
+                        changeCallover(t,courseId,addNewCallOver);
+                    }
                 });
         }
+
+
+        /**
+         * 确认修改课程点名态，
+         */
+        function changeCallover(t,courseId,addNewCallOver){
+            $.get("{{url('teacher')}}/changeCallOverStatus/"+courseId+"/"+addNewCallOver,
+                function(data){
+                    if(data.status == 200){
+                        var isOpenCall = data.isOpenCall?'正在点名中...':'未开启点名';
+                        var changOpenCallBtnText = data.isOpenCall?'关闭点名':'开启点名';
+//                        if(data.isOpenCall){
+//                            $(t).parent().parent().find('.isOpenCall').addClass('red');
+//                        }else{
+//                            $(t).parent().parent().find('.isOpenCall').removeClass('red');
+//                        }
+                        $(t).parent().parent().find('.isOpenCall').toggleClass('red');
+                        $(t).parent().parent().find('.isOpenCall').html(isOpenCall);
+                        $(t).html(changOpenCallBtnText);
+//                        $(t).parent().parent().find('.callOver').html("第"+data.callOver+"次点名");
+
+                    }
+                    else{
+                        console.log(data.errMsg);
+                    }
+                })
+        }
+
+
+//        /**
+//         * 开启点名
+//         */
+//        function callOver(t){
+//            var courseId = $(t).attr('id');
+//            var course = null;//课程信息
+//            var addNewCallOver = 0;
+//            $.get("getCourse/"+courseId,
+//                function(data){
+//                    course = data;
+//
+//                    var now = Date.parse(new Date());
+//                    var lastCallOverTime = Date.parse(course.openCallOverTime);
+//                    console.log(new Date(),course.openCallOverTime);
+//                    if(now - lastCallOverTime > 270000 && !course.isOpenCall){//如果点名时间距离上一次点名时间大于45分钟就开启新的一次点名
+//                        //弹出弹框,先不谈，直接是新增一次点名
+//                        addNewCallOver = 1;
+//                        console.log("开启新的一次点名！");
+//                    }
+//                    $.get("changeCallOverStatus/"+courseId+"/"+addNewCallOver,
+//                        function(data){
+//                            if(data.status == 200){
+//                                var isOpenCall = data.isOpenCall?'<p style="color:#c9302c">正在点名中...</p>':'未开启';
+//                                var changOpenCallBtnText = data.isOpenCall?'关闭点名':'开启点名'
+//                                $(t).parent().parent().find('.isOpenCall').html(isOpenCall);
+//                                $(t).html(changOpenCallBtnText);
+//                            }
+//                            else{
+//                                console.log(data.errMsg);
+//                            }
+//                        })
+//
+//                });
+//        }
 
         function courseLocateInWechat(courseId){
             wx.ready(function() {
@@ -101,4 +173,5 @@
             })
         }
     </script>
+    <script src="{{asset("js/dialog.js")}}"></script>
 @endsection
