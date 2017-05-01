@@ -415,15 +415,25 @@ class TeacherController extends Controller
             $courseId = $request->get('courseId');
             $course = Course::find($courseId);
             $attendRecords = AttendRecord::where('Cid',$courseId)->where('callOver',$course->callOver)->whereIn('status',array(1,3))->get();
-            $cur_ask_record = $attendRecords[array_rand($attendRecords->toArray(),1)];
-            Log::info("提问".$cur_ask_record->Sname);
-            return $cur_ask_record;
+            if($attendRecords){
+                $cur_ask_record = $attendRecords[array_rand($attendRecords->toArray(),1)];
+                Log::info("提问".$cur_ask_record->Sname);
+                return $cur_ask_record;
+            }else{
+                return null;
+            }
+
         }else{
             $cur_ask_record = AttendRecord::find($request->get('recordId'));
-            $cur_ask_record->score+=$request->get('score');
-            $cur_ask_record->status=$request->get('status');
-            $cur_ask_record->save();
-            return "提问成功！";
+            if($cur_ask_record){
+                $cur_ask_record->score+=$request->get('score');
+                $cur_ask_record->status=$request->get('status');
+                $cur_ask_record->save();
+                return "提问成功！";
+            }else{
+                return "没有学生已到！";
+            }
+
         }
     }
 }

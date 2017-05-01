@@ -1,156 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d5d40ba4-5332-467e-81a9-5a6d34e6ff4d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/.gitkeep" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Filters/files/multi.xls" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Filters/files/sample.xls" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Filters/files/sample.xlsx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Readers/files/chinese.xls" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Readers/files/multiple.xls" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Readers/files/test.xls" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Readers/files/test.xlsx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Readers/files/zeros.xls" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/auth/emails/password.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tmp/easywechat.log" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/.travis.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/composer.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/blade.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/blade/load-view.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/blade/styling.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/blade/vars.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/borders.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/changelog.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/changelog/version-1.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/changelog/version-2.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/export.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/export/array.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/export/autofilter.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/export/autosize.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/export/call.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/export/cells.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/export/export.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/export/format.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/export/freeze.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/export/injection.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/export/merge.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/export/rows.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/export/sheet-styling.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/export/sheets.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/export/simple.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/export/sizing.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/export/store.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/formats.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/getting-started.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/getting-started/config.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/getting-started/contributing.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/getting-started/installation.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/getting-started/license.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/getting-started/requirements.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/import.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/import/basics.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/import/batch.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/import/cache.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/import/calculation.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/import/chunk.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/import/config.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/import/convert.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/import/dates.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/import/edit.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/import/extra.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/import/formatting.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/import/injection.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/import/results.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/import/select.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/merge.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/reference-guide.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/reference-guide/borders.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/reference-guide/closures.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/reference-guide/css-styles.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/reference-guide/file-properties.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/reference-guide/formatting.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/docs/reference-guide/sheet-properties.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/phpunit.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/provides.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Classes/Cache.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Classes/FormatIdentifier.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Classes/LaravelExcelWorksheet.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Classes/PHPExcel.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Collections/CellCollection.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Collections/ExcelCollection.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Collections/RowCollection.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Collections/SheetCollection.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Excel.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/ExcelServiceProvider.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Exceptions/LaravelExcelException.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Facades/Excel.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Files/ExcelFile.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Files/ExportHandler.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Files/File.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Files/ImportHandler.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Files/NewExcelFile.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Filters/ChunkReadFilter.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Parsers/CssParser.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Parsers/ExcelParser.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Parsers/ViewParser.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Readers/Batch.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Readers/ConfigReader.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Readers/HtmlReader.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Readers/LaravelExcelReader.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Writers/CellWriter.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/Maatwebsite/Excel/Writers/LaravelExcelWriter.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/src/config/excel.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Collections/CellCollectionTest.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Excel/ExcelTestCase.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Excel/ExcelTester.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Files/CsvExcelFileTest.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Files/ExcelFileTest.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Files/NewExcelFileTest.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Files/classes/CsvTestImport.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Files/classes/TestExport.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Files/classes/TestExportHandler.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Files/classes/TestFile.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Files/classes/TestFileHandler.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Files/classes/TestImport.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Files/classes/TestImportHandler.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Files/classes/TestNewFile.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Files/classes/TestNewFileHandler.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Files/files/test-custom.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Files/files/test.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Filters/ChunkReadFilterTest.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Filters/RegisterFilterTestCase.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Filters/files/sample.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Readers/ChineseXlsReaderTest.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Readers/CsvReaderTest.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Readers/CustomValueBinderTest.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Readers/MultipleSheetsXlsReaderTest.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Readers/ReaderTest.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Readers/XlsReaderTest.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Readers/XlsxReaderTest.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Readers/ZerosHandlingReaderTest.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Readers/files/customBinder.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Readers/files/test.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Readers/traits/ImportTrait.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Readers/traits/SingleImportTestingTrait.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/TestCase.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/TestConfig.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/TestServiceProvider.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Writers/ExcelWriterTest.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/maatwebsite/excel/tests/Writers/exports/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/tijsverkoyen/css-to-inline-styles/LICENSE.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/tijsverkoyen/css-to-inline-styles/composer.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/tijsverkoyen/css-to-inline-styles/src/CssToInlineStyles.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/tijsverkoyen/css-to-inline-styles/src/Exception.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/tijsverkoyen/css-to-inline-styles/src/Selector.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/tijsverkoyen/css-to-inline-styles/src/Specificity.php" />
+    <list default="true" id="d5d40ba4-5332-467e-81a9-5a6d34e6ff4d" name="Default" comment="添加管理员功能-&gt;教师的增删改查1">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/TeacherController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/TeacherController.php" />
     </list>
     <ignored path="laravel.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -170,23 +24,17 @@
     <favorites_list name="laravel" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="excel.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/excel.php">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
+      <file leaf-file-name="TeacherController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TeacherController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="765">
-              <caret line="173" column="72" lean-forward="false" selection-start-line="173" selection-start-column="72" selection-end-line="173" selection-end-column="72" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Font.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vendor/phpoffice/phpexcel/Classes/PHPExcel/Shared/Font.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="589">
-              <caret line="90" column="61" lean-forward="true" selection-start-line="90" selection-start-column="61" selection-end-line="90" selection-end-column="61" />
-              <folding />
+            <state relative-caret-position="649">
+              <caret line="415" column="46" lean-forward="true" selection-start-line="415" selection-start-column="46" selection-end-line="415" selection-end-column="46" />
+              <folding>
+                <marker date="1493632666293" expanded="true" signature="4079:4299" ph="select * fro... students" />
+                <marker date="1493632666293" expanded="true" signature="4149:4188" ph="select Sid f... s_courses" />
+                <marker date="1493632666293" expanded="true" signature="4237:4298" ph="select Sid f... attend_records" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -194,8 +42,8 @@
       <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="270">
+              <caret line="6" column="4" lean-forward="true" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -214,11 +62,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Log</find>
-      <find>callOVer</find>
-      <find>exportCourseExcel</find>
-      <find>code</find>
-      <find>joinCourse</find>
       <find>BtnCancel</find>
       <find>BtnOk</find>
       <find>dialogdHtml</find>
@@ -244,6 +87,11 @@
       <find>callOver</find>
       <find>showCourseS</find>
       <find>cancel</find>
+      <find>login</find>
+      <find>log</find>
+      <find>publin function login</find>
+      <find>public function login</find>
+      <find>ask</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -301,10 +149,10 @@
         <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/resources/views/teacher/courseAttendenceRecord.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/TeacherController.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/teacher.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/teacher/Course.blade.php" />
         <option value="$PROJECT_DIR$/storage/logs/laravel.log" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/TeacherController.php" />
         <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
@@ -345,7 +193,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -370,86 +217,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="huan" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="huan" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="huan" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="phpdocumentor" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="huan" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="maatwebsite" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="excel" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="huan" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="maatwebsite" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="excel" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tests" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -516,96 +283,6 @@
               <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="teacher" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="huan" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layouts" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="huan" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="huan" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="huan" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="huan" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -636,28 +313,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Http" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="laravel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="huan" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Http" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Middleware" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -697,12 +352,39 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="Http" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Controllers" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Student" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="laravel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="huan" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="Acme" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -852,7 +534,9 @@
       <workItem from="1493385583208" duration="6753000" />
       <workItem from="1493424980691" duration="8352000" />
       <workItem from="1493515859781" duration="7371000" />
-      <workItem from="1493600311865" duration="4011000" />
+      <workItem from="1493600311865" duration="5607000" />
+      <workItem from="1493625888354" duration="73000" />
+      <workItem from="1493632483476" duration="255000" />
     </task>
     <task id="LOCAL-00001" summary="改变为非调试模式">
       <created>1490325911677</created>
@@ -1008,18 +692,25 @@
       <option name="project" value="LOCAL" />
       <updated>1493614664971</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="添加管理员功能-&gt;教师的增删改查1">
+      <created>1493614749208</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1493614749208</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="461022000" />
+    <option name="totallyTimeSpent" value="462946000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="92" y="-11" width="2655" height="1846" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24458793" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24458793" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296636" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1034,7 +725,7 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32837597" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1098,96 +789,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Teacher.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/TeachFile.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Student/AuthController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="38" column="53" lean-forward="true" selection-start-line="38" selection-start-column="53" selection-end-line="38" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2017_04_05_034855_create_students_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1215">
-          <caret line="28" column="58" lean-forward="true" selection-start-line="28" selection-start-column="58" selection-end-line="28" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/student/wechat/showMyInfo.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1080">
-          <caret line="48" column="44" lean-forward="false" selection-start-line="48" selection-start-column="39" selection-end-line="48" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/student/wechat/myCourse.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="828">
-          <caret line="23" column="56" lean-forward="true" selection-start-line="23" selection-start-column="56" selection-end-line="23" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/EcmaScript.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="539">
-          <caret line="132" column="0" lean-forward="false" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Acme/GPS.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding>
-            <element signature="e#6#86#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/student/wechat/callOverPage.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/css/dashboard.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="32" column="1" lean-forward="false" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/dashboard.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="674">
-          <caret line="39" column="14" lean-forward="true" selection-start-line="39" selection-start-column="14" selection-end-line="39" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/teacher/CourseInWechat.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="900">
@@ -1309,7 +910,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1343,19 +943,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="675">
           <caret line="15" column="17" lean-forward="true" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/StudentController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="37" />
-          <folding>
-            <element signature="e#1322#1393#0#PHP" expanded="false" />
-            <element signature="e#4114#4522#0#PHP" expanded="false" />
-            <element signature="e#4619#5542#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1371,7 +958,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="805">
           <caret line="65" column="73" lean-forward="true" selection-start-line="65" selection-start-column="73" selection-end-line="65" selection-end-column="73" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1383,26 +969,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TeacherController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="228" column="107" lean-forward="false" selection-start-line="228" selection-start-column="107" selection-end-line="228" selection-end-column="107" />
-          <folding>
-            <marker date="1493521637937" expanded="true" signature="4079:4299" ph="select * fro... students" />
-            <marker date="1493521637937" expanded="true" signature="4149:4188" ph="select Sid f... s_courses" />
-            <marker date="1493521637937" expanded="true" signature="4237:4298" ph="select Sid f... attend_records" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/teacher/courseAttendenceRecord.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="889">
           <caret line="118" column="63" lean-forward="false" selection-start-line="118" selection-start-column="63" selection-end-line="118" selection-end-column="63" />
-          <folding>
-            <element signature="e#2817#4267#0#HTML" expanded="false" />
-            <element signature="e#4282#5224#0#HTML" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1417,7 +987,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-7801">
           <caret line="11" column="1514" lean-forward="false" selection-start-line="11" selection-start-column="1514" selection-end-line="11" selection-end-column="1514" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1425,7 +994,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="630">
           <caret line="23" column="69" lean-forward="true" selection-start-line="23" selection-start-column="69" selection-end-line="23" selection-end-column="69" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1433,7 +1001,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="511">
           <caret line="294" column="69" lean-forward="true" selection-start-line="294" selection-start-column="69" selection-end-line="294" selection-end-column="69" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1465,11 +1032,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/excel.php">
+    <entry file="file://$PROJECT_DIR$/.gitattributes">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="173" column="72" lean-forward="false" selection-start-line="173" selection-start-column="72" selection-end-line="173" selection-end-column="72" />
-          <folding />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1477,22 +1043,135 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="589">
           <caret line="90" column="61" lean-forward="true" selection-start-line="90" selection-start-column="61" selection-end-line="90" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/AuthController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1138">
+          <caret line="68" column="32" lean-forward="false" selection-start-line="68" selection-start-column="26" selection-end-line="68" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/excel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7380">
+          <caret line="164" column="9" lean-forward="false" selection-start-line="164" selection-start-column="9" selection-end-line="164" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitattributes">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/StudentController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="180">
+          <caret line="15" column="18" lean-forward="false" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
+          <folding>
+            <element signature="e#40#69#0#PHP" expanded="true" />
+            <element signature="e#1322#1393#0#PHP" expanded="false" />
+            <element signature="e#4114#4522#0#PHP" expanded="false" />
+            <element signature="e#4619#5542#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Auth/Access/Authorizable.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="514">
+          <caret line="13" column="19" lean-forward="false" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Auth/Passwords/CanResetPassword.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="12" column="5" lean-forward="true" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Auth/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="2" column="35" lean-forward="false" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="6" column="27" lean-forward="false" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Routing/Route.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="514">
+          <caret line="354" column="19" lean-forward="false" selection-start-line="354" selection-start-column="16" selection-end-line="354" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Teacher.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="15" column="27" lean-forward="false" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Contracts/Auth/Authenticatable.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="18" column="20" lean-forward="false" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/symfony/http-foundation/Session/SessionInterface.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="86" column="64" lean-forward="true" selection-start-line="86" selection-start-column="64" selection-end-line="86" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Student/AuthController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="39" column="35" lean-forward="true" selection-start-line="39" selection-start-column="35" selection-end-line="39" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Auth/SessionGuard.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1065">
+          <caret line="474" column="51" lean-forward="true" selection-start-line="474" selection-start-column="51" selection-end-line="474" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TeacherController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="649">
+          <caret line="415" column="46" lean-forward="true" selection-start-line="415" selection-start-column="46" selection-end-line="415" selection-end-column="46" />
+          <folding>
+            <marker date="1493632666293" expanded="true" signature="4079:4299" ph="select * fro... students" />
+            <marker date="1493632666293" expanded="true" signature="4149:4188" ph="select Sid f... s_courses" />
+            <marker date="1493632666293" expanded="true" signature="4237:4298" ph="select Sid f... attend_records" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="720">
+          <caret line="16" column="19" lean-forward="true" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="270">
+          <caret line="6" column="4" lean-forward="true" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
           <folding />
         </state>
       </provider>
