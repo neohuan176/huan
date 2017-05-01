@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d5d40ba4-5332-467e-81a9-5a6d34e6ff4d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/TeacherController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/TeacherController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/teacher/Course.blade.php" afterPath="$PROJECT_DIR$/resources/views/teacher/Course.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/teacher/CourseInWechat.blade.php" afterPath="$PROJECT_DIR$/resources/views/teacher/CourseInWechat.blade.php" />
     </list>
     <ignored path="laravel.iws" />
@@ -29,8 +27,8 @@
       <file leaf-file-name="TeacherController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TeacherController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="410" column="9" lean-forward="true" selection-start-line="410" selection-start-column="9" selection-end-line="410" selection-end-column="9" />
+            <state relative-caret-position="524">
+              <caret line="419" column="41" lean-forward="true" selection-start-line="419" selection-start-column="41" selection-end-line="419" selection-end-column="41" />
               <folding>
                 <marker date="1493633359563" expanded="true" signature="4079:4299" ph="select * fro... students" />
                 <marker date="1493633359563" expanded="true" signature="4149:4188" ph="select Sid f... s_courses" />
@@ -40,23 +38,33 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CourseInWechat.blade.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="410">
+              <caret line="57" column="43" lean-forward="false" selection-start-line="57" selection-start-column="25" selection-end-line="57" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CourseInWechat.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/teacher/CourseInWechat.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="614">
-              <caret line="106" column="0" lean-forward="false" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
+            <state relative-caret-position="945">
+              <caret line="84" column="44" lean-forward="true" selection-start-line="84" selection-start-column="44" selection-end-line="84" selection-end-column="44" />
               <folding>
-                <marker date="1493636005726" expanded="true" signature="6226:6239" ph="..." />
+                <marker date="1493637834601" expanded="true" signature="6218:6231" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Course.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Course.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/teacher/Course.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="365">
-              <caret line="325" column="87" lean-forward="true" selection-start-line="325" selection-start-column="87" selection-end-line="325" selection-end-column="87" />
+            <state relative-caret-position="-2941">
+              <caret line="338" column="9" lean-forward="true" selection-start-line="338" selection-start-column="9" selection-end-line="338" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -199,7 +207,7 @@
     <option name="x" value="92" />
     <option name="y" value="-11" />
     <option name="width" value="2655" />
-    <option name="height" value="1838" />
+    <option name="height" value="1846" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -582,7 +590,7 @@
       <workItem from="1493600311865" duration="5607000" />
       <workItem from="1493625888354" duration="73000" />
       <workItem from="1493632483476" duration="1637000" />
-      <workItem from="1493635346765" duration="663000" />
+      <workItem from="1493635346765" duration="2363000" />
     </task>
     <task id="LOCAL-00001" summary="改变为非调试模式">
       <created>1490325911677</created>
@@ -752,14 +760,21 @@
       <option name="project" value="LOCAL" />
       <updated>1493632749016</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="微信开启点名修改。网页开启点名修改url。">
+      <created>1493636050155</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1493636050155</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="464991000" />
+    <option name="totallyTimeSpent" value="466691000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="92" y="-11" width="2655" height="1838" extended-state="0" />
+    <frame x="92" y="-11" width="2655" height="1846" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -833,7 +848,8 @@
     <MESSAGE value="修改课程表UI,修改开启考勤bug" />
     <MESSAGE value="添加管理员功能-&gt;教师的增删改查" />
     <MESSAGE value="添加管理员功能-&gt;教师的增删改查1" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加管理员功能-&gt;教师的增删改查1" />
+    <MESSAGE value="微信开启点名修改。网页开启点名修改url。" />
+    <option name="LAST_COMMIT_MESSAGE" value="微信开启点名修改。网页开启点名修改url。" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -946,6 +962,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="945">
           <caret line="26" column="30" lean-forward="true" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
+          <folding>
+            <element signature="e#108#129#0#PHP" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -975,6 +994,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="930">
           <caret line="79" column="29" lean-forward="true" selection-start-line="79" selection-start-column="29" selection-end-line="79" selection-end-column="29" />
+          <folding>
+            <element signature="e#40#68#0#PHP" expanded="false" />
+            <element signature="e#1797#1967#0#PHP" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -989,6 +1012,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1728">
           <caret line="93" column="0" lean-forward="true" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -996,13 +1020,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="805">
           <caret line="65" column="73" lean-forward="true" selection-start-line="65" selection-start-column="73" selection-end-line="65" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="70" column="14" lean-forward="false" selection-start-line="70" selection-start-column="14" selection-end-line="70" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -1038,6 +1055,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="735">
           <caret line="47" column="49" lean-forward="true" selection-start-line="47" selection-start-column="49" selection-end-line="47" selection-end-column="49" />
+          <folding>
+            <element signature="e#404#772#0#PHP" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1052,6 +1072,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="52">
           <caret line="182" column="68" lean-forward="false" selection-start-line="182" selection-start-column="68" selection-end-line="182" selection-end-column="68" />
+          <folding>
+            <element signature="e#2579#2619#0#PHP" expanded="false" />
+            <element signature="e#9580#10315#0#PHP" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1087,6 +1111,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="15" column="18" lean-forward="false" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
+          <folding>
+            <element signature="e#40#69#0#PHP" expanded="false" />
+            <element signature="e#1322#1393#0#PHP" expanded="false" />
+            <element signature="e#4114#4522#0#PHP" expanded="false" />
+            <element signature="e#4619#5542#0#PHP" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1152,6 +1182,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="406">
           <caret line="39" column="35" lean-forward="true" selection-start-line="39" selection-start-column="35" selection-end-line="39" selection-end-column="35" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1177,10 +1208,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/teacher/Course.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2941">
+          <caret line="338" column="9" lean-forward="true" selection-start-line="338" selection-start-column="9" selection-end-line="338" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TeacherController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="410" column="9" lean-forward="true" selection-start-line="410" selection-start-column="9" selection-end-line="410" selection-end-column="9" />
+        <state relative-caret-position="524">
+          <caret line="419" column="41" lean-forward="true" selection-start-line="419" selection-start-column="41" selection-end-line="419" selection-end-column="41" />
           <folding>
             <marker date="1493633359563" expanded="true" signature="4079:4299" ph="select * fro... students" />
             <marker date="1493633359563" expanded="true" signature="4149:4188" ph="select Sid f... s_courses" />
@@ -1189,21 +1228,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/teacher/CourseInWechat.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="614">
-          <caret line="106" column="0" lean-forward="false" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
-          <folding>
-            <marker date="1493636005726" expanded="true" signature="6226:6239" ph="..." />
-          </folding>
+        <state relative-caret-position="410">
+          <caret line="57" column="43" lean-forward="false" selection-start-line="57" selection-start-column="25" selection-end-line="57" selection-end-column="43" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/teacher/Course.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/teacher/CourseInWechat.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="325" column="87" lean-forward="true" selection-start-line="325" selection-start-column="87" selection-end-line="325" selection-end-column="87" />
-          <folding />
+        <state relative-caret-position="945">
+          <caret line="84" column="44" lean-forward="true" selection-start-line="84" selection-start-column="44" selection-end-line="84" selection-end-column="44" />
+          <folding>
+            <marker date="1493637834601" expanded="true" signature="6218:6231" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
