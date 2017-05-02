@@ -364,7 +364,7 @@
 
 
         /**
-         * 在微信端点名
+         * 在微信端定位
          * @param courseId
          */
         function courseLocateInWechat(courseId){
