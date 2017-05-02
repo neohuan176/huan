@@ -139,7 +139,7 @@
                                 请选择您要上传的课件：
                                 <input type="file" name="myFile"/><br/>
                                 <input type="hidden" id="course-id" name="courseId" /><br/>
-                                <input type="submit" class="btn btn-default"/>
+                                <button class="btn btn-primary" type="submit">确认上传</button>
                             </form>
                         </div>
                         <div class="modal-footer">
@@ -420,13 +420,6 @@
             })
         }
 
-        function comfirmUpload(){
-            $.post('{{url("")}}'+'/teacher/uploadTeachFile/'+cur_courseId,{'myFile':$("#myFile").val()},
-                function (data) {
-                    console.log(data);
-                }
-            )
-        }
     </script>
     <script src="{{asset("js/jquery.qrcode.min.js")}}"></script>
     <script src="{{asset("js/dialog.js")}}"></script>
