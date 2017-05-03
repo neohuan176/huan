@@ -369,14 +369,4 @@ class StudentServices
         return Student::where('openid',$openid)->first();
     }
 
-
-
-
-
-
-//    ---------------------------------------Tools-------------------------------------
-
-
-
-
 }

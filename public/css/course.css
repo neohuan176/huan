@@ -2,7 +2,10 @@
     /*display: flex;*/
     /*justify-content: flex-start;*/
 /*}*/
-
+.wechat-full-width{
+    width:100%!important;
+    margin:10px 0px!important;
+}
 .course-list-item{
     float:left;
     box-sizing: border-box;

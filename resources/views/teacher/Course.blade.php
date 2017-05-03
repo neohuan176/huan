@@ -1,5 +1,9 @@
 @extends('layouts.teacher')
 @section('title')课程管理@endsection
+@section('css')
+    <link href="{{ asset('css/course.css') }}" rel="stylesheet">
+@endsection
+
 @section('content')
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addCourse" data-whatever="@mdo">添加课程</button>
 <div class="clear"></div>

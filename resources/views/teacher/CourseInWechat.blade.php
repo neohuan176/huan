@@ -1,48 +1,77 @@
 @extends('layouts.teacher')
+@section('title')我的课程（wechat）@endsection
+@section('css')
+    <link href="{{ asset('css/course.css') }}" rel="stylesheet">
+@endsection
 @section('content')
-
-
     <div class="row">
-        <div class="col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 main">
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>名称</th>
-                    <th>编号</th>
-                    <th>地点</th>
-                    <th>时间</th>
-                    <th>点名</th>
-                    <th>操作</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($courses as $course)
-                <tr>
-                    <td>{{$course->Cname}}</td>
-                    <td>{{$course->Cno}}</td>
-                    <td>{{$course->Address}}</td>
-                    {{--<td>{{$course->StartTime}} - {{$course->EndTime}}</td>--}}
-                    <td>{{$course->weekday}}</td>
-                    <td class="isOpenCall @if($course->isOpenCall == 1) red @endif">@if($course->isOpenCall == 1)正在点名中...@else 未开启点名 @endif</td>
-                    <td>
-                        <button type="button" class="btn btn-primary" onclick="callOver(this)" id="{{$course->id}}">
-                            @if($course->isOpenCall == 1)关闭點名@else 开启点名 @endif
-                        </button>
-                        <button type="button" class="btn btn-danger" onclick="courseLocateInWechat({{$course->id}})">微信定位</button>
-                    </td>
-                </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
+    <div class="course">
+        @foreach($courses as $course)
+            <div class="course-list-item wechat-full-width animated flipInX">
+                <div class="left">
+
+                    <h2 class="course-title">{{$course->Cname}}</h2>
+
+                    <p style="font-size: 14px;color:#666">{{$course->weekday}}<span class="float-right">{{$course->Address}}</span></p>
+
+                    <p style="color:#999">
+                        <span class="isOpenCall @if($course->isOpenCall == 1) red @endif"> @if($course->isOpenCall == 1)正在点名中...@else未开启点名@endif</span>
+                        <span class="float-right callOver">第{{$course->callOver}}次点名</span>
+                    </p>
+
+                </div>
+                <div class="right">
+                    <button type="button" class="btn btn-danger" onclick="callOver(this)" id="{{$course->id}}">
+                        @if($course->isOpenCall == 1)关闭點名@else 开启点名 @endif
+                    </button>
+                    <button type="button" class="btn btn-primary" onclick="courseLocateInWechat({{$course->id}})">微信定位</button>
+                </div>
+            </div>
+        @endforeach
     </div>
+    </div>
+
+
+
+
+    {{--<div class="row">--}}
+        {{--<div class="col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 main">--}}
+            {{--<table class="table table-striped">--}}
+                {{--<thead>--}}
+                {{--<tr>--}}
+                    {{--<th>名称</th>--}}
+                    {{--<th>编号</th>--}}
+                    {{--<th>地点</th>--}}
+                    {{--<th>时间</th>--}}
+                    {{--<th>点名</th>--}}
+                    {{--<th>操作</th>--}}
+                {{--</tr>--}}
+                {{--</thead>--}}
+                {{--<tbody>--}}
+                {{--@foreach($courses as $course)--}}
+                {{--<tr>--}}
+                    {{--<td>{{$course->Cname}}</td>--}}
+                    {{--<td>{{$course->Cno}}</td>--}}
+                    {{--<td>{{$course->Address}}</td>--}}
+                    {{--<td>{{$course->StartTime}} - {{$course->EndTime}}</td>--}}
+                    {{--<td>{{$course->weekday}}</td>--}}
+                    {{--<td class="isOpenCall @if($course->isOpenCall == 1) red @endif">@if($course->isOpenCall == 1)正在点名中...@else 未开启点名 @endif</td>--}}
+                    {{--<td>--}}
+                        {{--<button type="button" class="btn btn-primary" onclick="callOver(this)" id="{{$course->id}}">--}}
+                            {{--@if($course->isOpenCall == 1)关闭點名@else 开启点名 @endif--}}
+                        {{--</button>--}}
+                        {{--<button type="button" class="btn btn-danger" onclick="courseLocateInWechat({{$course->id}})">微信定位</button>--}}
+                    {{--</td>--}}
+                {{--</tr>--}}
+                    {{--@endforeach--}}
+                {{--</tbody>--}}
+            {{--</table>--}}
+        {{--</div>--}}
+    {{--</div>--}}
 
     <script type="text/javascript">
         wx.config(<?php echo $js->config(array('getLocation'), false)?>);
         var addNewCallOver = 0;//是否开启新的一次点名；1:是 0:否
-//        var Longitude = 0;//经度
-//        var Latitude  = 0;//纬度
-//        var cur_courseId;//当前操作的课程id
 
         /**
          * 开启点名
@@ -99,16 +128,10 @@
                     if(data.status == 200){
                         var isOpenCall = data.isOpenCall?'正在点名中...':'未开启点名';
                         var changOpenCallBtnText = data.isOpenCall?'关闭点名':'开启点名';
-//                        if(data.isOpenCall){
-//                            $(t).parent().parent().find('.isOpenCall').addClass('red');
-//                        }else{
-//                            $(t).parent().parent().find('.isOpenCall').removeClass('red');
-//                        }
                         $(t).parent().parent().find('.isOpenCall').toggleClass('red');
                         $(t).parent().parent().find('.isOpenCall').html(isOpenCall);
                         $(t).html(changOpenCallBtnText);
-//                        $(t).parent().parent().find('.callOver').html("第"+data.callOver+"次点名");
-
+                        $(t).parent().parent().find('.callOver').html("第"+data.callOver+"次点名");
                     }
                     else{
                         console.log(data.errMsg);
