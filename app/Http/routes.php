@@ -110,4 +110,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/admin/teacher/showTeacherByType', 'HomeController@showTeacherByType');
     Route::get('/admin/teacher/delTeacherById/{teacherId}', 'HomeController@delTeacherById');
 
+    Route::post('/admin/course/alterCourse/{courseId}', 'HomeController@alterCourseById');
+    Route::get('/admin/course/showCourseByType', 'HomeController@showCourseByType');
+    Route::get('/admin/course/delCourseById/{courseId}', 'HomeController@delCourseById');
+
 });

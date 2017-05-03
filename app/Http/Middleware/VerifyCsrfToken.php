@@ -17,6 +17,7 @@ class VerifyCsrfToken extends BaseVerifier
         '/teacher/*',
         '/student/*',
         '/admin/teacher/*',
+        '/admin/course/*',
         '/oauth_callback'
     ];
 }

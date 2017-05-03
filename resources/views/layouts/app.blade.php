@@ -54,6 +54,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/home') }}">管理员主页</a></li>
                     <li><a href="{{ url('/admin/teacher/showTeacherByType') }}">教师管理</a></li>
+                    <li><a href="{{ url('/admin/course/showCourseByType') }}">课程管理</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
