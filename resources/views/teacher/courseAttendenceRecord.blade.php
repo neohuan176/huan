@@ -15,7 +15,7 @@
             <div>
                 <h3>基本信息</h3>
                 <div>
-                    <p id="attendInfo">{{'应到:'.$courseInfo['studentTotal'].'======已到:'.$courseInfo['attend'].'======旷课:'.$courseInfo['unCall'].'======迟到:'.$courseInfo['late'].'======请假:'.$courseInfo['leave'].'======出勤率:'.($courseInfo['attend_rate']*100).'%'}}</p>
+                    <p id="attendInfo">{{'应到:'.$courseInfo['studentTotal'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;已到:'.$courseInfo['attend'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;旷课:'.$courseInfo['unCall'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;迟到:'.$courseInfo['late'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请假:'.$courseInfo['leave'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;出勤率:'.($courseInfo['attend_rate']*100).'%'}}</p>
                     <h4>第{{$course->callOver}}次考勤</h4>
                 </div>
             </div>
@@ -229,7 +229,7 @@
                 function(data){
                     $.post("{{url('/teacher/updateAttendInfo')}}",{courseId:courseId},
                         function (data) {
-                            $("#attendInfo").html('应到:'+data.studentTotal+'======已到:'+data.attend+'======旷课:'+data.unCall+'======迟到:'+data.late+'======请假:'+data.leave+'======出勤率:'+data.attend_rate*100+'%');
+                            $("#attendInfo").html('应到:'+data.studentTotal+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;已到:'+data.attend+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;旷课:'+data.unCall+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;迟到:'+data.late+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请假:'+data.leave+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;出勤率:'+data.attend_rate*100+'%');
                         }
                     )
                     console.log(data);

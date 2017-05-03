@@ -116,8 +116,6 @@
                                     <input type="text" class="form-control">
                                     <span class="input-group-addon"><span class="glyphicon glyphicon-map-marker"></span></span>
                                 </div>
-                                {{--<button id="" type="button" class="btn btn-default" onclick="">确认更新地点</button>--}}
-                                {{--<p id="id_data_display"></p>--}}
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -347,8 +345,8 @@
             $("#code").html("");
             $("#code").qrcode({
                 render: "table", //table方式 
-                width: 400, //宽度 
-                height:400, //高度 
+                width: 570, //宽度 
+                height:570, //高度 
                 text: "http://zy595312011.vicp.io/huan/public/student/joinCourse/"+courseId //任意内容 
             });
         }
