@@ -55,6 +55,7 @@ class StudentServices
                 $student->latitude = $gcjLocation['lat'];
                 $student->location_update = date('Y-m-d H:i:s',time()+8*3600);
                 $student->save();
+                Log::info("更新地理位置成功");
                 return true;
             }
         }
@@ -222,9 +223,6 @@ class StudentServices
         return $res_Str;
     }
 
-    public function callOverInPage($openid){
-
-    }
 
     /**
      * @param $openid
@@ -288,6 +286,7 @@ class StudentServices
             $student->latitude = $latitude;
             $student->location_update = date('Y-m-d H:i:s',time()+8*3600);
             $student->save();
+            Log::info("更新地理位置成功");
             return true;
         }
         else{

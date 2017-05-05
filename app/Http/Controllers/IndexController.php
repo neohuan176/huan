@@ -34,7 +34,6 @@ class IndexController extends Controller
         $app = new Application($this->options);
         $server = $app->server;
         $server->setMessageHandler(function ($message) {
-            Log::info("test");
             // $message->FromUserName // 用户的 openid
             // $message->MsgType // 消息类型：event, text....
             switch ($message->MsgType) {
