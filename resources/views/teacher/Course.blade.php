@@ -5,6 +5,11 @@
 @endsection
 
 @section('content')
+    <div class="cover" onclick="closeQrCallOVerCode()">
+        <div class="code-container">
+        </div>
+    </div>
+
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addCourse" data-whatever="@mdo">添加课程</button>
 <div class="clear"></div>
 <div class="course">
@@ -14,6 +19,7 @@
 
             <h2 class="course-title"><a href="{{url('/teacher/showCurCourse/'.$course->id)}}">{{$course->Cname}}</a>
                 <span class="btn-sm btn-success" style="cursor:pointer;"  onclick="location.href='{{url('/teacher/toUpdateCourse/'.$course->id)}}'">修改</span>
+                <span class="btn-sm btn-warning" style="cursor:pointer;" onclick="showQrCode({{$course->id}})">二维码</span>
                 <button type="button" class="btn btn-danger" onclick="callOver(this)" id="{{$course->id}}">
                     @if($course->isOpenCall == 1)关闭點名@else 开启点名 @endif
                 </button>
@@ -421,6 +427,51 @@
                 location.reload();
             })
         }
+
+
+        var int;
+        /**
+         * 显示扫码签到二维码
+         * @param courseId
+         */
+        function showQrCode(courseId) {
+            //判断是否开启了点名
+            var test = document.getElementById(courseId).innerHTML;
+            console.log(test);
+            if(test.indexOf("开启点名")>=0){
+                alert("请先开启点名！");
+            }else{
+                $(".cover").show();
+
+                $(".code-container").html("");
+                $(".code-container").qrcode({
+                    render: "table", //table方式 
+                    width: 600, //宽度 
+                    height:600, //高度 
+                    text: "http://zy595312011.vicp.io/huan/public/student/QrCallOver/"+courseId+"/"+ Date.parse(new Date())/1000 //返回的是秒，默认是返回毫秒，并且把毫秒置零，/100转为秒，方便与php的time()比较
+                });
+
+                int = setInterval(function(){
+                    console.log("interval");
+                    $(".code-container").html("");
+                    $(".code-container").qrcode({
+                        render: "table", //table方式 
+                        width: 600, //宽度 
+                        height:600, //高度 
+                        text: "http://zy595312011.vicp.io/huan/public/student/QrCallOver/"+courseId+"/"+ Date.parse(new Date())/1000 //返回的是秒，默认是返回毫秒，并且把毫秒置零，/100转为秒，方便与php的time()比较
+                });
+                },5000);
+            }
+        }
+
+        /**
+         * 关闭扫码签到二维码
+         */
+        function closeQrCallOVerCode() {
+            window.clearInterval(int);
+           $(".cover").hide();
+        }
+
 
     </script>
     <script src="{{asset("js/jquery.qrcode.min.js")}}"></script>

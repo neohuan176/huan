@@ -368,4 +368,57 @@ class StudentServices
         return Student::where('openid',$openid)->first();
     }
 
+
+    /**
+     * @param $courseId
+     * @param $timestamp
+     * @param $openid
+     * @return string
+     * 扫码签到
+     */
+    public function QrCallOver($courseId,$timestamp,$openid){
+        $student = Student::where('openid',$openid)->first();
+        $course = Course::find($courseId);
+        $res_Str = "";
+        $timeout = (time()) - $timestamp;//???好像有点问题，
+        Log::info($timeout);
+
+        //判断学生有没加入该课程
+        if(!$this->isAlreadyJoinCourse($openid,$courseId)){
+            //让学生加入课程
+            $this->joinCourse($courseId,$openid);
+            return $this->QrCallOver($courseId,$timestamp,$openid);
+        }else{
+        if($timeout<10){//如果当前服务器时间比二维码时间大5S就提示二维码过期
+        $attendRecord = AttendRecord::where('Sid','=',$student->id)->where('callOver','=',$course->callOver)->where('Cid','=',$course->id)->first();//获取判断是否有该次考勤记录
+        if($attendRecord && $attendRecord->status==1){//考勤状态为已到，已经存在该学生的考勤记录
+            $res_Str .=  $course->Cname."\n你已经考勤过了"."\n\n";
+        } elseif($attendRecord && $attendRecord->status!=1){
+            $res_Str .=  $course->Cname."\n更新考勤状态成功"."\n\n";
+        }else{//否则就添加考勤记录
+            $attend_record = new AttendRecord();
+            $attend_record->status = 1;
+            $attend_record->Sno = $student->stuNo;
+            $attend_record->callOver = $course->callOver;
+            $attend_record->attendDate = date('Y-m-d H:i:s',time()+8*3600);
+            $attend_record->Cid = $course->id;
+            $attend_record->Cname = $course->Cname;
+            $attend_record->Sid = $student->id;
+            $attend_record->Sname = $student->name;
+            if($attend_record->save()){
+                $res_Str .= $attend_record->Cname."\n第".$attend_record->callOver."次考勤成功"."\n\n";
+            }
+            else{
+                $res_Str .= $course->Cname."\n考勤失败(请咨询老师)！"."\n\n";
+            }
+        }
+        }else{
+            $res_Str .="二维码已经过期，请重新扫码！";
+        }
+        return $res_Str;
+        }
+    }
+
+
+
 }

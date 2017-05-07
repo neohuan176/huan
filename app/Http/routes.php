@@ -89,6 +89,7 @@ Route::group(['middleware' => ['web','wechat']], function () {
     Route::get('/student/showStudentCourse', 'StudentController@showStudentCourse');
     Route::get('/student/myAttendRecord', 'StudentController@showMyAttendRecord');
     Route::any('/student/showMyInfo', 'StudentController@showMyInfo');
+    Route::any('/student/QrCallOver/{courseId}/{timestamp}', 'StudentController@QrCallOver');
 });
 
 //学生非微信路由

@@ -178,4 +178,16 @@ class StudentController extends Controller
             return redirect()->back();
         }
     }
+
+    /**
+     * @param Request $request
+     * @return mixed
+     * 扫码签到
+     */
+    public function QrCallOver(Request $request){
+        $courseId = $request->route('courseId');
+        $timestamp = $request->route('timestamp');
+        $res = $this->studentService->QrCallOver($courseId,$timestamp,$this->openid);
+        return $res;
+    }
 }
