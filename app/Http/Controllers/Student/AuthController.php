@@ -38,6 +38,7 @@ class AuthController extends Controller
             'email' => 'required|email|max:255|unique:students',
             'password' => 'required|confirmed|min:6',
             'school' => 'required',
+            'stuNo' => 'required|unique:students',
         ]);
 
     }
