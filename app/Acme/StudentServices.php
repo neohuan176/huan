@@ -174,17 +174,17 @@ class StudentServices
 //                Log::info(strtotime($course->openCallOverTime) - strtotime($student->location_update));//打开考勤的时间和学生更新地理位置的时间
                 $attendRecord = AttendRecord::where('Sid','=',$student->id)->where('callOver','=',$course->callOver)->where('Cid','=',$course->id)->first();//获取判断是否有该次考勤记录
                 if($attendRecord && $attendRecord->status==1){//考勤状态为已到，已经存在该学生的考勤记录
-                    $res_Str .=  $course->Cname."\n你已经考勤过了"."\n\n";
+                    $res_Str .=  $course->Cname."\n你已经签到过了"."\n\n";
                 }
                 elseif($attendRecord && $attendRecord->status!=1){//考勤状态为其他,就更新考勤状态为已到；已经存在该学生的考勤记录
                     if( strtotime($course->openCallOverTime) - strtotime($student->location_update) >= 300 ){//判断是否在考勤时间内,学生先更新地理位置信息  然后教师开启点名  教师开启考勤时间>学生更新地理位置时间 并且比学生大5分钟（php时间戳用秒做单位，js用毫秒）才提示更新地理位置信息
-                        $res_Str .=  $course->Cname."\n请更新你的位置信息。（重新进入公众号）"."\n\n";
+                        $res_Str .=  $course->Cname."\n请更新你的位置信息。（重新进入公众号，并等待3秒，或者直接网页签到）"."\n\n";
                     }
                     else{
                         if($this->isInRange($student,$course) <= 100){//判断是否在考勤范围内（80米范围内有效）,如果在，就添加考勤记录
                             $attendRecord->status = 1;
                             $attendRecord->save();
-                            $res_Str .=  $course->Cname."\n更新考勤状态成功"."\n\n";
+                            $res_Str .=  $course->Cname."\n更新签到状态成功（已到）"."\n\n";
                         }else{
                             $res_Str .=  $course->Cname."\n你不在考勤范围内，请尽快赶到课室！（其他情况请问老师）"."\n"."相差".$this->isInRange($student,$course)."米\n\n";
                         }
@@ -192,7 +192,7 @@ class StudentServices
                 }
                 else{//否则还没考勤过的就添加考勤记录
                     if( strtotime($course->openCallOverTime) - strtotime($student->location_update) >= 300 ){//判断是否在考勤时间内,学生先更新地理位置信息  然后教师开启点名  教师>学生 并且比学生大5分钟才提示更新地理位置信息
-                        $res_Str .=  $course->Cname."\n请更新你的位置信息。（重新进入公众号,并等待五秒。或者直接进入网页考勤）"."\n\n";
+                        $res_Str .=  $course->Cname."\n请更新你的位置信息。（重新进入公众号,并等待3秒。或者直接网页签到）"."\n\n";
                     }
                     else{
                         if($this->isInRange($student,$course) <= 100){//判断是否在考勤范围内（80米范围内有效）,如果在，就添加考勤记录
@@ -206,10 +206,10 @@ class StudentServices
                             $attend_record->Sid = $student->id;
                             $attend_record->Sname = $student->name;
                             if($attend_record->save()){
-                                $res_Str .= $attend_record->Cname."\n第".$attend_record->callOver."次考勤成功"."\n\n";
+                                $res_Str .= $attend_record->Cname."\n第".$attend_record->callOver."次签到成功"."\n\n";
                             }
                             else{
-                                $res_Str .= $course->Cname."\n考勤失败(请咨询老师)！"."\n\n";
+                                $res_Str .= $course->Cname."\n签到失败(请咨询老师)！"."\n\n";
                             }
                         }else{
                             $res_Str .=  $course->Cname."\n你不在考勤范围内，请确认允许公众号获取地理位置!->"."\n"."相差".$this->isInRange($student,$course)."米\n\n";
@@ -389,12 +389,12 @@ class StudentServices
             $this->joinCourse($courseId,$openid);
             return $this->QrCallOver($courseId,$timestamp,$openid);
         }else{
-        if($timeout<10){//如果当前服务器时间比二维码时间大5S就提示二维码过期
+        if($timeout<10){//如果当前服务器时间比二维码时间大10S就提示二维码过期
         $attendRecord = AttendRecord::where('Sid','=',$student->id)->where('callOver','=',$course->callOver)->where('Cid','=',$course->id)->first();//获取判断是否有该次考勤记录
         if($attendRecord && $attendRecord->status==1){//考勤状态为已到，已经存在该学生的考勤记录
-            $res_Str .=  $course->Cname."\n你已经考勤过了"."\n\n";
+            $res_Str .=  $course->Cname."\n你已经签到过了"."\n\n";
         } elseif($attendRecord && $attendRecord->status!=1){
-            $res_Str .=  $course->Cname."\n更新考勤状态成功"."\n\n";
+            $res_Str .=  $course->Cname."\n签到成功"."\n\n";
         }else{//否则就添加考勤记录
             $attend_record = new AttendRecord();
             $attend_record->status = 1;
@@ -406,10 +406,10 @@ class StudentServices
             $attend_record->Sid = $student->id;
             $attend_record->Sname = $student->name;
             if($attend_record->save()){
-                $res_Str .= $attend_record->Cname."\n第".$attend_record->callOver."次考勤成功"."\n\n";
+                $res_Str .= $attend_record->Cname."\n第".$attend_record->callOver."次签到成功"."\n\n";
             }
             else{
-                $res_Str .= $course->Cname."\n考勤失败(请咨询老师)！"."\n\n";
+                $res_Str .= $course->Cname."\n签到失败(请咨询老师)！"."\n\n";
             }
         }
         }else{

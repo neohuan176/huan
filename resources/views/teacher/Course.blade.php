@@ -446,8 +446,8 @@
                 $(".code-container").html("");
                 $(".code-container").qrcode({
                     render: "table", //table方式 
-                    width: 600, //宽度 
-                    height:600, //高度 
+                    width: 800, //宽度 
+                    height:800, //高度 
                     text: "http://zy595312011.vicp.io/huan/public/student/QrCallOver/"+courseId+"/"+ Date.parse(new Date())/1000 //返回的是秒，默认是返回毫秒，并且把毫秒置零，/100转为秒，方便与php的time()比较
                 });
 
@@ -456,8 +456,8 @@
                     $(".code-container").html("");
                     $(".code-container").qrcode({
                         render: "table", //table方式 
-                        width: 600, //宽度 
-                        height:600, //高度 
+                        width: 800, //宽度 
+                        height:800, //高度 
                         text: "http://zy595312011.vicp.io/huan/public/student/QrCallOver/"+courseId+"/"+ Date.parse(new Date())/1000 //返回的是秒，默认是返回毫秒，并且把毫秒置零，/100转为秒，方便与php的time()比较
                 });
                 },5000);
