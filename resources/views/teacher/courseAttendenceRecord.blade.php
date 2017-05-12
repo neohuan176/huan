@@ -78,7 +78,7 @@
 
             <div class="modal fade" id="joinCourse" tabindex="-1" role="dialog" aria-labelledby="joinCourse">
                 <div class="modal-dialog" role="document">
-                    <div class="modal-content">
+                    <div class="modal-content" style="width:840px">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                             <h4 class="modal-title" id="exampleModalLabel">扫码组班</h4>
@@ -204,8 +204,8 @@
             $("#code").html("");
             $("#code").qrcode({
                 render: "table", //table方式 
-                width: 400, //宽度 
-                height:400, //高度 
+                width: 800, //宽度 
+                height:800, //高度 
                 text: "http://zy595312011.vicp.io/huan/public/student/joinCourse/"+courseId //任意内容 
             });
         }
