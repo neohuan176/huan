@@ -5,7 +5,7 @@
     <div class="row">
         <div class="course">
             @foreach($courses as $course)
-                <div class="course-list-item wechat-full-width animated flipInX">
+                <div class="course-list-item animated flipInX"  style="width: 90%;margin: 8px 5%;">
                     <div class="left">
 
                         <h2 class="course-title">{{$course->Cname}}</h2>
