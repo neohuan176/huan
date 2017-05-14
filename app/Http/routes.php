@@ -49,26 +49,26 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('teacher/register', 'Teacher\AuthController@postRegister');
 
 
-    Route::get('/teacher', 'TeacherController@index');
-    Route::get('teacher/course', 'TeaCherController@showCourse');
-    Route::get('/teacher/changeCallOverStatus/{courseId}/{addNewCallOver}', 'TeaCherController@changeCallOverStatus');
-    Route::get('/teacher/getCourse/{courseId}', 'TeaCherController@getCourse');
-    Route::post('/teacher/updateCoursePosition/{courseId}', 'TeaCherController@updateCoursePosition');
-    Route::get('/teacher/exportCourseExcel/{courseId}', 'TeaCherController@exportCourseExcel');
-    Route::get('/teacher/showCourseInWechat', 'TeaCherController@showCourseInWechat');
-    Route::get('/teacher/deleteCourse/{courseId}', 'TeaCherController@deleteCourse');
-    Route::get('/teacher/showCurCourse/{courseId}', 'TeaCherController@showCurCourse');
-    Route::get('/teacher/changeRecordStatus/{recordId}/{status}', 'TeaCherController@changeRecordStatus');
-    Route::post('/teacher/addScore', 'TeaCherController@addScore');
-    Route::get('/teacher/myCourse', 'TeaCherController@showMyCourse');
-    Route::get('/teacher/showCourseStudents/{courseId}', 'TeaCherController@showCourseStudents');
-    Route::post('/teacher/updateAttendInfo', 'TeaCherController@updateAttendInfo');
-    Route::get('/teacher/changeEndCourse/{courseId}', 'TeaCherController@changeEndCourse');
-    Route::any('/teacher/toUpdateCourse/{courseId}', 'TeaCherController@toUpdateCourse');
-    Route::post('/teacher/uploadTeachFile', 'TeaCherController@uploadTeachFile');
-    Route::get('/teacher/showCourseTeachFile/{courseId}', 'TeaCherController@showCourseTeachFile');
-    Route::get('/teacher/downloadTeachFile/{fileId}', 'TeaCherController@downloadTeachFile');
-    Route::any('/teacher/ask', 'TeaCherController@ask');
+    Route::get('/teacher', 'TeacherController@index');//教师主页
+    Route::get('teacher/course', 'TeaCherController@showCourse');//课程表
+    Route::get('/teacher/changeCallOverStatus/{courseId}/{addNewCallOver}', 'TeaCherController@changeCallOverStatus');//改变开启点名状态
+    Route::get('/teacher/getCourse/{courseId}', 'TeaCherController@getCourse');//获取单个课程信息
+    Route::post('/teacher/updateCoursePosition/{courseId}', 'TeaCherController@updateCoursePosition');//更新上课地理位置
+    Route::get('/teacher/exportCourseExcel/{courseId}', 'TeaCherController@exportCourseExcel');//导出excel考勤表
+    Route::get('/teacher/showCourseInWechat', 'TeaCherController@showCourseInWechat');//在微信显示教师课程表
+    Route::get('/teacher/deleteCourse/{courseId}', 'TeaCherController@deleteCourse');//删除课程
+    Route::get('/teacher/showCurCourse/{courseId}', 'TeaCherController@showCurCourse');//显示当前考勤总信息
+    Route::get('/teacher/changeRecordStatus/{recordId}/{status}', 'TeaCherController@changeRecordStatus');//改变单个学生考勤状态
+    Route::post('/teacher/addScore', 'TeaCherController@addScore');//加分
+    Route::get('/teacher/myCourse', 'TeaCherController@showMyCourse');//教师的课程，可以删除，开课，查看班级学生操作
+    Route::get('/teacher/showCourseStudents/{courseId}', 'TeaCherController@showCourseStudents');//显示课程所有学生
+    Route::post('/teacher/updateAttendInfo', 'TeaCherController@updateAttendInfo');//更新教师修改学生考勤状态后的信息
+    Route::get('/teacher/changeEndCourse/{courseId}', 'TeaCherController@changeEndCourse');//结课，开课
+    Route::any('/teacher/toUpdateCourse/{courseId}', 'TeaCherController@toUpdateCourse');//跳转到修改课程信息页面
+    Route::post('/teacher/uploadTeachFile', 'TeaCherController@uploadTeachFile');//上传课件
+    Route::get('/teacher/showCourseTeachFile/{courseId}', 'TeaCherController@showCourseTeachFile');//显示课件
+    Route::get('/teacher/downloadTeachFile/{fileId}', 'TeaCherController@downloadTeachFile');//下载课件
+    Route::any('/teacher/ask', 'TeaCherController@ask');//上课随机提问
 
 });
 

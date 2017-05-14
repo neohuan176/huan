@@ -127,9 +127,9 @@ class IndexController extends Controller
                         "url"  => "http://zy595312011.vicp.io/huan/public/teacher/showCourseInWechat"
                     ],
                     [
-                        "type" => "view",
-                        "name" => "学生网页签到",
-                        "url" => "http://zy595312011.vicp.io/huan/public/student/callOverPage"
+                        "type" => "scancode_push",
+                        "name" => "扫一扫",
+                        "key" =>"rselfmenu",
                     ],
                 ],
             ],
@@ -162,11 +162,10 @@ class IndexController extends Controller
                         "name" => "我的课程",
                         "url"  => "http://zy595312011.vicp.io/huan/public/student/showStudentCourse"
                     ],
-
                     [
-                        "type" => "scancode_push",
-                        "name" => "扫一扫",
-                        "key" =>"rselfmenu",
+                        "type" => "view",
+                        "name" => "学生网页签到",
+                        "url" => "http://zy595312011.vicp.io/huan/public/student/callOverPage"
                     ],
 
                 ],
