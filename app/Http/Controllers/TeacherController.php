@@ -422,8 +422,7 @@ class TeacherController extends Controller
             }else{
                 return null;
             }
-
-        }else{
+        }else{//post请求
             $cur_ask_record = AttendRecord::find($request->get('recordId'));
             if($cur_ask_record){
                 $cur_ask_record->score+=$request->get('score');
