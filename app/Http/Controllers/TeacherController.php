@@ -435,4 +435,58 @@ class TeacherController extends Controller
 
         }
     }
+
+    /**
+     * @param Request $request
+     * @return $this
+     * 修改教师信息
+     */
+    public function updateTeacherInfo(Request $request){
+        $teacher = $request->user('teacher');
+        if($request->isMethod("get")){
+            return view("teacher.updateTeacherInfo")->with(['teacher'=>$teacher]);
+        }else{
+            $this->validate($request, [
+                'school' => 'required',
+                'phone' => 'required|digits:11',
+//                'password' => 'required|min:6|confirmed',
+//                'password_confirmation' => 'required|min:6',
+            ]);
+
+            $data = Input::all();
+            $teacher->name = $data['name'];
+            $teacher->school = $data['school'];
+            $teacher->phone = $data['phone'];
+//            $teacher->password = bcrypt($data['password']);
+            if($teacher->save()){
+                return view("teacher.updateTeacherInfo")->with(['teacher'=>$teacher])->with(['success'=>true]);
+            }else{
+                return "修改失败";
+            }
+        }
+    }
+
+    /**
+     * @param Request $request
+     * @return $this|\Illuminate\Contracts\View\Factory|\Illuminate\View\View|string
+     * 修改密码
+     */
+    public function updatePassword(Request $request){
+        $teacher = $request->user('teacher');
+        if($request->isMethod('get')){
+            return view("teacher.updatePassword");
+        }else{
+            $this->validate($request, [
+                'password' => 'required|min:6|confirmed',
+                'password_confirmation' => 'required',
+            ]);
+            $data = Input::all();
+            $teacher->password = bcrypt($data['password']);
+            if($teacher->save()){
+                return view("teacher.updatePassword")->with(['success'=>true]);
+            }else{
+                return "修改失败";
+            }
+        }
+    }
 }

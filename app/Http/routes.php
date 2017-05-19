@@ -69,6 +69,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/teacher/showCourseTeachFile/{courseId}', 'TeaCherController@showCourseTeachFile');//显示课件
     Route::get('/teacher/downloadTeachFile/{fileId}', 'TeaCherController@downloadTeachFile');//下载课件
     Route::any('/teacher/ask', 'TeaCherController@ask');//上课随机提问
+    Route::any('/teacher/updateTeacherInfo', 'TeaCherController@updateTeacherInfo');//修改教师个人信息
+    Route::any('/teacher/updatePassword', 'TeaCherController@updatePassword');//修改教师个人信息
 
 });
 
