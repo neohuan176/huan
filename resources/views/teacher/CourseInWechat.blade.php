@@ -10,7 +10,7 @@
             <div class="course-list-item wechat-full-width animated flipInX">
                 <div class="left">
 
-                    <h2 class="course-title">{{$course->Cname}}</h2>
+                    <h2 class="course-title"><a href="{{url('/teacher/showCurCourse/'.$course->id)}}">{{$course->Cname}}</a></h2>
 
                     <p style="font-size: 14px;color:#666">{{$course->weekday}}<span class="float-right">{{$course->Address}}</span></p>
 
