@@ -295,6 +295,7 @@
                         recordId:cur_ask_record.id
                     },
                     function (data) {
+                        location.reload();
                         console.log(data);
                     }
                 )
